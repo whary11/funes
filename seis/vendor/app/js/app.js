@@ -102,12 +102,12 @@ $(document).ready(function() {
 		});
 	});
 
+	/////Array de productos, que llenaremos con los productos que el usuario quiera anexar al presupuesto
 
+	var productos = [];
 	// ///////////Generar presupuestos
 	$("#nuevoPresupuesto").click(function() {
-		/////Array de productos, que llenaremos con los productos que el usuario quiera anexar al presupuesto
-		
-		var productos = [];
+
 		$('#resultado').load("nuevoPresupuesto.php", function(){
 			// var llamamda = $('.llmadaproductos select option:selected');
 			var i = 0;		
