@@ -1,0 +1,28 @@
+/*Clases para modificar el formato del pdf*/
+table{
+	border-collapse: collapse;
+}
+.fondo-celda{
+	background-color:#efefef;
+}
+
+.border-izquierdo{
+	border-left: 1px solid #000; 
+}
+
+.fondo-celda1{
+	background-color: #dddbdb;
+	table-layout:
+}
+
+.borde-celda{
+	border: 1px solid gray;
+}
+
+.espacio-celdas{
+	margin-top: 30px;
+}
+
+
+
+
