@@ -1,3 +1,9 @@
+var presupuesto = [];
+var cuil = [];
+var desc = [];
+var pre = [];
+var total =0;
+var clientefin = 0;
 
 $(document).ready(function(){
 	// Cargar archivos
@@ -136,9 +142,6 @@ $(document).ready(function(){
 
 			});
 			var contador=0;
-			var cuil = [];
-			var desc = [];
-			var pre = [];
 			$('#formPresupuesto').submit(function(event) {
 				event.preventDefault();
 				var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
@@ -156,6 +159,9 @@ $(document).ready(function(){
 					$(".clientes").removeClass('has-error');
 					$(".productos").removeClass('has-error');
 					contador++;
+					cuil.push(parseInt(producto));
+					desc.push(descripcion);
+					pre.push(parseInt(precio));
 					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
 						td+= '<td>'+descripcion+'</td>'
 						td+= '<td>$ '+precio+'</td>'
@@ -165,13 +171,52 @@ $(document).ready(function(){
 					$('#tbody').append(td);
 					reordenar();
 					$('.limpiar').val('');
-
-
-
-
+					for(var i =0;i<pre.length;i++){
+						total += parseInt(pre[i]);
+					}
 				}
 
+
+
 			});
+///LLenamos el arreglo a enviar a la base de datos
+			presupuesto.push(cuil);
+			presupuesto.push(desc);
+			presupuesto.push(pre);
+
+//////función donde se genera el presupuesto
+			$('#generar').click(function(){
+				
+				
+				clientefin = parseInt($('#clientes').val());
+				
+
+				var dataInfo = {
+					cliente:clientefin,
+					presupuesto:presupuesto,
+					total:total
+				}
+
+
+				$.ajax({
+					url: '../controladores/datos/inserta_prsupuesto.php',
+					type: 'POST',
+					dataType: 'html',
+					data: dataInfo,
+				})
+				.done(function(data) {
+					console.log(data);
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				.always(function() {
+					console.log("complete");
+				});
+				
+
+			})
+
 			
 					
 		});
@@ -287,7 +332,22 @@ $(document).ready(function(){
 function borrar(id){
 	$('tr[idmayor='+id+']').remove();
 	reordenar();
+	if(presupuesto.length<1){
+		presupuesto.length = 0;
+	}else{
+		presupuesto[0].splice(id-1,1);
+		presupuesto[1].splice(id-1,1);
+		presupuesto[2].splice(id-1,1);
+	}
+	// console.log(presupuesto)
 }
+
+
+
+
+
+
+
 function reordenar(){
 	var cuenta = 1;
 	$('#tbody tr').map(function(){

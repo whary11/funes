@@ -1,6 +1,7 @@
 <?php 
 	require_once("../conexion/conn.php");
 	$db = new conexion();
+	
 	$id = $_POST["id"];
 	$q = "SELECT precio FROM productos_funes WHERE (codigo='$id')";
 	$data = $db->leeTabla($q);

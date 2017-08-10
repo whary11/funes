@@ -5,7 +5,7 @@
 <?php 
     require_once("../controladores/conexion/conn.php");
     $db = new conexion();
-    $q = "SELECT * FROM clientes_funes";
+    $q = "SELECT id,razon_social FROM clientes_funes";
     $data = $db->leeTabla($q);
 
  ?>
@@ -16,7 +16,7 @@
         	<option>Seleccione un cliente</option>
         	<?php 
                 for($i=0;$i<count($data);$i++){ 
-                    print('<option value="'.$data[$i]->cuit.'">'.utf8_encode($data[$i]->razon_social).'</option>');
+                    print('<option value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->razon_social).'</option>');
                 }
              ?>
         </select>
@@ -41,7 +41,7 @@
             <input type="text" class="form-control precio limpiar" disabled name="precio">
         </div>
         <div class="form-group col-md-3">
-            <label for="condicioniva">Cuil o Cuit</label>
+            <label for="condicioniva">Código</label>
             <input type="text" class="form-control id limpiar" disabled name="id">
         </div>
         <div class="form-group col-md-3" id="agregar"> 
@@ -66,7 +66,7 @@
         <table width="100%" class="table table-striped table-bordered table-hover table-responsive" id="dataTables-example">
             <thead>
                 <tr>
-                    <th>Cuil o Cuit</th>
+                    <th>Código</th>
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Borrar</th>
