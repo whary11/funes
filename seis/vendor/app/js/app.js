@@ -1,6 +1,5 @@
-$(document).ready(function() {
 
-
+$(document).ready(function(){
 	// Cargar archivos
 	////////////////Clientes/////////////
 	$('#nuevocliente').click(function() {
@@ -97,63 +96,94 @@ $(document).ready(function() {
 				}else{
 					$(".descripcion").removeClass('has-error');
 					/////Implementar AJAX para culminar envío de formulario, lo hace el backend
+
 				}
 			});
 		});
 	});
 
-	/////Array de productos, que llenaremos con los productos que el usuario quiera anexar al presupuesto
-
-	var productos = [];
+	
+		
 	// ///////////Generar presupuestos
 	$("#nuevoPresupuesto").click(function() {
+		$('#dataTables-presupuesto').DataTable({
+	            responsive: true
+	    });
 
+////Cargar lo productos desde la base de datos.
+		
+		var precio="";
 		$('#resultado').load("nuevoPresupuesto.php", function(){
-			// var llamamda = $('.llmadaproductos select option:selected');
-			var i = 0;		
-			$('.llmadaproductos select').change(function(event){
+			$("#productos").change(function(event) {
 				var id = $(this).val();
-				
-				$.post('../controladores/datos/listarproductos.php', {producto: id}, function(data, textStatus, xhr) {
-					var data = JSON.parse(data);
-					$(this).children('input:first').val(data[0].precio);
-					$('.precio').val(data[0].precio);
-					$('.id').val(data[0].codigo);
-					///////Llnamos el arreglos productos[]
-					productos.push(parseInt(data[0].codigo))
-				});
-				$("#formPresupuesto").submit(function(event){
-					event.preventDefault();
-					var producto = $("#producto").val();
-					if (producto=="Seleccione un Producto"){
-						$(".producto").addClass('has-error');
-					}else{
-						$("#producto option:first").attr({
-								selected: '',
-						});
-						$(".descripcion").removeClass('has-error');
-
-						//////Tomamos acción con nuestro arreglo productos, luego que se pasó la validación de datos
-						var cliente = $(".cliente select").val();
-						var finpro = {
-							cliente:parseInt(cliente),
-							id:productos
-						}
+				$.ajax({
+					url: '../controladores/datos/listarproductos.php',
+					type: 'POST',
+					dataType: 'html',
+					data: {id:id},
+				})
+				.done(function(data){
+					if (id=='Seleccione un Producto') {
 						$('.precio').val('');
 						$('.id').val('');
 						
-						console.log(finpro);
-						////Gernerar el código que permita darle una vista previa al usuario del presupuestos a generar.
+					}else{
+						$('.precio').val(data);
+						$('.id').val(id);						
 					}
-			
-				});
-				
-				// console.log(i)
+					precio = data;
+				})
+
 			});
+			var contador=0;
+			var cuil = [];
+			var desc = [];
+			var pre = [];
+			$('#formPresupuesto').submit(function(event) {
+				event.preventDefault();
+				var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
+				var cliente = $('#clientes').val();
+				var producto = $('#productos').val();
+				if(cliente=="Seleccione un cliente"){
+					$(".clientes").addClass('has-error');
+
+				}else if(producto=='Seleccione un producto'){
+					$(".clientes").removeClass('has-error');
+					$(".productos").addClass('has-error');
+				}else if($('.precio').val()=="" || $('.id').val()==""){
+
+				}else{
+					$(".clientes").removeClass('has-error');
+					$(".productos").removeClass('has-error');
+					contador++;
+					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
+						td+= '<td>'+descripcion+'</td>'
+						td+= '<td>$ '+precio+'</td>'
+						td+='<td><button id="'+contador+'" type="button"'
+						td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
+						td+= ' ><i class="fa fa-times"></i></button></td>'
+					$('#tbody').append(td);
+					reordenar();
+					$('.limpiar').val('');
+
+
+
+
+				}
+
+			});
+			
+					
 		});
+
 	});
 
-	// Buscador de clientes en tiempo real
+
+
+
+
+
+	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
 	buscador.keyup(function(){
 		var valorBus = buscador.val();
@@ -181,14 +211,10 @@ $(document).ready(function() {
                     resultado.html(data);	
 				})
 				.fail(function(data) {
-					console.log(data);
+					// console.log(data);
 				})
 			}
 		});
-
-
-
-
 
 ////////////Cargar infromación en la sección de ver productos
 
@@ -209,13 +235,67 @@ $(document).ready(function() {
 	        });
 		});
 	});
-
-
-
-
-
-
-
-
 	
 });
+
+
+
+
+
+
+
+
+///Función para formatear números 
+    function numberFormat(numero){
+        // Variable que contendra el resultado final
+        var resultado = "";
+ 
+        // Si el numero empieza por el valor "-" (numero negativo)
+        if(numero[0]=="-")
+        {
+            // Cogemos el numero eliminando los posibles puntos que tenga, y sin
+            // el signo negativo
+            nuevoNumero=numero.replace(/\./g,'').substring(1);
+        }else{
+            // Cogemos el numero eliminando los posibles puntos que tenga
+            nuevoNumero=numero.replace(/\./g,'');
+        }
+ 
+        // Si tiene decimales, se los quitamos al numero
+        if(numero.indexOf(",")>=0)
+            nuevoNumero=nuevoNumero.substring(0,nuevoNumero.indexOf(","));
+ 
+        // Ponemos un punto cada 3 caracteres
+        for (var j, i = nuevoNumero.length - 1, j = 0; i >= 0; i--, j++)
+            resultado = nuevoNumero.charAt(i) + ((j > 0) && (j % 3 == 0)? ".": "") + resultado;
+ 
+        // Si tiene decimales, se lo añadimos al numero una vez forateado con 
+        // los separadores de miles
+        if(numero.indexOf(",")>=0)
+            resultado+=numero.substring(numero.indexOf(","));
+ 
+        if(numero[0]=="-")
+        {
+            // Devolvemos el valor añadiendo al inicio el signo negativo
+            return "-"+resultado;
+        }else{
+            return resultado;
+        }
+    }
+
+
+function borrar(id){
+	$('tr[idmayor='+id+']').remove();
+	reordenar();
+}
+function reordenar(){
+	var cuenta = 1;
+	$('#tbody tr').map(function(){
+		$(this).attr('idmayor', cuenta);
+
+		$(this).find("td button").eq(0).attr('id', cuenta);
+
+		cuenta++;
+	})
+
+}
