@@ -200,7 +200,7 @@ $(document).ready(function(){ });
 
 
 				$.ajax({
-					url: 'modulos/presupuesto/inserta_presupuesto.php',
+					url: 'modulos/presupuesto/inserta_prsupuesto.php',
 					type: 'POST',
 					dataType: 'html',
 					data: dataInfo,
@@ -208,6 +208,13 @@ $(document).ready(function(){ });
 				.done(function(data) {
 					console.log(data);
 				})
+				.fail(function() {
+					console.log("error");
+				})
+				.always(function() {
+					console.log("complete");
+				});
+				
 
 			})
 

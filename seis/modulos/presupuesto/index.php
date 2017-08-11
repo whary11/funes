@@ -3,7 +3,7 @@
     <!-- Producto Agregado con éxito -->
 </div>
 <?php 
-    require_once("../controladores/conexion/conn.php");
+    require_once("controladores/conexion/conn.php");
     $db = new conexion();
     $q = "SELECT id,razon_social FROM clientes_funes";
     $data = $db->leeTabla($q);
@@ -77,6 +77,9 @@
         </table>
         <!-- /.table-responsive -->
     </div>
-
 </div>
+<body>
+        <script src="vendor/app/js/app.js"></script>
+
+</body>
 

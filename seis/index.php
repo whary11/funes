@@ -8,25 +8,25 @@
     <meta name="author" content="">
     <title>Funes - Sistema de Administración</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
-    <link href="../vendor/app/css/app.css" rel="stylesheet">
-    <link href="../vendor/app/css/animate.css" rel="stylesheet">
+    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="vendor/app/css/app.css" rel="stylesheet">
+    <link href="vendor/app/css/animate.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- DataTables CSS -->
-    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <!-- <link href="../vendor/app/css/alertify.rtl.css" rel="stylesheet"> -->
 
-    <link rel="stylesheet" href="../vendor/app/css/toastr.min.css">
+    <link rel="stylesheet" href="vendor/app/css/toastr.min.css">
 
 
 
@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="perfil.html"><img class="img-circle" src="../dist/img/user.png"></a>
+                <a class="navbar-brand" href="perfil.html"><img class="img-circle" src="dist/img/user.png"></a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -272,16 +272,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Escritorio</a>
+                            <a href="#!"><i class="fa fa-dashboard fa-fw"></i> Escritorio</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> Clientes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" id="nuevocliente"><i class="glyphicon glyphicon-user"></i> Nuevo Cliente<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=cliente&elemento=index.php" id="nuevocliente"><i class="glyphicon glyphicon-user"></i> Nuevo Cliente<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
-                                    <a href="#" id="verClientes"> <i class="glyphicon glyphicon-shopping-cart"></i> Ver Clientes<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=cliente&elemento=verClientes.php" id="verClientes"> <i class="glyphicon glyphicon-shopping-cart"></i> Ver Clientes<span class="fa arrow"></span></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -290,10 +290,10 @@
                             <a href="#"><i class="fa fa-cubes fa-fw"></i> Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" id="nuevoproducto"><i class="glyphicon glyphicon-user"></i> Nuevo Producto<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=producto&elemento=index.php" id="nuevoproducto"><i class="glyphicon glyphicon-user"></i> Nuevo Producto<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
-                                    <a href="#" id="verProductos"> <i class="glyphicon glyphicon-shopping-cart"></i> Ver Productos<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=producto&elemento=verProductos.php" id="verProductos"> <i class="glyphicon glyphicon-shopping-cart"></i> Ver Productos<span class="fa arrow"></span></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -302,7 +302,7 @@
                             <a href="#"><i class="fa fa-sign-out fa-fw"></i> Presupuesto<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" id="nuevoPresupuesto"><i class="fa fa-file-pdf-o fa-fw"></i> Nuevo<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=presupuesto&elemento=index.php" id="nuevoPresupuesto"><i class="fa fa-file-pdf-o fa-fw"></i> Nuevo<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
                                     <a href="#"> <i class="fa fa-file-powerpoint-o fa-fw"></i> Rápido<span class="fa arrow"></span></a>
@@ -382,12 +382,11 @@
                 <div class="col-lg-12 col-md-12">
                     <h1 class="page-header">Escritorio</h1>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
             <!-- /.Contenido -->
                 <section class="row">
                 <div class="col-lg-12" id="resultado">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                   <!--  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -398,7 +397,18 @@
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                    <?php
+                        $mod = @$_GET['modulo'];
+                        $m=@$_GET['elemento'];
+                        $archivo = 'modulos/'.$mod.'/'.$m;
+                        if (file_exists($archivo) and !empty($_GET['modulo']) and !empty($_GET['elemento'])) {
+                            include_once($archivo);
+                        }else{
+                            //include_once("modulos/orden/index.php");
+                        }
+                    ?>
+                    
                 </div>
             </section>
         <!-- /#page-wrapper -->
@@ -406,28 +416,28 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="vendor/raphael/raphael.min.js"></script>
     <!-- <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script> -->
     <!-- Data tables -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
     <!-- App -->
-    <script src="../vendor/app/js/app.js"></script>
-    <script src="../vendor/app/js/toastr.min.js"></script>  
+    <script src="vendor/app/js/app.js"></script>
+    <script src="vendor/app/js/toastr.min.js"></script>  
 </body>
 
 </html>

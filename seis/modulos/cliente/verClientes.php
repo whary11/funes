@@ -1,5 +1,5 @@
 <?php 
-	require_once("../conexion/conn.php");
+	require_once("controladores/conexion/conn.php");
 	$db = new conexion();
 	$q = "SELECT * FROM clientes_funes";
 	$data = $db->leeTabla($q);

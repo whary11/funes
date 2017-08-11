@@ -3,7 +3,7 @@
 <?php 
 
 	if (isset($_GET["id"])) {
-		require_once("../conexion/conn.php");
+		require_once("../../controladores/conexion/conn.php");
 		$db = new conexion();
 		$id = $_GET["id"];
 		
@@ -69,7 +69,7 @@
 			</section>
 			<br><br>
 			<div>
-				<a href="../../pages">Volver a productos</a>
+				<a href="../../index.php?modulo=producto&elemento=verProductos.php">Volver a productos</a>
 			</div>
 	</body>
 	</html>
@@ -130,7 +130,7 @@
 			</section>
 			<br><br>
 			<div>
-				<a href="../../pages">Volver a productos</a>
+				<a href="../../index.php?modulo=producto&elemento=verProductos.php">Volver a productos</a>
 			</div>
 		</div>
 	</body>
