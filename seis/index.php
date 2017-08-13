@@ -278,7 +278,7 @@
                             <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> Clientes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="index.php?modulo=cliente&elemento=index.php" id="nuevocliente"><i class="glyphicon glyphicon-user"></i> Nuevo Cliente<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=cliente&elemento=index.php" id="nuevocliente"><i class="glyphicon glyphicon-user"></i> uevo Cliente<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
                                     <a href="index.php?modulo=cliente&elemento=verClientes.php" id="verClientes"> <i class="glyphicon glyphicon-shopping-cart"></i> Ver Clientes<span class="fa arrow"></span></a>
