@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/dropzone.css">
 <h4 class="success">Nuevo Presupuesto</h4>
 <div  id="alertas">
     <!-- Producto Agregado con éxito -->
@@ -9,7 +10,7 @@
     $data = $db->leeTabla($q);
 
  ?>
-<form role="form" class="row animated bounceIn" id="formPresupuesto" method="POST">
+<form role="form" class="row animated bounceIn" id="formPresupuesto" method="POST" enctype="multipart/form-data">
     <div class="form-group col-md-12 clientes">
         <label for="cliente">Cliente</label>
         <select class="form-control" name="clientes" id="clientes">
@@ -51,7 +52,7 @@
             </button>
         </div>
         <div class="form-group col-md-3 desaparecer"> 
-            <button id="generar" class="btn btn-suscces">
+            <button id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces">
                 <span class="glyphicon glyphicon-plus"></span>
                 Generar
             </button>
@@ -78,8 +79,51 @@
         <!-- /.table-responsive -->
     </div>
 </div>
+
+<!-- Creo el modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Enviar correo</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+          <!-- Enviar correo en modal -->
+            <form id="subida" enctype="multipart/form-data" class="dropzone" >
+                <div class="fallback">
+                    <input name="file" type="file" multiple id="input" />
+                </div>
+            </form>
+
+
+            <div class="form-group">
+                <label for="nota">Nota</label>
+                <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
+            </div>
+
+            <button id="envia" class="btn btn-primary">Enviar correo</button>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Enviar</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
 <body>
-        <script src="vendor/app/js/app.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/app/js/app.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/accion_presupuesto.js"></script>
+
 
 </body>
 
