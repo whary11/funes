@@ -1,4 +1,4 @@
 <?php 
-	print($_POST["nombre"]);
+	print($_POST["nota"]);
 	// print('$_POST["adjunto"]');
  ?>

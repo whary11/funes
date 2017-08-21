@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="vendor/app/css/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="css/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="css/default.css">
 
 
 
@@ -330,46 +332,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
+                        
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>
@@ -441,6 +404,7 @@
     <!-- App -->
     <script src="vendor/app/js/app.js"></script>
     <script src="vendor/app/js/toastr.min.js"></script>  
+    <script src="vendor/app/js/alertify.min.js"></script>  
 </body>
 
 </html>

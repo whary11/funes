@@ -172,6 +172,8 @@ $(document).ready(function(){ });
 					$('#tbody').append(td);
 					reordenar();
 					$('.limpiar').val('');
+					//Notificación
+					alertify.success('Producto agregado');
 					for(var i =0;i<pre.length;i++){
 						total += parseInt(pre[i]);
 					}
@@ -334,6 +336,7 @@ function borrar(id){
 		presupuesto[2].splice(id-1,1);
 	}
 	// console.log(presupuesto)
+	alertify.error('Se ha quitado el producto.');
 }
 
 
