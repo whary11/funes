@@ -172,6 +172,8 @@ $(document).ready(function(){ });
 					$('#tbody').append(td);
 					reordenar();
 					$('.limpiar').val('');
+					//Notificación
+					alertify.success('Producto agregado');
 					for(var i =0;i<pre.length;i++){
 						total += parseInt(pre[i]);
 					}
@@ -216,12 +218,7 @@ $(document).ready(function(){ });
 		// });
 
 	// });
-
-
-
-
-
-
+	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
 	buscador.keyup(function(){
@@ -232,7 +229,7 @@ $(document).ready(function(){ });
 				});
 			}else{	
 				$.ajax({
-						url: '../controladores/buscadores/buscar.php',
+						url: 'controladores/buscadores/buscar.php',
 						type: 'POST',
 						dataType:'html',
 						data: {valorBus: valorBus},
@@ -334,6 +331,7 @@ function borrar(id){
 		presupuesto[2].splice(id-1,1);
 	}
 	// console.log(presupuesto)
+	alertify.error('Se ha quitado el producto.');
 }
 
 

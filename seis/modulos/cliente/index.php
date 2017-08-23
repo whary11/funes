@@ -1,5 +1,5 @@
 <h3>Nuevo Cliente</h3>
-	<form role="form" class="row animated fadeInDown" id="form_nuevocliente" method="POST">
+	<form role="form" class="row animated slideInUp" id="form_nuevocliente" method="POST">
 	    <div class="form-group col-md-6 razon">
 	        <label for="razon">Razón Social</label>
 	        <input type="text" class="form-control" placeholder="Escribe aquí..." name="razon" id="razon">
