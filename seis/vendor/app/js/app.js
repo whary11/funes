@@ -218,12 +218,7 @@ $(document).ready(function(){ });
 		// });
 
 	// });
-
-
-
-
-
-
+	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
 	buscador.keyup(function(){
@@ -234,7 +229,7 @@ $(document).ready(function(){ });
 				});
 			}else{	
 				$.ajax({
-						url: '../controladores/buscadores/buscar.php',
+						url: 'controladores/buscadores/buscar.php',
 						type: 'POST',
 						dataType:'html',
 						data: {valorBus: valorBus},

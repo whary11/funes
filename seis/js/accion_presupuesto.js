@@ -23,11 +23,10 @@
 
 	$('#envia').click(function() {
 	    var myDropzone = Dropzone.forElement("#subida");
+	    // Instrucción para enviar los archivos al servidor
 	    myDropzone.processQueue();
 	});
 
 
 
 
-$(document).ready(function() {
-});
