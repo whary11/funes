@@ -10,7 +10,7 @@
     $data = $db->leeTabla($q);
 
  ?>
-<form role="form" class="row animated bounceIn" id="formPresupuesto" method="POST" enctype="multipart/form-data">
+<form role="form" class="row animated slideInUp" id="formPresupuesto" method="POST" enctype="multipart/form-data">
     <div class="form-group col-md-12 clientes">
         <label for="cliente">Cliente</label>
         <select class="form-control" name="clientes" id="clientes">
