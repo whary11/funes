@@ -1,6 +1,6 @@
 var presupuesto = [];
-var cuil = [];
-var desc = [];
+var id_produ = [];
+// var desc = [];
 var pre = [];
 var total =0;
 var clientefin = 0;
@@ -202,8 +202,8 @@ function editar_producto(){
 					$(".clientes").removeClass('has-error');
 					$(".productos").removeClass('has-error');
 					contador++;
-					cuil.push(parseInt(producto));
-					desc.push(descripcion);
+					id_produ.push(parseInt(producto));
+					// desc.push(descripcion);
 					pre.push(parseInt(precio));
 					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
 						td+= '<td>'+descripcion+'</td>'
@@ -223,8 +223,8 @@ function editar_producto(){
 				}
 			});
 ///LLenamos el arreglo a enviar a la base de datos
-			presupuesto.push(cuil);
-			presupuesto.push(desc);
+			presupuesto.push(id_produ);
+			// presupuesto.push(desc);
 			presupuesto.push(pre);
 
 //////función donde se genera el presupuesto
@@ -363,7 +363,7 @@ function borrar(id){
 	}else{
 		presupuesto[0].splice(id-1,1);
 		presupuesto[1].splice(id-1,1);
-		presupuesto[2].splice(id-1,1);
+		// presupuesto[2].splice(id-1,1);
 
 		if(presupuesto[0].length==0){
             $("#r").hide();

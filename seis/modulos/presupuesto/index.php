@@ -32,7 +32,7 @@
                     $q = "SELECT * FROM productos_funes";
                     $data = $db->leeTabla($q);
                     for($i=0;$i<count($data);$i++){ 
-                        print('<option id="'.utf8_encode($data[$i]->descripcion).'" value="'.$data[$i]->codigo.'">'.utf8_encode($data[$i]->descripcion).'</option>');
+                        print('<option id="'.utf8_encode($data[$i]->descripcion).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->descripcion).'</option>');
                     }
                  ?>
             </select>
