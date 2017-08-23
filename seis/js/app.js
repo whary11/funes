@@ -360,3 +360,17 @@ function reordenar(){
 	})
 
 }
+
+
+function llenar_modal(id){
+	
+	alert('id');
+	// 	$.ajax({
+	// 	url: 'modulos/cliente/llenar_formulario.php',
+	// 	type: 'POST',
+	// 	data:{id_producto:i},
+	// 	})
+	// 	.done(function(respuesta){
+	// 	$('#body_producto').html(respuesta);
+	// })	
+}

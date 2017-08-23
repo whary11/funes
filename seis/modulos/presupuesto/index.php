@@ -51,11 +51,8 @@
                 Agregar
             </button>
         </div>
-        <div class="form-group col-md-3 desaparecer"> 
-            <button id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces">
-                <span class="glyphicon glyphicon-plus"></span>
-                Generar
-            </button>
+        <div class="form-group col-md-3 desaparecer" id="paragenerar"> 
+            
         </div>     
 </form>
 <div class="panel panel-default">
