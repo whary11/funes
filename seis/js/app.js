@@ -190,15 +190,11 @@ $(document).ready(function(){ });
 				
 				
 				clientefin = parseInt($('#clientes').val());
-				
-
 				var dataInfo = {
 					cliente:clientefin,
 					presupuesto:presupuesto,
 					total:total
 				}
-
-
 				$.ajax({
 					url: 'modulos/presupuesto/inserta_prsupuesto.php',
 					type: 'POST',
@@ -208,7 +204,7 @@ $(document).ready(function(){ });
 				.done(function(data) {
 					console.log(data);
 				})
-				.fail(function() {
+				.fail(function(data) {
 					console.log("error");
 				})
 				.always(function() {

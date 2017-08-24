@@ -12,7 +12,7 @@
 		public function __construct(){
 			$this->conn = mysqli_connect($this->host, $this->usuario, $this->clave, $this->db);
 			if(mysqli_connect_error()){
-				printf("Error en la conexion: %d",mysqli_connect_error());
+				print("error");
 				exit;
 			}
 		}

@@ -15,7 +15,7 @@ if (isset($_POST['id_producto'])) {
 		$descripcion = $data[$i]->descripcion;
 	}
 
-	$modal.= '<form role="form" class=" animated bounceIn col-lg-12" method="POST" id="formeditar">
+	$modal.= '<form role="form" class="col-lg-12" method="POST" id="formeditar">
 				<br>
 				    <div class="form-group col-md-12 codigo">
 				        <label for="codigo">Código de producto</label>

@@ -1,7 +1,7 @@
 
 <h3>Nuevo Producto</h3>
 <br><br>
-<form role="form" class="row animated bounceIn limpiar" id="formProductos" method="POST">
+<form role="form" class="row animated slideInUp limpiar" id="formProductos" method="POST">
     <div id="mensaje"></div>
     <div class="form-group col-md-10 codigo">
         <label for="codigo">Código de producto</label>

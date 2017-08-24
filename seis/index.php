@@ -308,9 +308,6 @@
                                     <a href="index.php?modulo=presupuesto&elemento=index.php" id="nuevoPresupuesto"><i class="fa fa-file-pdf-o fa-fw"></i> Nuevo<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
-                                    <a href="#"> <i class="fa fa-file-powerpoint-o fa-fw"></i> Rápido<span class="fa arrow"></span></a>
-                                </li>
-                                <li>
                                     <a href="#" id="verPresupuesto"> <i class="fa fa-file-powerpoint-o fa-fw"></i> Ver presupuestos<span class="fa arrow"></span></a>
                                 </li>
                             </ul>

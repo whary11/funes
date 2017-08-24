@@ -6,7 +6,7 @@
  ?>
 
 
-<div class="panel panel-default">
+<div class="panel panel-default animated slideInUp">
     <div class="panel-heading">
         Tabla de Productos registrados
     </div>
