@@ -3,6 +3,9 @@
 <div  id="alertas">
     <!-- Producto Agregado con éxito -->
 </div>
+<style type="text/css">
+    .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
+</style>
 <?php 
     require_once("controladores/conexion/conn.php");
     $db = new conexion();
