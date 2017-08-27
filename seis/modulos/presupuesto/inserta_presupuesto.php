@@ -11,7 +11,7 @@
 	$insertar = "INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `nombre_creador`, `fecha_creado`) VALUES (NULL, '$cliente_id', '$total', 'Luis Raga', CURRENT_TIMESTAMP);";
 	$db->abc($insertar);
 
-	$buscar="SELECT id FROM prsupuestos_funes WHERE id = (SELECT MAX(id) FROM presupuestos_funes)";
+	$buscar="SELECT id FROM presupuestos_funes WHERE id = (SELECT MAX(id) FROM presupuestos_funes)";
 	if($data = $db->leeTabla($buscar)){
 
 		for ($i=0; $i <count($data); $i++) {

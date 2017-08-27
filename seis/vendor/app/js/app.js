@@ -201,13 +201,14 @@ function editar_producto(){
 				}else if($('.precio').val()=="" || $('.id').val()==""){
 
 				}else{
+
 					$(".clientes").removeClass('has-error');
 					$(".productos").removeClass('has-error');
 					contador++;
 					id_produ.push(parseInt(producto));
 					// desc.push(descripcion);
 					pre.push(parseInt(precio));
-					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
+					var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
 						td+= '<td>'+descripcion+'</td>'
 						td+= '<td>$ '+precio+'</td>'
 						td+='<td><button id="'+contador+'" type="button"'

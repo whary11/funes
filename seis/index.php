@@ -389,7 +389,12 @@
     <!-- App -->
     <script src="vendor/app/js/app.js"></script>
     <script src="vendor/app/js/toastr.min.js"></script>  
-    <script src="vendor/app/js/alertify.min.js"></script>  
+    <script src="vendor/app/js/alertify.min.js"></script> 
+    <script type="text/javascript">
+    $('#productos-table').DataTable({
+        responsive: true,
+    }); 
+</script> 
 </body>
 
 </html>
