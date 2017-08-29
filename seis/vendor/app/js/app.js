@@ -4,7 +4,6 @@ var id_produ = [];
 var pre = [];
 var total =0;
 var clientefin = 0;
-
 $(document).ready(function(){ });
 	// Cargar archivos
 	////////////////Clientes/////////////
@@ -172,10 +171,13 @@ function editar_producto(){
 					data: {id:id},
 				})
 				.done(function(data){
-					if (id=='Seleccione un Producto') {
+					if (id=='Seleccione un producto') {
 						$('.precio').val('');
 						$('.id').val('');
 						
+					}else if(data==1){
+						$('.precio').val('');
+						$('.id').val('');
 					}else{
 						$('.precio').val(data);
 						$('.id').val(id);						
@@ -199,13 +201,14 @@ function editar_producto(){
 				}else if($('.precio').val()=="" || $('.id').val()==""){
 
 				}else{
+
 					$(".clientes").removeClass('has-error');
 					$(".productos").removeClass('has-error');
 					contador++;
 					id_produ.push(parseInt(producto));
 					// desc.push(descripcion);
 					pre.push(parseInt(precio));
-					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
+					var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
 						td+= '<td>'+descripcion+'</td>'
 						td+= '<td>$ '+precio+'</td>'
 						td+='<td><button id="'+contador+'" type="button"'
@@ -243,7 +246,22 @@ function generar_presupuesto(){
 			data: dataInfo,
 		})
 		.done(function(data) {
-			console.log(data);
+			// console.log(data);
+			if(data!=0){
+				// Se notifica al usuario que el presupuesto está listo para ser enviado
+				alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
+				  alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
+				});
+			}else{
+				// Se notifica al usuario en caso de que se presente un problema en la ejecución
+				// alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!');
+				alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!',
+				 'custom', 5, function(){
+
+				 	// console.log('dismissed');
+				 });
+			}
+
 		})
 
 	// })

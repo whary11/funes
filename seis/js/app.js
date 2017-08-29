@@ -4,6 +4,7 @@ var id_produ = [];
 var pre = [];
 var total =0;
 var clientefin = 0;
+alert("Hola Mundo")
 
 $(document).ready(function(){ });
 	// Cargar archivos

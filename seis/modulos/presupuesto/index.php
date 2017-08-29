@@ -3,6 +3,9 @@
 <div  id="alertas">
     <!-- Producto Agregado con éxito -->
 </div>
+<style type="text/css">
+    .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
+</style>
 <?php 
     require_once("controladores/conexion/conn.php");
     $db = new conexion();
@@ -91,7 +94,7 @@
 
 
           <!-- Enviar correo en modal -->
-            <form id="subida" enctype="multipart/form-data" class="dropzone" >
+            <form id="subida" enctype="multipart/form-data" class="dropzone" action="modulos/presupuesto/enviar_correo.php">
                 <div class="fallback">
                     <input name="file" type="file" multiple id="input" />
                 </div>

@@ -12,7 +12,7 @@
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="productos-table">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -74,6 +74,12 @@
       </div>
     </div>
 
+<<<<<<< HEAD
 <script src="js/jquery.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/dropzone.js"></script>
+=======
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/app/js/app.js"></script>
+<script src="js/dropzone.js"></script>
+>>>>>>> e791108aff4c241c8cbfffe0f2eb4e846e59b584

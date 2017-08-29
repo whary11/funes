@@ -22,9 +22,12 @@
 			if($q!=""){
 				if($r=mysqli_query($this->conn, $q)){
 					$data = mysqli_fetch_row($r);
+					return $data;
+				}else{
+					return false;
 				}
 			}
-			return $data;
+			
 		}
 		// función para buscar cualquier usuario siguiendo los parámetros exigidos
 		public static function buscaUsuario($tabla,$usuario, $clave){
@@ -46,14 +49,18 @@
 					while($obj = mysqli_fetch_object($r)){
 						array_push($data,$obj);
 					}
+					return $data;
+				}else{
+					return false;
 				}
 			}
-			return $data;
 		}
 		//Método para insertar, actualizar y eliminar registros en una base de datos.
 		public function abc($q){
 			if($q!=""){
 				mysqli_query($this->conn, $q);
+			}else{
+				return false;
 			}
 		}
 		// Método para modificar la propiedad $host
