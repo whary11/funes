@@ -4,14 +4,13 @@ var id_produ = [];
 var pre = [];
 var total =0;
 var clientefin = 0;
-alert("Hola Mundo")
-
 $(document).ready(function(){ });
 	// Cargar archivos
 	////////////////Clientes/////////////
 	// $('#nuevocliente').click(function() {
 		// $('#resultado').load("nuevocliente.html", function(){
 			//////Validar formulario de nuevo cliente dentro de la función de conlback
+
 			$("#form_nuevocliente").submit(function(event){
 				event.preventDefault();
 				// has-error
@@ -77,10 +76,26 @@ $(document).ready(function(){ });
 					$(".correo3").removeClass("has-error");
 				}else{
 					$(".telefono3").removeClass("has-error");
-					/////Implementar AJAX para culminar envío de formulario, lo hace el backend
+					$.ajax({
+						url: 'modulos/cliente/insertar.php',
+						type: 'POST',
+						// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+						data:$('#form_nuevocliente').serialize(),
+					})
+					.done(function(data) {
+						alert('Datos insertados correctamente');
+						$(".limpiar").val("");
+					})
+					.fail(function() {
+						console.log("error");
+					})
+					.always(function() {
+						console.log("complete");
+					});
 				}
 				
 			});
+		
 		// });
 	// })
 	/////////////Productos////////////
@@ -303,12 +318,12 @@ function generar_presupuesto(){
 
 	///////////Cargar infromación en la sección de ver clientes
 
-	$("#verClientes").click(function(){
-			// $("#resultado").load("../controladores/datos/verClientes.php", function(){
-			$('#dataTables-example').DataTable({
-	            responsive: true
-	        });
-		});
+	// $("#verClientes").click(function(){
+	// 		// $("#resultado").load("../controladores/datos/verClientes.php", function(){
+	// 		$('#dataTables-example').DataTable({
+	//             responsive: true
+	//         });
+	// 	});
 	
 	
 // });

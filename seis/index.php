@@ -394,6 +394,10 @@
     $('#productos-table').DataTable({
         responsive: true,
     }); 
+    $('#cliente-table').DataTable({
+        responsive: true,
+    }); 
+    
 </script> 
 </body>
 
