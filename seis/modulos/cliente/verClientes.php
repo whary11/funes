@@ -4,7 +4,6 @@
 	$q = "SELECT * FROM clientes_funes";
 	$data = $db->leeTabla($q);
 	// print("Conexión funcionado, tenemos <b>".count($data). "</b> clientes registrados");
-
  ?>
 
 <div class="panel panel-default animated slideInUp">
@@ -63,12 +62,12 @@
                     <td><?php print($data[$i]->fecha_cargue); ?></td>
 
                     <td class="center">
-                        <a style="color: green; text-decoration:none;" href="" data-toggle="modal" data-target="#modalproducto" onclick="llenar_modal('<?php print($data[$i]->id) ?>');">
+                        <a  style="color: green; text-decoration:none;" href="" data-toggle="modal" data-target="#modalcliente" onclick="llenar_modal_cliente('<?php print($data[$i]->id) ?>');">
                             <i style="font-size:20px;display:block;text-align:center;" class="fa fa-edit"></i>
                         </a>
                     </td>
                     <td class="center">
-                        <a style="color:red;text-decoration: none;" href="" id="elimi_producto" onclick="eliminar_producto('<?php print($data[$i]->id) ?>');">
+                        <a style="color:red;text-decoration: none;" href="" id="elimi_cliente" onclick="eliminar_cliente('<?php print($data[$i]->id) ?>');">
                             <i style="font-size:20px;display:block;text-align:center;" class="fa fa-minus-circle"></i>
                         </a>
                     </td>
@@ -85,14 +84,14 @@
 </div>
                     <!-- /.panel -->
 <!-- Modal -->
- <div class="modal fade" id="modalproducto" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modalcliente" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar producto</h2>
+            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar Cliente</h2>
            <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             </button> -->
          
-          <div class="modal-body" id="body_producto">
+          <div class="modal-body" id="body_cliente">
             
 
           </div>
@@ -105,9 +104,6 @@
     </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/app.js"></script>
-<script src="js/dropzone.js"></script>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/app/js/app.js"></script>
 <script src="js/dropzone.js"></script>
 
 

@@ -98,6 +98,30 @@ $(document).ready(function(){ });
 		
 		// });
 	// })
+	function eliminar_cliente(id){
+		// $('#elimi_cliente').click(function(event) {
+		// event.preventDefault();
+		$.ajax({
+		url: 'modulos/cliente/eliminar.php',
+		type: 'POST',
+		data:{id_cliente:id},
+		})
+		.done(function(respuesta){
+			console.log(respuesta)
+			 // setTimeout("document.location=document.location");
+		})
+	// });	
+	}
+	function llenar_modal_cliente(id){
+		$.ajax({
+		url: 'modulos/cliente/llenar_modal.php',
+		type: 'POST',
+		data:{id_cliente:id},
+		})
+		.done(function(respuesta){
+		 $('#body_cliente').html(respuesta);
+	})	
+	}
 	/////////////Productos////////////
 	
 			$("#formProductos").submit(function(event) {
