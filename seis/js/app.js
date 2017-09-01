@@ -122,6 +122,24 @@ $(document).ready(function(){ });
 		 $('#body_cliente').html(respuesta);
 	})	
 	}
+
+	function editar_cliente(){
+	$("#editar_cliente").submit(function(event) {
+		event.preventDefault();
+	
+	$.ajax({
+		url: 'modulos/cliente/editar.php',
+		type: 'POST',
+		data: $('#editar_cliente').serialize(),
+		})
+		.done(function(respuesta){
+			alert('Datos actualizados correctamente');
+			setTimeout("document.location=document.location");
+	
+		})
+	});
+}
+
 	/////////////Productos////////////
 	
 			$("#formProductos").submit(function(event) {

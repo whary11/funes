@@ -20,6 +20,7 @@ if (isset($_POST['id_cliente'])) {
 	        <label for="cliente">Tipo Cliente</label>
 	        <select class="form-control" name="cliente" id="cliente">
 	        	<option>Seleccione un tipo de cliente</option>
+	        	<option selected="selected">'.$data[$i]->tipo.'</option>
 	            <option>1</option>
 	            <option>2</option>
 	            <option>3</option>
@@ -75,6 +76,7 @@ if (isset($_POST['id_cliente'])) {
 	        <input type="number" class="form-control" placeholder="Escribe aquí..." name="telefono3" id="telefono3" value='.$data[$i]->telefono3.'>
 	    </div>
 	    <div class="col-md-12">
+	    	 <input type="hidden" name="id" id="id" value='.$id_cliente.'>
 	    	<button type="submit" onclick="editar_cliente();" class="btn btn-primary">
 	    		<span class="glyphicon glyphicon-send"></span>
 	    		 Guardar
