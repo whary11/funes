@@ -38,7 +38,7 @@
                         </a>
                     </td>
                     <td class="center">
-                        <a style="color:red;text-decoration: none;" href=""  onclick="eliminar_producto('<?php print($data[$i]->id) ?>');">
+                        <a style="color:red;text-decoration: none;" href="" id="elimi_producto" onclick="eliminar_producto('<?php print($data[$i]->id) ?>');">
                             <i style="font-size:20px;display:block;text-align:center;" class="fa fa-minus-circle"></i>
                         </a>
                     </td>
@@ -74,6 +74,12 @@
       </div>
     </div>
 
+<<<<<<< HEAD
+<script src="js/jquery.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dropzone.js"></script>
+=======
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/app/js/app.js"></script>
 <script src="js/dropzone.js"></script>
+>>>>>>> e791108aff4c241c8cbfffe0f2eb4e846e59b584

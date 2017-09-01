@@ -22,6 +22,6 @@
     	</button>
     </div>
 </form>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/app/js/app.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/app.js"></script>
 <!-- <script src="js/dropzone.js"></script> -->

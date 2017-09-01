@@ -1,6 +1,6 @@
 var presupuesto = [];
-var cuil = [];
-var desc = [];
+var id_produ = [];
+// var desc = [];
 var pre = [];
 var total =0;
 var clientefin = 0;
@@ -84,8 +84,7 @@ $(document).ready(function(){ });
 		// });
 	// })
 	/////////////Productos////////////
-	// $('#nuevoproducto').click(function() {
-		// $('#resultado').load("productos.html", function(){
+	
 			$("#formProductos").submit(function(event) {
 				//has-error
 				event.preventDefault();
@@ -102,35 +101,81 @@ $(document).ready(function(){ });
 					$(".precio").removeClass('has-error');
 				}else{
 					$(".descripcion").removeClass('has-error');
-					/////Implementar AJAX para culminar envío de formulario, lo hace el backend
+					$.ajax({
+						url: 'modulos/producto/insertar.php',
+						type: 'POST',
+						data: $('#formProductos').serialize(),
+					})
+					.done(function(data) {
+						alert('Datos insertados correctamente');
+						$(".limpiar").val("");
 
+					})
+					.fail(function() {
+						console.log("error");
+					})
 				}
 			});
-		// });
-	// });
+	
+function llenar_modal(id){
+		$.ajax({
+		url: 'modulos/producto/llenar_modal.php',
+		type: 'POST',
+		data:{id_producto:id},
+		})
+		.done(function(respuesta){
+		 $('#body_producto').html(respuesta);
+	})	
+}
 
+function eliminar_producto(id){
+	$('#elimi_producto').click(function(event) {
+		event.preventDefault();
+		$.ajax({
+		url: 'modulos/producto/eliminar.php',
+		type: 'POST',
+		data:{id_producto:id},
+		})
+		.done(function(respuesta){
+			 setTimeout("document.location=document.location");
+		})
+	});	
+}
+function editar_producto(){
+	$("#formeditar").submit(function(event) {
+		event.preventDefault();
+	
+	$.ajax({
+		url: 'modulos/producto/editar.php',
+		type: 'POST',
+		data: $('#formeditar').serialize(),
+		})
+		.done(function(respuesta){
+			alert('Datos actualizados correctamente');
+			setTimeout("document.location=document.location");
+	
+		})
+	});
+}
 	
 		
 	// ///////////Generar presupuestos
-	// $("#nuevoPresupuesto").click(function() {
-	// 	$('#dataTables-presupuesto').DataTable({
-	//             responsive: true
-	//     });
-	//     });
 
 ////Cargar lo productos desde la base de datos.
 		
 		var precio="";
+		var codigo = "";
 		// $('#resultado').load("nuevoPresupuesto.php", function(){
 			$("#productos").change(function(event) {
 				var id = $(this).val();
 				$.ajax({
 					url: 'modulos/presupuesto/listarproductos.php',
 					type: 'POST',
-					dataType: 'html',
+					dataType: 'json',
 					data: {id:id},
 				})
 				.done(function(data){
+					console.log('data');
 					if (id=='Seleccione un Producto') {
 						$('.precio').val('');
 						$('.id').val('');
@@ -161,8 +206,8 @@ $(document).ready(function(){ });
 					$(".clientes").removeClass('has-error');
 					$(".productos").removeClass('has-error');
 					contador++;
-					cuil.push(parseInt(producto));
-					desc.push(descripcion);
+					id_produ.push(parseInt(producto));
+					// desc.push(descripcion);
 					pre.push(parseInt(precio));
 					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
 						td+= '<td>'+descripcion+'</td>'
@@ -173,59 +218,46 @@ $(document).ready(function(){ });
 					$('#tbody').append(td);
 					reordenar();
 					$('.limpiar').val('');
+					$('#paragenerar').html('<div id="r"><button onclick="generar_presupuesto();" id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces"><span class="glyphicon glyphicon-plus"></span>Generar</button></div>');
+					//Notificación
+					alertify.success('Producto agregado');
 					for(var i =0;i<pre.length;i++){
 						total += parseInt(pre[i]);
 					}
 				}
-
-
-
 			});
 ///LLenamos el arreglo a enviar a la base de datos
-			presupuesto.push(cuil);
-			presupuesto.push(desc);
+			presupuesto.push(id_produ);
+			// presupuesto.push(desc);
 			presupuesto.push(pre);
 
 //////función donde se genera el presupuesto
-			$('#generar').click(function(){
-				
-				
-				clientefin = parseInt($('#clientes').val());
-				var dataInfo = {
-					cliente:clientefin,
-					presupuesto:presupuesto,
-					total:total
-				}
-				$.ajax({
-					url: 'modulos/presupuesto/inserta_prsupuesto.php',
-					type: 'POST',
-					dataType: 'html',
-					data: dataInfo,
-				})
-				.done(function(data) {
-					console.log(data);
-				})
-				.fail(function(data) {
-					console.log("error");
-				})
-				.always(function() {
-					console.log("complete");
-				});
-				
+function generar_presupuesto(){
+	// $('#generar').click(function(){
+		clientefin = parseInt($('#clientes').val());
+		var dataInfo = {
+			cliente:clientefin,
+			presupuesto:presupuesto,
+			total:total
+		}
+		$.ajax({
+			url: 'modulos/presupuesto/inserta_presupuesto.php',
+			type: 'POST',
+			dataType: 'html',
+			data: dataInfo,
+		})
+		.done(function(data) {
+			console.log(data);
+		})
 
-			})
+	// })
 
-			
+}
 					
 		// });
 
 	// });
-
-
-
-
-
-
+	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
 	buscador.keyup(function(){
@@ -236,7 +268,7 @@ $(document).ready(function(){ });
 				});
 			}else{	
 				$.ajax({
-						url: '../controladores/buscadores/buscar.php',
+						url: 'controladores/buscadores/buscar.php',
 						type: 'POST',
 						dataType:'html',
 						data: {valorBus: valorBus},
@@ -335,9 +367,14 @@ function borrar(id){
 	}else{
 		presupuesto[0].splice(id-1,1);
 		presupuesto[1].splice(id-1,1);
-		presupuesto[2].splice(id-1,1);
+		// presupuesto[2].splice(id-1,1);
+
+		if(presupuesto[0].length==0){
+            $("#r").hide();
+           }
 	}
 	// console.log(presupuesto)
+	alertify.error('Se ha quitado el producto.');
 }
 
 
@@ -359,15 +396,3 @@ function reordenar(){
 }
 
 
-function llenar_modal(id){
-	
-	alert('id');
-	// 	$.ajax({
-	// 	url: 'modulos/cliente/llenar_formulario.php',
-	// 	type: 'POST',
-	// 	data:{id_producto:i},
-	// 	})
-	// 	.done(function(respuesta){
-	// 	$('#body_producto').html(respuesta);
-	// })	
-}
