@@ -94,9 +94,9 @@
 
 
           <!-- Enviar correo en modal -->
-            <form id="subida" enctype="multipart/form-data" class="dropzone" action="modulos/presupuesto/enviar_correo.php">
+            <form id="subida" enctype="multipart/form-data" class="dropzone" method="post">
                 <div class="fallback">
-                    <input name="file" type="file" multiple id="input" />
+                    <input name="adjunto[]" type="file" multiple id="input" />
                 </div>
             </form>
 
