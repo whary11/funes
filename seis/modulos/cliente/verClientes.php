@@ -12,7 +12,7 @@
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <table class="table table-striped table-bordered table-hover" id="cliente-table">
+        <table class="table table-striped table-bordered table-hover table-responsive" id="cliente-table">
             <thead>
                 <tr>
                     <th>Id</th>

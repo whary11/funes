@@ -81,7 +81,7 @@
 </div>
 
 <!-- Creo el modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
+<div class="modal fade container" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -94,20 +94,20 @@
 
 
             <!-- Enviar correo en modal -->
-                <form id="correo" enctype="multipart/form-data" method="post">
+                <form id="correo" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="adjunto"></label>
-                        <input type="file" id="adjunto" name="adjunto[]">
+                        <input type="file" id="adjunto" name="adjunto[]" multiple>
                         <p class="help-block">Carga tus archivos.</p>
                     </div
 
 
 
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3"></textarea>
+                    <div class="col-md-6" >
+                        <textarea class="form-control" rows="3" id="mensaje"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button id="envia" class="btn btn-primary">Enviar correo</button>
+                    <div class="form-group col-md-6">
+                        <input id="envia" type="submit" value="Enviar correo" class="btn btn-primary">
                     </div>
                 </form>
 
