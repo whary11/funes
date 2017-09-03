@@ -27,7 +27,7 @@
     <!-- <link href="../vendor/app/css/alertify.rtl.css" rel="stylesheet"> -->
 
     <link rel="stylesheet" href="vendor/app/css/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="css/dropzone.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
     <link rel="stylesheet" type="text/css" href="css/alertify.css">
     <link rel="stylesheet" type="text/css" href="css/default.css">
 

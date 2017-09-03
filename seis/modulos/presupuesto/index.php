@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/dropzone.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
 <h4 class="success">Nuevo Presupuesto</h4>
 <div  id="alertas">
     <!-- Producto Agregado con éxito -->
@@ -81,47 +81,48 @@
 </div>
 
 <!-- Creo el modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Enviar correo</h2>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Enviar correo</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-
-
-          <!-- Enviar correo en modal -->
-            <form id="subida" enctype="multipart/form-data" class="dropzone" method="post">
-                <div class="fallback">
-                    <input name="adjunto[]" type="file" multiple id="input" />
-                </div>
-            </form>
-
-
-            <div class="form-group">
-                <label for="nota">Nota</label>
-                <textarea class="form-control" id="nota" rows="3" name="nota"></textarea>
             </div>
-
-            <button id="envia" class="btn btn-primary">Enviar correo</button>
-
+            <div class="modal-body">
 
 
-          </div>
-          <div class="modal-footer">
+            <!-- Enviar correo en modal -->
+                <form id="correo" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label for="adjunto"></label>
+                        <input type="file" id="adjunto" name="adjunto[]">
+                        <p class="help-block">Carga tus archivos.</p>
+                    </div
+
+
+
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button id="envia" class="btn btn-primary">Enviar correo</button>
+                    </div>
+                </form>
+
+
+            <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Enviar</button> -->
-          </div>
+            </div>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 <body>
 <script src="js/jquery.min.js"></script>
 <script src="js/app.js"></script>
-<script src="js/dropzone.js"></script>
+<!-- <script src="js/dropzone.js"></script> -->
 <script src="js/accion_presupuesto.js"></script>
 
 
