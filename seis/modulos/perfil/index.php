@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style type="text/css">
+	
+
+	
+</style>
 	<meta charset="UTF-8">
 	<title>Perfil[]</title>
 </head>
 <body>
-
-
 	<div class="row">
 		<div class="col-md-3">
-		
 			<p class="text-left lead">Editar perfil</p>
-				
-
 			<div style="border:3px dotted teal;width: auto;padding: 10px;border-radius:10px;" class="col-md-4">
 				<img style="display:block;margin: auto;" src="img/luis.jpg" alt="Luis Fernando Raga" width="150px" height="150px" class="img-circle">
-
 			</div>
-			
-
-
 		</div>
 		<div class="col-md-8">
 			<p class="lead">Tus datos</p>
