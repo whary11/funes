@@ -1,9 +1,9 @@
-var presupuesto = [];
-var id_produ = [];
-// var desc = [];
-var pre = [];
-var total =0;
-var clientefin = 0;
+// var presupuesto = [];
+// var id_produ = [];
+// // var desc = [];
+// var pre = [];
+// var total =0;
+// var clientefin = 0;
 $(document).ready(function(){ });
 	// Cargar archivos
 	////////////////Clientes/////////////
@@ -160,109 +160,109 @@ function editar_producto(){
 
 ////Cargar lo productos desde la base de datos.
 		
-		var precio="";
-		// $('#resultado').load("nuevoPresupuesto.php", function(){
-			$("#productos").change(function(event) {
-				var id = $(this).val();
-				$.ajax({
-					url: 'modulos/presupuesto/listarproductos.php',
-					type: 'POST',
-					dataType: 'html',
-					data: {id:id},
-				})
-				.done(function(data){
-					if (id=='Seleccione un producto') {
-						$('.precio').val('');
-						$('.id').val('');
+// 		var precio="";
+// 		// $('#resultado').load("nuevoPresupuesto.php", function(){
+// 			$("#productos").change(function(event) {
+// 				var id = $(this).val();
+// 				$.ajax({
+// 					url: 'modulos/presupuesto/listarproductos.php',
+// 					type: 'POST',
+// 					dataType: 'html',
+// 					data: {id:id},
+// 				})
+// 				.done(function(data){
+// 					if (id=='Seleccione un producto') {
+// 						$('.precio').val('');
+// 						$('.id').val('');
 						
-					}else if(data==1){
-						$('.precio').val('');
-						$('.id').val('');
-					}else{
-						$('.precio').val(data);
-						$('.id').val(id);						
-					}
-					precio = data;
-				})
+// 					}else if(data==1){
+// 						$('.precio').val('');
+// 						$('.id').val('');
+// 					}else{
+// 						$('.precio').val(data);
+// 						$('.id').val(id);						
+// 					}
+// 					precio = data;
+// 				})
 
-			});
-			var contador=0;
-			$('#formPresupuesto').submit(function(event) {
-				event.preventDefault();
-				var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
-				var cliente = $('#clientes').val();
-				var producto = $('#productos').val();
-				if(cliente=="Seleccione un cliente"){
-					$(".clientes").addClass('has-error');
+// 			});
+// 			var contador=0;
+// 			$('#formPresupuesto').submit(function(event) {
+// 				event.preventDefault();
+// 				var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
+// 				var cliente = $('#clientes').val();
+// 				var producto = $('#productos').val();
+// 				if(cliente=="Seleccione un cliente"){
+// 					$(".clientes").addClass('has-error');
 
-				}else if(producto=='Seleccione un producto'){
-					$(".clientes").removeClass('has-error');
-					$(".productos").addClass('has-error');
-				}else if($('.precio').val()=="" || $('.id').val()==""){
+// 				}else if(producto=='Seleccione un producto'){
+// 					$(".clientes").removeClass('has-error');
+// 					$(".productos").addClass('has-error');
+// 				}else if($('.precio').val()=="" || $('.id').val()==""){
 
-				}else{
+// 				}else{
 
-					$(".clientes").removeClass('has-error');
-					$(".productos").removeClass('has-error');
-					contador++;
-					id_produ.push(parseInt(producto));
-					// desc.push(descripcion);
-					pre.push(parseInt(precio));
-					var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
-						td+= '<td>'+descripcion+'</td>'
-						td+= '<td>$ '+precio+'</td>'
-						td+='<td><button id="'+contador+'" type="button"'
-						td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
-						td+= ' ><i class="fa fa-times"></i></button></td>'
-					$('#tbody').append(td);
-					reordenar();
-					$('.limpiar').val('');
-					$('#paragenerar').html('<div id="r"><button onclick="generar_presupuesto();" id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces"><span class="glyphicon glyphicon-plus"></span>Generar</button></div>');
-					//Notificación
-					alertify.success('Producto agregado');
-					for(var i =0;i<pre.length;i++){
-						total += parseInt(pre[i]);
-					}
-				}
-			});
-///LLenamos el arreglo a enviar a la base de datos
-			presupuesto.push(id_produ);
-			// presupuesto.push(desc);
-			presupuesto.push(pre);
+// 					$(".clientes").removeClass('has-error');
+// 					$(".productos").removeClass('has-error');
+// 					contador++;
+// 					id_produ.push(parseInt(producto));
+// 					// desc.push(descripcion);
+// 					pre.push(parseInt(precio));
+// 					var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
+// 						td+= '<td>'+descripcion+'</td>'
+// 						td+= '<td>$ '+precio+'</td>'
+// 						td+='<td><button id="'+contador+'" type="button"'
+// 						td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
+// 						td+= ' ><i class="fa fa-times"></i></button></td>'
+// 					$('#tbody').append(td);
+// 					reordenar();
+// 					$('.limpiar').val('');
+// 					$('#paragenerar').html('<div id="r"><button onclick="generar_presupuesto();" id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces"><span class="glyphicon glyphicon-plus"></span>Generar</button></div>');
+// 					//Notificación
+// 					alertify.success('Producto agregado');
+// 					for(var i =0;i<pre.length;i++){
+// 						total += parseInt(pre[i]);
+// 					}
+// 				}
+// 			});
+// ///LLenamos el arreglo a enviar a la base de datos
+// 			presupuesto.push(id_produ);
+// 			// presupuesto.push(desc);
+// 			presupuesto.push(pre);
 
-//////función donde se genera el presupuesto
-function generar_presupuesto(){
-	// $('#generar').click(function(){
-		clientefin = parseInt($('#clientes').val());
-		var dataInfo = {
-			cliente:clientefin,
-			presupuesto:presupuesto,
-			total:total
-		}
-		$.ajax({
-			url: 'modulos/presupuesto/inserta_presupuesto.php',
-			type: 'POST',
-			dataType: 'html',
-			data: dataInfo,
-		})
-		.done(function(data) {
-			// console.log(data);
-			if(data!=0){
-				// Se notifica al usuario que el presupuesto está listo para ser enviado
-				alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
-				  alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
-				});
-			}else{
-				// Se notifica al usuario en caso de que se presente un problema en la ejecución
-				// alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!');
-				alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!',
-				 'custom', 5, function(){
+// //////función donde se genera el presupuesto
+// function generar_presupuesto(){
+// 	// $('#generar').click(function(){
+// 		clientefin = parseInt($('#clientes').val());
+// 		var dataInfo = {
+// 			cliente:clientefin,
+// 			presupuesto:presupuesto,
+// 			total:total
+// 		}
+// 		$.ajax({
+// 			url: 'modulos/presupuesto/inserta_presupuesto.php',
+// 			type: 'POST',
+// 			dataType: 'html',
+// 			data: dataInfo,
+// 		})
+// 		.done(function(data) {
+// 			// console.log(data);
+// 			if(data!=0){
+// 				// Se notifica al usuario que el presupuesto está listo para ser enviado
+// 				alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
+// 				  alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
+// 				});
+// 			}else{
+// 				// Se notifica al usuario en caso de que se presente un problema en la ejecución
+// 				// alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!');
+// 				alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!',
+// 				 'custom', 5, function(){
 
-				 	// console.log('dismissed');
-				 });
-			}
+// 				 	// console.log('dismissed');
+// 				 });
+// 			}
 
-		})
+// 		})
 
 	// })
 
@@ -373,40 +373,40 @@ function generar_presupuesto(){
     }
 
 
-function borrar(id){
-	$('tr[idmayor='+id+']').remove();
-	reordenar();
-	if(presupuesto.length<1){
-		presupuesto.length = 0;
-	}else{
-		presupuesto[0].splice(id-1,1);
-		presupuesto[1].splice(id-1,1);
-		// presupuesto[2].splice(id-1,1);
+// function borrar(id){
+// 	$('tr[idmayor='+id+']').remove();
+// 	reordenar();
+// 	if(presupuesto.length<1){
+// 		presupuesto.length = 0;
+// 	}else{
+// 		presupuesto[0].splice(id-1,1);
+// 		presupuesto[1].splice(id-1,1);
+// 		// presupuesto[2].splice(id-1,1);
 
-		if(presupuesto[0].length==0){
-            $("#r").hide();
-           }
-	}
-	// console.log(presupuesto)
-	alertify.error('Se ha quitado el producto.');
-}
-
-
+// 		if(presupuesto[0].length==0){
+//             $("#r").hide();
+//            }
+// 	}
+// 	// console.log(presupuesto)
+// 	alertify.error('Se ha quitado el producto.');
+// }
 
 
 
 
 
-function reordenar(){
-	var cuenta = 1;
-	$('#tbody tr').map(function(){
-		$(this).attr('idmayor', cuenta);
 
-		$(this).find("td button").eq(0).attr('id', cuenta);
 
-		cuenta++;
-	})
+// function reordenar(){
+// 	var cuenta = 1;
+// 	$('#tbody tr').map(function(){
+// 		$(this).attr('idmayor', cuenta);
 
-}
+// 		$(this).find("td button").eq(0).attr('id', cuenta);
+
+// 		cuenta++;
+// 	})
+
+// }
 
 

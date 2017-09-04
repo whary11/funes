@@ -51,12 +51,12 @@ if (isset($_FILES)) {
 		$mail->isHTML(true);                                  // Establecer el formato de correo electrónico en HTML
 
 		/////Últimas configuraciones 
-		$mail->Subject = 'Alguien se ha registrado';   ////Establecer un asusnto
+		$mail->Subject = 'Se ha generado un nuevo presupuesto';   ////Establecer un asusnto
 		$mail->Body    = $html;  ////Correo en formato HTML
 		$mail->AltBody = 'Nada de HTMl'; //Texto plano para los servicios de correo que no admiten HTML
 		$envio = $mail->send();   ///Se envia el correo electrónico
 
-		///Validar encío de correo electrónico
+		///Validar envío de correo electrónico
 		if(!$envio) {
 		    echo 'Error: ' . $mail->ErrorInfo;
 		    return 0;
@@ -64,10 +64,6 @@ if (isset($_FILES)) {
 		    print(1);
 		    return 1;
 		}
-
-
-
-
 // instruciones para elenvío del correo electrónico
 // var_dump($adjuntos);
 }else{

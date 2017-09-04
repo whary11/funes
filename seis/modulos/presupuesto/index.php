@@ -95,14 +95,11 @@
 
             <!-- Enviar correo en modal -->
                 <form id="correo" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="adjunto"></label>
+                    <div class="">
+                        <!-- <label for="adjunto">Carrgar archivos</label> -->
                         <input type="file" id="adjunto" name="adjunto[]" multiple>
                         <p class="help-block">Carga tus archivos.</p>
                     </div
-
-
-
                     <div class="col-md-6" >
                         <textarea class="form-control" rows="3" id="mensaje"></textarea>
                     </div>
@@ -121,7 +118,7 @@
 </div>
 <body>
 <script src="js/jquery.min.js"></script>
-<script src="js/app.js"></script>
+<!-- <script src="js/app.js"></script> -->
 <!-- <script src="js/dropzone.js"></script> -->
 <script src="js/accion_presupuesto.js"></script>
 
