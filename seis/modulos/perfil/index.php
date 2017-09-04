@@ -3,9 +3,14 @@
 <head>
 
 <style type="text/css">
-	
+	.clda{
+		text-align: justify;
+		padding:5px;
+		font-size: 10px;
+		border-right: 1px solid black;
+	}
 
-	
+
 </style>
 	<meta charset="UTF-8">
 	<title>Perfil[]</title>

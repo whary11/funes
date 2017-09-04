@@ -1,6 +1,5 @@
 var presupuesto = [];
 var id_produ = [];
-// var desc = [];
 var pre = [];
 var total =0;
 var clientefin = 0;

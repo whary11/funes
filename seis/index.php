@@ -391,14 +391,15 @@
     <script src="vendor/app/js/toastr.min.js"></script>  
     <script src="vendor/app/js/alertify.min.js"></script> 
     <script type="text/javascript">
-    $('#productos-table').DataTable({
-        responsive: true,
-    }); 
-    $('#cliente-table').DataTable({
-        responsive: true,
-    }); 
+        $('#cliente-table').DataTable({
+            responsive: true,
+        });
+        $('#productos-table').DataTable({
+            responsive: true,
+        }); 
+     
     
-</script> 
+    </script> 
 </body>
 
 </html>
