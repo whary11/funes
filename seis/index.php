@@ -30,9 +30,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
     <link rel="stylesheet" type="text/css" href="css/alertify.css">
     <link rel="stylesheet" type="text/css" href="css/default.css">
-
-
-
+    <script src="js/jquery.min.js"></script>
 </head>
 <body>
     <div id="">
@@ -365,7 +363,6 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

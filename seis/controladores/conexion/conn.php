@@ -59,6 +59,7 @@
 		public function abc($q){
 			if($q!=""){
 				mysqli_query($this->conn, $q);
+				return true;
 			}else{
 				return false;
 			}
