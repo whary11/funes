@@ -242,7 +242,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a>
+                        <li><a href="index.php?modulo=perfil&elemento=index.php"><i class="fa fa-user fa-fw"></i> Perfil</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
                         </li>
@@ -306,7 +306,7 @@
                                     <a href="index.php?modulo=presupuesto&elemento=index.php" id="nuevoPresupuesto"><i class="fa fa-file-pdf-o fa-fw"></i> Nuevo<span class="fa arrow"></span></a>
                                 </li>
                                 <li>
-                                    <a href="#" id="verPresupuesto"> <i class="fa fa-file-powerpoint-o fa-fw"></i> Ver presupuestos<span class="fa arrow"></span></a>
+                                    <a href="index.php?modulo=presupuesto&elemento=ver_presupuestos.php" id="verPresupuesto"> <i class="fa fa-file-powerpoint-o fa-fw"></i> Ver presupuestos<span class="fa arrow"></span></a>
                                 </li>
                             </ul>
                         <!-- <li>
