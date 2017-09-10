@@ -2,6 +2,7 @@
 
 if (isset($_POST["nombre"])) {
 	require_once("../../controladores/conexion/conn.php");
+	
 	$db = new conexion();
 	$nombre = $_POST['nombre'];
 	$apellido = $_POST['apellido'];

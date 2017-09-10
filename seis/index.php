@@ -1,3 +1,12 @@
+<?php 
+    require_once("controladores/conexion/conn.php");
+    $db = new conexion();
+    $q = "SELECT * FROM `usuarios_funes` WHERE id=1 ";
+    $data = $db->leeTabla($q);
+
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,7 +52,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="perfil.html"><img class="img-circle" src="dist/img/user.png"></a>
+                <a class="navbar-brand" href="perfil.html" style="display:inline-block;">
+                    <!-- <img width="30px" height="30px" class="img-circle" src="img/perfiles/<?php print($data[0]->img); ?>">  -->
+                    <?php print($data[0]->nombre); ?> <?php print($data[0]->apellidos); ?> 
+                </a>
+
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
