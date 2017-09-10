@@ -52,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="perfil.html" style="display:inline-block;">
+                <a class="navbar-brand" href="index.php?modulo=perfil&elemento=index.php" id="nuevoproducto" style="display:inline-block;">
                     <!-- <img width="30px" height="30px" class="img-circle" src="img/perfiles/<?php print($data[0]->img); ?>">  -->
                     <?php print($data[0]->nombre); ?> <?php print($data[0]->apellidos); ?> 
                 </a>
