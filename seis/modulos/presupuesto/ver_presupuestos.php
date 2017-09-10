@@ -1,5 +1,5 @@
  
-	<?php 
+<?php 
     require_once("controladores/conexion/conn.php");
 	$db = new conexion();
 	$q = "SELECT * FROM productos_funes";

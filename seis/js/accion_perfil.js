@@ -82,24 +82,77 @@ $(document).ready(function() {
 				dataType: 'JSON',
 				data: datos,
 			})
-			.done(function(data) {
-				console.log(data);
-				$('#resp').addClass("alert-info");
-				$('#resp').text('Se han actualizado los datos con éxito !!');
+			.done(function(data1) {
+				 alertify.success('Se han actualizado los datos con éxito !!',5,function(){
+				 	alertify.success('Terminó');
+				 });
 			})
 			.fail(function(data) {
-				console.log(data);
+				// console.log(data);
 			})	
 		}
+
 		
 	})
 
 
 
 
+		//Función para actualizar la foto de perfil
+		$('#envio').hide();
+		$('#imagen').change(function() {
+			var tiposIMG =['image/jpeg','image/png'];
+			var imagen = $(this)[0].files;
+			var result;
+			// console.log(tiposIMG.length)
+				if (imagen[0].type != tiposIMG[0] && imagen[0].type != tiposIMG[1]){
+					result = false;
+				}else{
+					result = true;
+				}
+			if (result){
+				$('#infoImage').removeClass('text-danger');
+				$('#infoImage').addClass('text-primary');
+				$('#infoImage').html(imagen[0].name);
+				$('#boton').html('<button type="submit" id="envio" style="display: block;width:50%;margin: 5px auto;" class="btn btn-primary">Actualizar</button>');
+				$('#envio').show();
+				//Enviar datos por ajax
+			}else{
+				$('#infoImage').removeClass('text-primary');
+				$('#infoImage').addClass('text-danger');
+				$('#infoImage').html('El archivo no es válido. !');
+				$('#boton').html('');	
+			}
+		});
 
 
 
-
-
+//////Subir imagen al servidor
+		$('#actualizaImg').submit(function(event){
+			event.preventDefault();
+			var formData = new FormData(document.getElementById("actualizaImg"));
+			$.ajax({
+				url: 'modulos/perfil/recibe_perfil.php',
+				type: 'POST',
+				dataType: 'html',
+				data: formData,
+				cache: false,
+		        contentType: false,
+		        processData: false
+			})
+			.done(function(data) {
+				data = JSON.parse(data);
+				console.log(data)
+				if (data.resp){
+					alertify.success('Avatar actualizado !!',2,function(){
+					 	window.location.href = 'index.php?modulo=perfil&elemento=index.php';
+					});
+				}else{
+					alert("nada")
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			});
+		})
 });
