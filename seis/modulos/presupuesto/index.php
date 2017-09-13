@@ -35,18 +35,18 @@
                     $q = "SELECT * FROM productos_funes";
                     $data = $db->leeTabla($q);
                     for($i=0;$i<count($data);$i++){ 
-                        print('<option id="'.utf8_encode($data[$i]->descripcion).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->descripcion).'</option>');
+                        print('<option id="'.utf8_encode($data[$i]->descripcion).'" value="'.$data[$i]->codigo.'">'.utf8_encode($data[$i]->descripcion).'</option>');
                     }
                  ?>
             </select>
         </div>
         <div class="form-group col-md-3" id="precio">
             <label for="condicioniva">Precio</label>
-            <input type="text" class="form-control precio limpiar" disabled name="precio">
+            <input type="text" class="form-control precio limpiar"  name="precio">
         </div>
         <div class="form-group col-md-3">
             <label for="condicioniva">Código</label>
-            <input type="text" class="form-control id limpiar" disabled name="id">
+            <input type="text" class="form-control codigo limpiar" disabled name="codigo">
         </div>
         <div class="form-group col-md-3" id="agregar"> 
             <button id="nuevo" class="btn btn-primary" >

@@ -407,8 +407,11 @@
         $('#productos-table').DataTable({
             responsive: true,
         }); 
+         $('#presupuestos-table').DataTable({
+            responsive: true,
+        }); 
      
-    
+   
     </script> 
 </body>
 

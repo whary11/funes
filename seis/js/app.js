@@ -220,7 +220,7 @@ function editar_producto(){
 ////Cargar lo productos desde la base de datos.
 		
 		var precio="";
-		var codigo = "";
+		// var codigo = "";
 		// $('#resultado').load("nuevoPresupuesto.php", function(){
 			$("#productos").change(function(event) {
 				var id = $(this).val();
@@ -231,14 +231,12 @@ function editar_producto(){
 					data: {id:id},
 				})
 				.done(function(data){
-					console.log('data');
-					if (id=='Seleccione un Producto') {
+					if (id=='Seleccione un producto') {
 						$('.precio').val('');
-						$('.id').val('');
-						
+						$('.codigo').val('');
 					}else{
 						$('.precio').val(data);
-						$('.id').val(id);						
+						$('.codigo').val(id);						
 					}
 					precio = data;
 				})

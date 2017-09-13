@@ -2,7 +2,7 @@
 	 require_once("../../controladores/conexion/conn.php");
 	$db = new conexion();
 	// $array = [];
-	$id = $_POST["id"];
+	$codigo = $_POST["id"];
 
 	// $q = "SELECT precio,codigo FROM productos_funes WHERE (id='$id')";
 	// $data = $db->leeTabla($q);
@@ -16,7 +16,7 @@
 	// 	// echo json_encode($array);
 	// 	// var_dump($array);
 
-	$q = "SELECT precio FROM productos_funes WHERE (id='$id')";
+	$q = "SELECT precio FROM productos_funes WHERE (codigo='$codigo')";
 	if($data = $db->leeTabla($q)){
 		
 		for ($i=0; $i <count($data); $i++) {
@@ -24,7 +24,7 @@
 		}		
 		print($precio);
 	}else{
-		print(1);
+		// print(1);
 		
 	}
 

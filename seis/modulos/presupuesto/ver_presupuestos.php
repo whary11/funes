@@ -2,25 +2,26 @@
 <?php 
     require_once("controladores/conexion/conn.php");
 	$db = new conexion();
-	$q = "SELECT * FROM productos_funes";
+	$q = "SELECT presupuestos_funes.id, clientes_funes.razon_social,presupuestos_funes.total,presupuestos_funes.nombre_creador,presupuestos_funes.fecha_creado FROM presupuestos_funes
+        INNER JOIN clientes_funes ON clientes_funes.id = presupuestos_funes.cliente_id";
 	$data = $db->leeTabla($q);
  ?>
 
 
 <div class="panel panel-default animated slideInUp">
     <div class="panel-heading">
-        Tabla de Productos registrados
+        Tabla de Presupuestos registrados
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="productos-table">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="presupuestos-table">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Código</th>
-                    <th>Precio</th>
-                    <th>Descripción</th>
-                    <th>Editar</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Nombre de creador</th>
+                    <th>Fecha</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -30,14 +31,10 @@
                  ?>
                 <tr class="gradeU">
                     <td><?php print($data[$i]->id); ?></td>
-                    <td><?php print($data[$i]->codigo); ?></td>
-                    <td><?php print($data[$i]->precio); ?></td>
-                    <td><?php print(utf8_encode($data[$i]->descripcion)); ?></td>
-                    <td class="center">
-                        <a style="color: green; text-decoration:none;" href="" data-toggle="modal" data-target="#modalproducto" onclick="llenar_modal('<?php print($data[$i]->id) ?>');">
-                            <i style="font-size:20px;display:block;text-align:center;" class="fa fa-edit"></i>
-                        </a>
-                    </td>
+                    <td><?php print($data[$i]->razon_social); ?></td>
+                    <td><?php print($data[$i]->total); ?></td>
+                    <td><?php print($data[$i]->nombre_creador); ?></td>
+                    <td><?php print($data[$i]->fecha_creado); ?></td>
                     <td class="center">
                         <a style="color:red;text-decoration: none;" href="" id="elimi_producto" onclick="eliminar_producto('<?php print($data[$i]->id) ?>');">
                             <i style="font-size:20px;display:block;text-align:center;" class="fa fa-minus-circle"></i>
