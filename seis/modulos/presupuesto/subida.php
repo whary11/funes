@@ -16,12 +16,7 @@ if (isset($_FILES)) {
 			$nombre = $archivo['name'][$i];
 			$tmp_name = $archivo['tmp_name'][$i];
 			$adjunto = [$nombre,$tmp_name];
-
 			array_push($adjuntos, $adjunto);
-			//instrucciones para subir el archivo alservidor si se requiere
-			// $fichero_subido = $dir_subida.basename($nombre);
-			// move_uploaded_file($tmp_name, $fichero_subido);
-			// print("Subida correcta del archivo: ".$nombre);
 		}
 	}
 
@@ -29,6 +24,7 @@ if (isset($_FILES)) {
 				$mail->addAttachment($adjuntos[$i][1], $adjuntos[$i][0]);
 			}	
 		$mensaje = $_POST["mensaje"];
+		
 		$html = '<p>'.$mensaje.'</p>';
 		// $mail->isSMTP();
 		$mail->Host = 'mail.agenciawebbogota.com';

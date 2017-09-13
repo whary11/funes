@@ -83,9 +83,7 @@ $(document).ready(function() {
 				data: datos,
 			})
 			.done(function(data1) {
-				 alertify.success('Se han actualizado los datos con éxito !!',5,function(){
-				 	alertify.success('Terminó');
-				 });
+				 alertify.success('Se han actualizado los datos con éxito !!');
 			})
 			.fail(function(data) {
 				// console.log(data);
