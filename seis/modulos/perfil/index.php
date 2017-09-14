@@ -83,9 +83,7 @@
 
 				  	<div class="form-group col-md-6 biografia">
 				     	<label for="biografia" class="control-label">Biografía </label>
-			  			<textarea class="form-control" name="biografia" cols="3" rows="3" id="biografia">
-			  				<?php print($data[0]->biografia);?>
-			  			</textarea>
+			  			<textarea class="form-control" name="biografia" cols="3" rows="3" id="biografia"><?php print(trim($data[0]->biografia));?></textarea>
 					</div>
 					<div class="form-group col-md-6 codigo">
 				    	<label for="codigo" class="control-label">Código </label>
