@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2017 a las 03:11:25
+-- Tiempo de generación: 14-09-2017 a las 22:19:21
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -54,9 +54,9 @@ CREATE TABLE `clientes_funes` (
 --
 
 INSERT INTO `clientes_funes` (`id`, `razon_social`, `cuit`, `tipo_cliente_id`, `condicion_iva_id`, `domicilio_comercial`, `correo1`, `telefono1`, `contacto1`, `whatsapp`, `contacto2`, `correo2`, `telefono2`, `contacto3`, `correo3`, `telefono3`, `usuario_id`, `comentarios`, `fecha_cargue`, `fecha_modificacion`) VALUES
-(1, 'EnRedes', '1077444356', 1, 2, 'Cali', 'whary11@gmail.com', '3127049308', '', '3047868668', 'Omar', 'Oraga@enredes.com', '3127899809', 'David', 'Draga@enredes.com', '3214563478', 1, 'Test de prueba', '2017-09-13 23:47:27', '2017-09-02'),
+(1, 'EnRedes', '1077444356', 1, 2, 'Cali', 'whary11@gmail.com', '3127049308', 'David', '3047868668', 'Omar', 'Oraga@enredes.com', '3127899809', 'David', 'Draga@enredes.com', '3214563478', 1, 'Test de prueba', '2017-09-14 20:02:44', '2017-09-14'),
 (2, 'Socios Cup', '1077440677', 2, 1, 'Cali - Colombia', 'whary11@gmail.com', '3127049308', 'Omar Enrique Raag', '3047868668', 'Omar Raga', 'Oraga@enredes.com', '3127899809', 'David Raga', 'Draga@enredes.com', '3214563478', 1, 'Test de prueba', '2017-09-13 23:47:35', '0000-00-00'),
-(3, 'Luis Raga', '10993883', 1, 1, 'Kr 90 # 6A - 98 INT 11 ', 'LRAGA@FUNES.COM', '12634872', '', '3127049308', 'nADA', 'LRAGA@FUNES.COM', '12342345', 'Z<ASDASDF', 'LRAGA@FUNES.COM', '1452345234', 2, 'Test de prueba', '2017-09-13 23:47:39', '0000-00-00'),
+(3, 'Luis', '10993883', 1, 1, 'Kr', 'LRAGA@FUNES.COM', '12634872', 'David Raga', '3127049308', 'nADA', 'LRAGA@FUNES.COM', '12342345', 'Z<ASDASDF', 'LRAGA@FUNES.COM', '1452345234', 2, 'Test de prueba', '2017-09-14 20:02:54', '2017-09-14'),
 (7, 'davo', '98790666', 1, 3, 'asdfas', 'gfx@adasda.com', '345345', 'Luis', '234523', 'asdfasd', 'adad@adfas', '345234', 'asdga', 'ydtyrdt@asfas', '23453456', 1, 'Test de prueba', '2017-09-14 00:33:30', '2017-09-14');
 
 -- --------------------------------------------------------
@@ -89,17 +89,29 @@ CREATE TABLE `detalle_presupuesto_funes` (
   `id` int(11) NOT NULL,
   `id_presupuesto` int(11) NOT NULL,
   `codigo_producto` int(11) NOT NULL,
-  `precio` varchar(123) COLLATE utf8_spanish_ci NOT NULL
+  `precio` varchar(123) COLLATE utf8_spanish_ci NOT NULL,
+  `cantidad` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `detalle_presupuesto_funes`
 --
 
-INSERT INTO `detalle_presupuesto_funes` (`id`, `id_presupuesto`, `codigo_producto`, `precio`) VALUES
-(29, 19, 126387625, '29000000'),
-(30, 19, 126387624, '20000000'),
-(31, 20, 126387625, '29000000');
+INSERT INTO `detalle_presupuesto_funes` (`id`, `id_presupuesto`, `codigo_producto`, `precio`, `cantidad`) VALUES
+(31, 20, 126387625, '29000000', 2),
+(32, 21, 126387625, '29000000', 2),
+(33, 21, 101224, '50000', 5),
+(34, 22, 126387625, '29000000', 2),
+(35, 23, 101224, '50000', 2),
+(36, 24, 101224, '50000', 1),
+(37, 24, 2147483647, '20000', 4),
+(38, 25, 126387625, '29000000', 2),
+(39, 26, 101224, '50000', 2),
+(40, 26, 101224, '50000', 1),
+(41, 27, 1263907624, '30000000', 2),
+(42, 28, 126387624, '20000000', 4),
+(43, 29, 1263907624, '30000000', 2),
+(44, 29, 126387624, '20000000', 1);
 
 -- --------------------------------------------------------
 
@@ -120,26 +132,16 @@ CREATE TABLE `presupuestos_funes` (
 --
 
 INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `usuario_id`, `fecha_creado`) VALUES
-(1, 1, 20040000, 1, '2017-09-13 20:18:51'),
-(2, 2, 40050000, 1, '2017-09-13 20:19:31'),
-(3, 2, 80000000, 1, '2017-09-13 20:24:49'),
-(4, 2, 20000000, 1, '2017-09-13 20:26:41'),
-(5, 2, 30040000, 1, '2017-09-13 20:27:34'),
-(6, 1, 30040000, 1, '2017-09-13 20:29:18'),
-(7, 2, 20000, 1, '2017-09-13 20:29:50'),
-(8, 2, 29040000, 1, '2017-09-13 20:42:35'),
-(9, 1, 78000000, 1, '2017-09-13 20:43:23'),
-(10, 3, 78000000, 1, '2017-09-13 20:45:21'),
-(11, 2, 78000000, 1, '2017-09-13 20:46:32'),
-(12, 3, 117100000, 1, '2017-09-13 20:47:35'),
-(13, 3, 29000000, 1, '2017-09-13 20:50:07'),
-(14, 2, 20000, 1, '2017-09-13 20:50:40'),
-(15, 3, 20000, 1, '2017-09-13 20:51:14'),
-(16, 2, 50000, 1, '2017-09-13 20:55:05'),
-(17, 2, 88000000, 1, '2017-09-13 20:57:18'),
-(18, 3, 50000, 1, '2017-09-13 20:59:11'),
-(19, 1, 78000000, 1, '2017-09-13 21:34:14'),
-(20, 2, 29000000, 1, '2017-09-13 23:35:13');
+(20, 2, 29000000, 1, '2017-09-13 23:35:13'),
+(21, 3, 58050000, 2, '2017-09-14 17:29:22'),
+(22, 3, 29000000, 2, '2017-09-14 17:30:25'),
+(23, 3, 50000, 2, '2017-09-14 17:31:33'),
+(24, 7, 58120000, 2, '2017-09-14 17:32:06'),
+(25, 1, 58050000, 2, '2017-09-14 18:13:06'),
+(26, 1, 150000, 2, '2017-09-14 18:13:44'),
+(27, 2, 60000000, 2, '2017-09-14 18:33:22'),
+(28, 7, 80000000, 2, '2017-09-14 18:35:33'),
+(29, 3, 140000000, 2, '2017-09-14 18:38:11');
 
 -- --------------------------------------------------------
 
@@ -328,7 +330,7 @@ ALTER TABLE `usuarios_funes`
 -- AUTO_INCREMENT de la tabla `clientes_funes`
 --
 ALTER TABLE `clientes_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `condicion_iva`
 --
@@ -338,17 +340,17 @@ ALTER TABLE `condicion_iva`
 -- AUTO_INCREMENT de la tabla `detalle_presupuesto_funes`
 --
 ALTER TABLE `detalle_presupuesto_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `presupuestos_funes`
 --
 ALTER TABLE `presupuestos_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `productos_funes`
 --
 ALTER TABLE `productos_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `remitos_funes`
 --

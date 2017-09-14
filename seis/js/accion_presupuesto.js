@@ -1,13 +1,14 @@
 /*Recoger información del presupuesto a generar*/
 var presupuesto = [];
 var id_produ = [];
-// var desc = [];
+var cant = [];
 var pre = [];
+var sub = [];
 var total =0;
 var clientefin = 0;
 
 var precio="";
-$(document).ready(function() {
+// $(document).ready(function() {
     // $('#resultado').load("nuevoPresupuesto.php", function(){
   $("#productos").change(function(event) {
     var id = $(this).val();
@@ -21,13 +22,13 @@ $(document).ready(function() {
     .done(function(data){
       if (id=='Seleccione un producto') {
         $('.precio').val('');
-        $('.id').val('');
+        // $('.id').val('');
       }else if(data==1){
         $('.precio').val('');
-        $('.id').val('');
+        // $('.id').val('');
       }else{
         $('.precio').val(data);
-        $('.id').val(id);           
+        // $('.id').val(id);           
       }
       precio = data;
     })
@@ -39,26 +40,35 @@ $(document).ready(function() {
     var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
     var cliente = $('#clientes').val();
     var producto = $('#productos').val();
-    // alert(producto)
+    var cantidad = $('#cantidad').val();
+
+    // alert(cantidad)
     if(cliente=="Seleccione un cliente"){
       $(".clientes").addClass('has-error');
-
     }else if(producto=='Seleccione un producto'){
       $(".clientes").removeClass('has-error');
       $(".productos").addClass('has-error');
-    }else if($('.precio').val()=="" || $('.id').val()==""){
-
+    }else if ($(".precio").val()=="") {
+      // $(".producto").val("Seleccione un producto");
+    }
+    else if($('.cantidad').val()==""){
+       $(".cantidad").attr('style', 'border: 1px solid red');
     }else{
-
+      $(".cantidad").attr('style', 'border: 1px solid gray');
       $(".clientes").removeClass('has-error');
       $(".productos").removeClass('has-error');
+      // $(".limpiar").val("")
+      var subtotal = parseInt(cantidad) * parseInt($(".precio").val()) 
       contador++;
       id_produ.push(parseInt(producto));
-      // desc.push(descripcion);
+      cant.push(cantidad);
+      sub.push(parseInt(subtotal));
       pre.push(parseInt(precio));
       var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
         td+= '<td>'+descripcion+'</td>'
         td+= '<td>$ '+precio+'</td>'
+        td+= '<td>'+cantidad+'</td>'
+        td+= '<td>$ '+subtotal+'</td>'
         td+='<td><button id="'+contador+'" type="button"'
         td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
         td+= ' ><i class="fa fa-times"></i></button></td>'
@@ -68,14 +78,14 @@ $(document).ready(function() {
       $('#paragenerar').html('<div id="r"><button onclick="generar_presupuesto();" id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces"><span class="glyphicon glyphicon-plus"></span>Generar</button></div>');
       //Notificación
       alertify.success('Producto agregado');
-      for(var i =0;i<pre.length;i++){
-        total += parseInt(pre[i]);
+      for(var i =0;i<sub.length;i++){
+        total += parseInt(sub[i]);
       }
     }
   });
 ///LLenamos el arreglo a enviar a la base de datos
   presupuesto.push(id_produ);
-  // presupuesto.push(desc);
+  presupuesto.push(cant);
   presupuesto.push(pre);
 
 //////función donde se genera el presupuesto
@@ -94,9 +104,9 @@ $(document).ready(function() {
       data: dataInfo,
     })
     .done(function(data) {
-    console.log(id_produ)
+    // console.log(id_produ)
     // console.log(data);
-    if(data!=0){
+    if(data==true){
       // Se notifica al usuario que el presupuesto está listo para ser enviado
       alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
       alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
@@ -146,6 +156,10 @@ $(document).ready(function() {
           console.log(error);
         })  
     }
+
+
+  })
+// });
 /*Funciones*/
 function borrar(id){
   $('tr[idmayor='+id+']').remove();
@@ -155,7 +169,7 @@ function borrar(id){
   }else{
     presupuesto[0].splice(id-1,1);
     presupuesto[1].splice(id-1,1);
-    // presupuesto[2].splice(id-1,1);
+    presupuesto[2].splice(id-1,1);
 
     if(presupuesto[0].length==0){
       $("#r").hide();
@@ -164,6 +178,7 @@ function borrar(id){
   // console.log(presupuesto)
   alertify.error('Se ha quitado el producto.');
 }
+
 
 function reordenar(){
   var cuenta = 1;
@@ -174,10 +189,9 @@ function reordenar(){
     cuenta++;
   })
 }
-  })
-});
 
-
-
+function pdf(id){
+  window.open("modulos/presupuesto/verPDF.php?presupuesto_id="+id);
+}
 
 

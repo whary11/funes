@@ -399,7 +399,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
     <!-- App -->
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+    <!-- <script src="js/accion_presupuesto.js"></script> -->
     <script src="vendor/app/js/toastr.min.js"></script>  
     <script src="vendor/app/js/alertify.min.js"></script> 
     <script type="text/javascript">

@@ -222,102 +222,7 @@ function editar_producto(){
 }
 	
 		
-	// ///////////Generar presupuestos
-
-////Cargar lo productos desde la base de datos.
-		
-		var precio="";
-		// var codigo = "";
-		// $('#resultado').load("nuevoPresupuesto.php", function(){
-			$("#productos").change(function(event) {
-				var id = $(this).val();
-				$.ajax({
-					url: 'modulos/presupuesto/listarproductos.php',
-					type: 'POST',
-					dataType: 'json',
-					data: {id:id},
-				})
-				.done(function(data){
-					if (id=='Seleccione un producto') {
-						$('.precio').val('');
-						$('.codigo').val('');
-					}else{
-						$('.precio').val(data);
-						$('.codigo').val(id);						
-					}
-					precio = data;
-				})
-
-			});
-			var contador=0;
-			$('#formPresupuesto').submit(function(event) {
-				event.preventDefault();
-				var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
-				var cliente = $('#clientes').val();
-				var producto = $('#productos').val();
-				if(cliente=="Seleccione un cliente"){
-					$(".clientes").addClass('has-error');
-
-				}else if(producto=='Seleccione un producto'){
-					$(".clientes").removeClass('has-error');
-					$(".productos").addClass('has-error');
-				}else if($('.precio').val()=="" || $('.id').val()==""){
-
-				}else{
-					$(".clientes").removeClass('has-error');
-					$(".productos").removeClass('has-error');
-					contador++;
-					id_produ.push(parseInt(producto));
-					// desc.push(descripcion);
-					pre.push(parseInt(precio));
-					var td = '<tr idmayor='+contador+'><td>'+producto+'</td>'
-						td+= '<td>'+descripcion+'</td>'
-						td+= '<td>$ '+precio+'</td>'
-						td+='<td><button id="'+contador+'" type="button"'
-						td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
-						td+= ' ><i class="fa fa-times"></i></button></td>'
-					$('#tbody').append(td);
-					reordenar();
-					$('.limpiar').val('');
-					$('#paragenerar').html('<div id="r"><button onclick="generar_presupuesto();" id="generar" data-toggle="modal" data-target="#exampleModal" class="btn btn-suscces"><span class="glyphicon glyphicon-plus"></span>Generar</button></div>');
-					//Notificación
-					alertify.success('Producto agregado');
-					for(var i =0;i<pre.length;i++){
-						total += parseInt(pre[i]);
-					}
-				}
-			});
-///LLenamos el arreglo a enviar a la base de datos
-			presupuesto.push(id_produ);
-			// presupuesto.push(desc);
-			presupuesto.push(pre);
-
-//////función donde se genera el presupuesto
-function generar_presupuesto(){
-	// $('#generar').click(function(){
-		clientefin = parseInt($('#clientes').val());
-		var dataInfo = {
-			cliente:clientefin,
-			presupuesto:presupuesto,
-			total:total
-		}
-		$.ajax({
-			url: 'modulos/presupuesto/inserta_presupuesto.php',
-			type: 'POST',
-			dataType: 'html',
-			data: dataInfo,
-		})
-		.done(function(data) {
-			console.log(data);
-		})
-
-	// })
-
-}
-					
-		// });
-
-	// });
+	
 	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
@@ -351,34 +256,6 @@ function generar_presupuesto(){
 				})
 			}
 		});
-
-////////////Cargar infromación en la sección de ver productos
-
-	// $("#verProductos").click(function(){
-	// 	// $("#resultado").load("../controladores/datos/verProductos.php", function(){
-	// 		$('#dataTables-example').DataTable({
- //            responsive: true
- //        });
-	// 	// });
-	// });
-
-	///////////Cargar infromación en la sección de ver clientes
-
-	// $("#verClientes").click(function(){
-	// 		// $("#resultado").load("../controladores/datos/verClientes.php", function(){
-	// 		$('#dataTables-example').DataTable({
-	//             responsive: true
-	//         });
-	// 	});
-	
-	
-// });
-
-
-
-
-
-
 
 
 ///Función para formatear números 
@@ -418,42 +295,5 @@ function generar_presupuesto(){
             return resultado;
         }
     }
-
-
-function borrar(id){
-	$('tr[idmayor='+id+']').remove();
-	reordenar();
-	if(presupuesto.length<1){
-		presupuesto.length = 0;
-	}else{
-		presupuesto[0].splice(id-1,1);
-		presupuesto[1].splice(id-1,1);
-		// presupuesto[2].splice(id-1,1);
-
-		if(presupuesto[0].length==0){
-            $("#r").hide();
-           }
-	}
-	// console.log(presupuesto)
-	alertify.error('Se ha quitado el producto.');
-}
-
-
-
-
-
-
-
-function reordenar(){
-	var cuenta = 1;
-	$('#tbody tr').map(function(){
-		$(this).attr('idmayor', cuenta);
-
-		$(this).find("td button").eq(0).attr('id', cuenta);
-
-		cuenta++;
-	})
-
-}
 
 

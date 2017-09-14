@@ -45,13 +45,13 @@
                  ?>
             </select>
         </div>
-        <div class="form-group col-md-3" id="precio">
+        <div class="form-group col-md-3" id="precio" >
             <label for="condicioniva">Precio</label>
-            <input type="text" class="form-control precio limpiar"  name="precio">
+            <input type="text" class="form-control precio limpiar" disabled name="precio">
         </div>
-        <div class="form-group col-md-3">
-            <label for="condicioniva">Código</label>
-            <input type="text" class="form-control codigo limpiar" disabled name="codigo">
+        <div class="form-group col-md-3 ">
+            <label for="cantidad">Cantidad</label>
+            <input type="text" class="form-control cantidad limpiar"  name="cantidad" id="cantidad">
         </div>
         <div class="form-group col-md-3" id="agregar"> 
             <button id="nuevo" class="btn btn-primary" >
@@ -75,6 +75,8 @@
                     <th>Código</th>
                     <th>Producto</th>
                     <th>Precio</th>
+                    <th>cantidad</th>
+                    <th>Subtotal</th>
                     <th>Borrar</th>
                 </tr>
             </thead>

@@ -1,6 +1,17 @@
 <?php 
-	require_once '../mpdf60/mpdf.php';
-	$html = '<style>
+  
+  $html = "";
+	require_once '../../controladores/pdf/mpdf60/mpdf.php';
+  require_once("../../controladores/conexion/conn.php");
+  $db = new conexion();
+  $q = "SELECT presupuestos_funes.id,clientes_funes.razon_social,clientes_funes.cuit,clientes_funes.domicilio_comercial,clientes_funes.contacto1,clientes_funes.telefono1,clientes_funes.correo1, presupuestos_funes.total,usuarios_funes.nombre as usuario,presupuestos_funes.fecha_creado,condicion_iva.nombre as iva FROM presupuestos_funes
+        INNER JOIN usuarios_funes ON usuarios_funes.id = presupuestos_funes.usuario_id
+        INNER JOIN clientes_funes ON clientes_funes.id = presupuestos_funes.cliente_id
+        INNER JOIN condicion_iva ON condicion_iva.id = clientes_funes.condicion_iva_id
+        WHERE presupuestos_funes.id = '$_GET[presupuesto_id]'";
+  $data = $db->leeTabla($q);
+
+	$html .= '<style>
     /*Clases para modificar el formato del pdf*/
 table{
   border-collapse: collapse;
@@ -40,19 +51,20 @@ table{
   font-size: 10px;
 }
 
-  </style>
+  </style>';
+
+$html.='
   <table>
   <thead>
     <tr>
-        <th rowspan="3" colspan="3"><img src="img/logo-funes.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
+        <th rowspan="3" colspan="3"><img src="../../img/logo-funes.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
         <th colspan="7" >AGRO MAQUINARIA</th>
         <th colspan="2" class="fondo-celda borde-celda">FECHA</th>
-        <th colspan="2" class="fondo-celda borde-celda">19/06/2017
-    </th>
+        <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->fecha_creado.'</th>
     <tr>
       <th colspan="7">VIAL MAQUINARIA</th>
       <th colspan="2" class="fondo-celda borde-celda">PRESUPUESTO No</th>
-      <th colspan="2" class="fondo-celda borde-celda">1020-161</th>
+      <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->id.'</th>
     </tr>
       <tr>
         <th colspan="7">REPUESTO Y ACCESORIOS</th>
@@ -73,29 +85,29 @@ table{
         <tbody>
           <tr>
             <td colspan="3" class="fondo-celda1 borde-celda descripcion">CLIENTE</td>
-            <td colspan="11" class="borde-celda descripcion">Enredes</td>
+            <td colspan="11" class="borde-celda descripcion">'.$data[0]->razon_social.'</td>
           </tr>
           <tr>
             <td colspan="3" class="fondo-celda borde-celda descripcion">CUIT / CUIL</td>
-            <td colspan="4" class="borde-celda descripcion">1077444356</td>
+            <td colspan="4" class="borde-celda descripcion">'.$data[0]->cuit.'</td>
             <td colspan="4" class="borde-celda fondo-celda descripcion">CONDICION IVA</td>
-            <td colspan="3" class="borde-celda descripcion">RESP. INSC.</td>
+            <td colspan="3" class="borde-celda descripcion">'.$data[0]->iva.'</td>
           </tr>
           <tr>
             <td colspan="3" class="fondo-celda1 borde-celda descripcion">DIREC. COMERC.</td>
-            <td colspan="11" class="borde-celda descripcion">Cali - Colombia</td>
+            <td colspan="11" class="borde-celda descripcion">'.$data[0]->domicilio_comercial.'</td>
           </tr>
           <tr>
             <td colspan="3" class="fondo-celda1 borde-celda descripcion">CONTACTO</td>
-            <td colspan="4" class="borde-celda descripcion">LUIS FERNANDO RAGA RENTERIA</td>
+            <td colspan="4" class="borde-celda descripcion">'.$data[0]->contacto1.'</td>
             <td colspan="4" class="fondo-celda1 borde-celda descripcion">TELÉFONO</td>
-            <td colspan="3" class="borde-celda descripcion">3127049308</td>
+            <td colspan="3" class="borde-celda descripcion">'.$data[0]->telefono1.'</td>
           </tr>
           <tr>
             <td colspan="3" class="fondo-celda borde-celda descripcion">E-MAIL</td>
-            <td colspan="4" class="borde-celda descripcion">WHARY11@GMAIL.COM</td>
+            <td colspan="4" class="borde-celda descripcion">'.$data[0]->correo1.'</td>
             <td colspan="4" class="fondo-celda borde-celda descripcion">VENDEDOR</td>
-            <td colspan="3" class="borde-celda descripcion descripcion">LEANDRO FUNES</td>
+            <td colspan="3" class="borde-celda descripcion descripcion">'.$data[0]->usuario.'</td>
           </tr>
           <tr>
             <td colspan="3" class="fondo-celda borde-celda descripcion">C. PAGO</td>
@@ -106,6 +118,8 @@ table{
           <tr>
             <td colspan="14" style="padding:10px;"></td>
           </tr>
+          
+          
           <tr style="background-color:black;color: white;"  >
           	<td colspan="1" class="borde-celda" id="codigo" style="color:white;">CÓDIGO</td>
           	<td colspan="9" class="borde-celda" id="descripcion" style="color:white;">DESCRIPCIÓN</td>
@@ -114,23 +128,28 @@ table{
           	<td colspan="1" class="borde-celda" id="iva" style="color:white;">IVA %</td>
           	<td colspan="1" class="borde-celda" id="subtotal" style="color:white;">SUBTOTAL</td>
           </tr>
-          <!-- Productos -->
-
-
-
+          <!-- Productos -->';
+          $db = new conexion();
+          $q = "SELECT productos_funes.codigo,productos_funes.descripcion,detalle_presupuesto_funes.cantidad,detalle_presupuesto_funes.precio FROM detalle_presupuesto_funes
+        INNER JOIN productos_funes ON productos_funes.codigo = detalle_presupuesto_funes.codigo_producto
+        WHERE detalle_presupuesto_funes.id_presupuesto = '$_GET[presupuesto_id]'";
+        $data = $db->leeTabla($q);
+        for ($i=0; $i <count($data); $i++) { 
+          $subtotal = $data[$i]->cantidad * $data[$i]->precio;
+          $html .='
           <tr class="fondo-celda borde-celda">
-          	<td class="borde-celda formato" headers="codigo">1</td>
-          	<td colspan="9" class="borde-celda descripcion">ACOPLADO RURAL - MARCA COMOFRA MEDIDAS: 3,0 MTS DE LARGO POR 1,70 MTS DE ANCHO. CON BARANDAS, LATERALES REVATIBLES. PRECIO IVA 10,5% INCLUIDO. PUESTO EN CORDOBA</td>
-          	<td class="borde-celda fondo-celda formato" >1</td>
-          	<td class="borde-celda fondo-celda formato">$10000</td>
+          	<td class="borde-celda formato" headers="codigo">'.$data[$i]->codigo.'</td>
+          	<td colspan="9" class="borde-celda descripcion">'.$data[$i]->descripcion.'</td>
+          	<td class="borde-celda fondo-celda formato" >'.$data[$i]->cantidad.'</td>
+          	<td class="borde-celda fondo-celda formato">$'.$data[$i]->precio.'</td>
           	<td class="borde-celda fondo-celda formato">10.50</td>
-          	<td class="borde-celda fondo-celda formato" headers="subtotal">$10000</td>
-          </tr>
-          
+          	<td class="borde-celda fondo-celda formato" headers="subtotal">$'.$subtotal.'</td>
+          </tr>';
+          }
 
 
 
-          
+          $html.='
         </tbody>
           <!-- footer -->
           <tfoot>
@@ -157,14 +176,11 @@ table{
             </tr>
           </tfoot>
       </table>';
-
 	$mpdf = new mPDF("c","A4");
 	// $css = file_get_contents('css/index.css');
 	// $mpdf->writeHTML($css, 1);
 	$mpdf->writeHTML($html);
 
 	$mpdf->Output("Ya.pdf","I");
-
-
 
  ?>

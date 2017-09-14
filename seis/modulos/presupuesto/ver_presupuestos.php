@@ -27,7 +27,7 @@
                     <th>Total</th>
                     <th>Nombre de creador</th>
                     <th>Fecha</th>
-                    <!-- <th>Eliminar</th> -->
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,11 +40,11 @@
                     <td><?php print($data[$i]->total); ?></td>
                     <td><?php print($data[$i]->nombre); ?></td>
                     <td><?php print($data[$i]->fecha_creado); ?></td>
-                    <!-- <td class="center">
-                        <a style="color:red;text-decoration: none;" href="" id="elimi_presupuesto" onclick="eliminar_producto('<?php print($data[$i]->id) ?>');">
-                            <i style="font-size:20px;display:block;text-align:center;" class="fa fa-minus-circle"></i>
+                    <td class="center">
+                        <a style="color:green;text-decoration: none;" href="" id="pdf_presupuesto" onclick="pdf('<?php print($data[$i]->id) ?>');">
+                            <i style="font-size:20px;display:block;text-align:center;" class="glyphicon glyphicon-file"></i>
                         </a>
-                    </td> -->
+                    </td>
                 </tr>
                  <?php 
                     }
@@ -74,3 +74,5 @@
         </div>
       </div>
     </div>
+   <script src="js/accion_presupuesto.js"></script>
+

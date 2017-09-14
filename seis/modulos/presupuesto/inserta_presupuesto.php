@@ -21,15 +21,16 @@
 		
 		for ($i=0; $i<count($detalle_presupuesto[0]); $i++) { 
 					$codigo_produ = $detalle_presupuesto[0][$i];
-					$precio = $detalle_presupuesto[1][$i];
-					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio')";
+					$cantidad = $detalle_presupuesto[1][$i];
+					$precio = $detalle_presupuesto[2][$i];
+					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`,`cantidad`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio','$cantidad')";
 					$db->abc($query);
 				// print($id_presupuesto);	
 				// var_dump($id_produ);
 				// var_dump($precio);
 				// var_dump($db);			
 		}
-		// print($id_presupuesto);
+	 print(1);
 		
 		///El cero significa que hubo un error
 	}else{
