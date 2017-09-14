@@ -14,7 +14,7 @@ function enviodatos(event){
 	var datos ={
 		'usuario':usuario,
 		'clave':clave,
-		'bandera':'Acceder'
+		// 'bandera':'Acceder'
 	}
 
 	if(usuario==""){
@@ -27,16 +27,17 @@ function enviodatos(event){
 	}else{
 		$('#controlclave').removeClass('has-error');
 		$.ajax({
-			url: 'valida_usuario.php',
+			url: 'modulos/inicio/valida_usuario.php',
 			type: 'POST',
-			dataType: 'JSON',
+			// dataType: 'JSON',
 			data: datos,
 		})
 		.done(function(resp) {
 			console.log(resp);
-			if (resp.resp) {
+			if (resp == true) {
 				alert("Ya puesdes acceder al sistema Funes.")
-			}else if(!resp.resp) {
+				window.location.replace("index2.php");
+			}else if (resp == false){
 				alert("No puesdes acceder al sistema.")
 			}
 		})

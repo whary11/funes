@@ -11,6 +11,7 @@ $(document).ready(function() {
     // $('#resultado').load("nuevoPresupuesto.php", function(){
   $("#productos").change(function(event) {
     var id = $(this).val();
+    // var ids = $(this).attr('id');
     $.ajax({
       url: 'modulos/presupuesto/listarproductos.php',
       type: 'POST',
@@ -38,6 +39,7 @@ $(document).ready(function() {
     var descripcion = document.getElementById('productos').options[document.getElementById('productos').selectedIndex].text;
     var cliente = $('#clientes').val();
     var producto = $('#productos').val();
+    // alert(producto)
     if(cliente=="Seleccione un cliente"){
       $(".clientes").addClass('has-error');
 
@@ -92,6 +94,7 @@ $(document).ready(function() {
       data: dataInfo,
     })
     .done(function(data) {
+    console.log(id_produ)
     // console.log(data);
     if(data!=0){
       // Se notifica al usuario que el presupuesto está listo para ser enviado
@@ -171,14 +174,6 @@ function reordenar(){
     cuenta++;
   })
 }
-
-
-
-
-
-
-
-
   })
 });
 

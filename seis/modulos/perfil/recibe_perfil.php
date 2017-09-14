@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (isset($_POST["nombre"])) {
 	require_once("../../controladores/conexion/conn.php");
@@ -23,7 +24,7 @@ if (isset($_POST["nombre"])) {
 		"codigo" => $codigo,
 		"respuesta" => ""
 		);
-	$query = "UPDATE `usuarios_funes` SET `nombre` = '$nombre', `apellidos` = '$apellido', `usuario` = '$usuario', `sistema` = '$sistema', `cargo` = '$cargo', `correo` = '$correo', `biografia` = '$biografia', `codigo` = '$codigo' WHERE `usuarios_funes`.`id` = 1";
+	$query = "UPDATE `usuarios_funes` SET `nombre` = '$nombre', `apellidos` = '$apellido', `usuario` = '$usuario', `sistema_id` = '$sistema', `cargo` = '$cargo', `correo` = '$correo', `biografia` = '$biografia', `codigo` = '$codigo' WHERE `usuarios_funes`.`id` = '$_SESSION[usuario]'";
 	if($db->abc($query)){
 		$data["respuesta"]=true;
 		print(json_encode($data));
@@ -38,8 +39,13 @@ if (isset($_POST["nombre"])) {
 }else if(isset($_FILES)){
 	require_once("../../controladores/conexion/conn.php");
 	// print("Tenemos la imagen.");
-	$id = 1;//Cambiar estos datos con los que devuelva la base de datos
-	$nombreUsuario = "Luis Fernando Raga";//Cambiar estos datos con los que devuelva la base de datos
+	$id = $_SESSION["usuario"];//Cambiar estos datos con los que devuelva la base de datos
+
+
+	$q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
+	$db = new conexion();
+	$data = $db->leeTabla($q);
+	$nombreUsuario = $data[0]->nombre;//Cambiar estos datos con los que devuelva la base de datos
 	$nombreImg = $nombreUsuario."_".$id;
 
 	$dir_subida = '../../img/perfiles/';

@@ -1,6 +1,11 @@
 	<?php
+		// session_start();
+        if (!isset($_SESSION["usuario"])){
+        header("Location:../../index.php");
+   		}
+
 		require_once("controladores/conexion/conn.php"); 
-		$q = "SELECT * FROM `usuarios_funes` WHERE id=1 ";
+		$q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
 		$db = new conexion();
 		$data = $db->leeTabla($q);
 	 ?>
@@ -10,7 +15,7 @@
 			<div style="border:3px dotted teal;width: auto;padding: 10px;border-radius:10px;" class="col-md-4" id="contenedorIMG">
 			<div id="resultimage">
 				
-				<img style='display:block;margin:auto;' src="img/perfiles/<?php print($data[0]->img); ?>" alt="Luis Fernando Raga" width='200px' height='200px' class='img-circle'>
+				<img style='display:block;margin:auto;' src="img/perfiles/<?php print($data[0]->img); ?>" alt="" width='200px' height='200px' class='img-circle'>
 			</div>
 				<form id="actualizaImg">
 					<label for="imagen" class="btn btn-success" style="display: block;width:50%;margin: 5px auto;">Cambiar</label>
@@ -44,10 +49,29 @@
 				  	<div class="form-group col-md-6 sistema">
 					    <label for="sistema" class="control-label">Sistema </label>
 				    	<select class="form-control" id="sistema" name="sistema">
-						  <option value="id">Funes</option>
-						  <option value="id">Agrocentro</option>
+							<?php
+								$q = "SELECT * FROM usuarios_funes WHERE id = '$_SESSION[usuario]'";
+			                    $data = $db->leeTabla($q);
+			                    $sistema_id = $data[0]->sistema_id;
+			                    $q = "SELECT * FROM sistema";
+			                    $data = $db->leeTabla($q);
+			                    for($i=0;$i<count($data);$i++){ 
+			                    	if ($sistema_id == $data[$i]->id) {
+			                    		 print('<option selected="selected"  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>');
+			                    	}else{
+			                    		print('<option  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>');
+			                    	}
+			                        
+			                    }
+                 			?>
 						</select>
 				  	</div>
+				  	<?php
+						require_once("controladores/conexion/conn.php"); 
+						$q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
+						$db = new conexion();
+						$data = $db->leeTabla($q);
+					 ?>
 				  	<div class="form-group col-md-6 cargo">
 				    	<label for="cargo" class="control-label">Cargo </label>
 					    <input type="text" name="cargo" class="form-control" id="cargo" value="<?php print($data[0]->cargo); ?>">

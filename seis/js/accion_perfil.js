@@ -92,10 +92,6 @@ $(document).ready(function() {
 
 		
 	})
-
-
-
-
 		//Función para actualizar la foto de perfil
 		$('#envio').hide();
 		$('#imagen').change(function() {
@@ -143,7 +139,7 @@ $(document).ready(function() {
 				console.log(data)
 				if (data.resp){
 					alertify.success('Avatar actualizado !!',2,function(){
-					 	window.location.href = 'index.php?modulo=perfil&elemento=index.php';
+					 	window.location.href = 'index2.php?modulo=perfil&elemento=index.php';
 					});
 				}else{
 					alert("nada")

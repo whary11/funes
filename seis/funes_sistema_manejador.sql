@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2017 a las 02:58:44
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.1.1
+-- Tiempo de generación: 14-09-2017 a las 03:11:25
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,8 +30,8 @@ CREATE TABLE `clientes_funes` (
   `id` int(11) NOT NULL,
   `razon_social` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `cuit` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `condicion_iva` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_cliente_id` int(11) NOT NULL,
+  `condicion_iva_id` int(11) NOT NULL,
   `domicilio_comercial` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `correo1` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `telefono1` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `clientes_funes` (
   `contacto3` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `correo3` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `telefono3` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
-  `cargado_por` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `comentarios` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_cargue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `fecha_modificacion` date NOT NULL
@@ -53,11 +53,31 @@ CREATE TABLE `clientes_funes` (
 -- Volcado de datos para la tabla `clientes_funes`
 --
 
-INSERT INTO `clientes_funes` (`id`, `razon_social`, `cuit`, `tipo`, `condicion_iva`, `domicilio_comercial`, `correo1`, `telefono1`, `contacto1`, `whatsapp`, `contacto2`, `correo2`, `telefono2`, `contacto3`, `correo3`, `telefono3`, `cargado_por`, `comentarios`, `fecha_cargue`, `fecha_modificacion`) VALUES
-(1, 'EnRedes', '1077444356', 'Resp', 'Nueva condiciÃ³n', 'Cali', 'whary11@gmail.com', '3127049308', '', '3047868668', 'Omar', 'Oraga@enredes.com', '3127899809', 'David', 'Draga@enredes.com', '3214563478', 'Luis Raga', 'Test de prueba', '2017-09-02 16:15:27', '2017-09-02'),
-(2, 'Socios Cup', '1077440677', 'Resp', 'NA', 'Cali - Colombia', 'whary11@gmail.com', '3127049308', 'Omar Enrique Raag', '3047868668', 'Omar Raga', 'Oraga@enredes.com', '3127899809', 'David Raga', 'Draga@enredes.com', '3214563478', 'Luis Raga', 'Test de prueba', '2017-06-26 15:57:31', '0000-00-00'),
-(3, 'Luis Raga', '10993883', '1', 'Nada', 'Kr 90 # 6A - 98 INT 11 ', 'LRAGA@FUNES.COM', '12634872', '', '3127049308', 'nADA', 'LRAGA@FUNES.COM', '12342345', 'Z<ASDASDF', 'LRAGA@FUNES.COM', '1452345234', 'Luis Fernando Raga', 'Test de prueba', '2017-09-02 21:25:24', '0000-00-00'),
-(4, 'Luis Raga', '10993883', '1', 'Nada', 'Kr 90 # 6A - 98 INT 11 ', 'LRAGA@FUNES.COM', '12634872', '', '3127049308', 'nADA', 'LRAGA@FUNES.COM', '12342345', 'Z<ASDASDF', 'LRAGA@FUNES.COM', '1452345234', 'Luis Fernando Raga', 'Test de prueba', '2017-09-02 21:25:24', '0000-00-00');
+INSERT INTO `clientes_funes` (`id`, `razon_social`, `cuit`, `tipo_cliente_id`, `condicion_iva_id`, `domicilio_comercial`, `correo1`, `telefono1`, `contacto1`, `whatsapp`, `contacto2`, `correo2`, `telefono2`, `contacto3`, `correo3`, `telefono3`, `usuario_id`, `comentarios`, `fecha_cargue`, `fecha_modificacion`) VALUES
+(1, 'EnRedes', '1077444356', 1, 2, 'Cali', 'whary11@gmail.com', '3127049308', '', '3047868668', 'Omar', 'Oraga@enredes.com', '3127899809', 'David', 'Draga@enredes.com', '3214563478', 1, 'Test de prueba', '2017-09-13 23:47:27', '2017-09-02'),
+(2, 'Socios Cup', '1077440677', 2, 1, 'Cali - Colombia', 'whary11@gmail.com', '3127049308', 'Omar Enrique Raag', '3047868668', 'Omar Raga', 'Oraga@enredes.com', '3127899809', 'David Raga', 'Draga@enredes.com', '3214563478', 1, 'Test de prueba', '2017-09-13 23:47:35', '0000-00-00'),
+(3, 'Luis Raga', '10993883', 1, 1, 'Kr 90 # 6A - 98 INT 11 ', 'LRAGA@FUNES.COM', '12634872', '', '3127049308', 'nADA', 'LRAGA@FUNES.COM', '12342345', 'Z<ASDASDF', 'LRAGA@FUNES.COM', '1452345234', 2, 'Test de prueba', '2017-09-13 23:47:39', '0000-00-00'),
+(7, 'davo', '98790666', 1, 3, 'asdfas', 'gfx@adasda.com', '345345', 'Luis', '234523', 'asdfasd', 'adad@adfas', '345234', 'asdga', 'ydtyrdt@asfas', '23453456', 1, 'Test de prueba', '2017-09-14 00:33:30', '2017-09-14');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `condicion_iva`
+--
+
+CREATE TABLE `condicion_iva` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(40) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `condicion_iva`
+--
+
+INSERT INTO `condicion_iva` (`id`, `nombre`) VALUES
+(1, 'RESP. INSC'),
+(2, 'CONS. FINAL'),
+(3, 'EXENTO');
 
 -- --------------------------------------------------------
 
@@ -68,7 +88,7 @@ INSERT INTO `clientes_funes` (`id`, `razon_social`, `cuit`, `tipo`, `condicion_i
 CREATE TABLE `detalle_presupuesto_funes` (
   `id` int(11) NOT NULL,
   `id_presupuesto` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
+  `codigo_producto` int(11) NOT NULL,
   `precio` varchar(123) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -76,341 +96,10 @@ CREATE TABLE `detalle_presupuesto_funes` (
 -- Volcado de datos para la tabla `detalle_presupuesto_funes`
 --
 
-INSERT INTO `detalle_presupuesto_funes` (`id`, `id_presupuesto`, `id_producto`, `precio`) VALUES
-(1, 266, 1, '50000'),
-(2, 267, 1, '50000'),
-(3, 267, 29, '29000000'),
-(4, 267, 3, '20000'),
-(5, 267, 29, '29000000'),
-(6, 267, 30, '20000000'),
-(7, 268, 3, '20000'),
-(8, 268, 29, '29000000'),
-(9, 268, 30, '20000000'),
-(10, 268, 31, '30000000'),
-(11, 268, 1, '50000'),
-(12, 268, 29, '29000000'),
-(13, 268, 30, '20000000'),
-(14, 269, 3, '20000'),
-(15, 269, 29, '29000000'),
-(16, 269, 3, '20000'),
-(17, 269, 31, '30000000'),
-(18, 269, 29, '29000000'),
-(19, 269, 30, '20000000'),
-(20, 269, 31, '30000000'),
-(21, 270, 3, '20000'),
-(22, 270, 29, '29000000'),
-(23, 270, 30, '20000000'),
-(24, 270, 1, '50000'),
-(25, 270, 31, '30000000'),
-(26, 270, 30, '20000000'),
-(27, 270, 1, '50000'),
-(28, 270, 29, '29000000'),
-(29, 270, 3, '20000'),
-(30, 270, 30, '20000000'),
-(31, 271, 3, '20000'),
-(32, 271, 29, '29000000'),
-(33, 271, 30, '20000000'),
-(34, 271, 1, '50000'),
-(35, 271, 31, '30000000'),
-(36, 271, 30, '20000000'),
-(37, 271, 1, '50000'),
-(38, 271, 29, '29000000'),
-(39, 271, 3, '20000'),
-(40, 271, 30, '20000000'),
-(41, 271, 3, '20000'),
-(42, 271, 30, '20000000'),
-(43, 271, 29, '29000000'),
-(44, 271, 3, '20000'),
-(45, 271, 1, '50000'),
-(46, 271, 3, '20000'),
-(47, 271, 29, '29000000'),
-(48, 271, 30, '20000000'),
-(49, 271, 1, '50000'),
-(50, 271, 29, '29000000'),
-(51, 271, 3, '20000'),
-(52, 271, 30, '20000000'),
-(53, 271, 29, '29000000'),
-(54, 271, 1, '50000'),
-(55, 271, 30, '20000000'),
-(56, 272, 3, '20000'),
-(57, 272, 29, '29000000'),
-(58, 272, 30, '20000000'),
-(59, 272, 1, '50000'),
-(60, 272, 31, '30000000'),
-(61, 272, 30, '20000000'),
-(62, 272, 1, '50000'),
-(63, 272, 29, '29000000'),
-(64, 272, 3, '20000'),
-(65, 272, 30, '20000000'),
-(66, 272, 3, '20000'),
-(67, 272, 30, '20000000'),
-(68, 272, 29, '29000000'),
-(69, 272, 3, '20000'),
-(70, 272, 1, '50000'),
-(71, 272, 3, '20000'),
-(72, 272, 29, '29000000'),
-(73, 272, 30, '20000000'),
-(74, 272, 1, '50000'),
-(75, 272, 29, '29000000'),
-(76, 272, 3, '20000'),
-(77, 272, 30, '20000000'),
-(78, 272, 29, '29000000'),
-(79, 272, 1, '50000'),
-(80, 272, 30, '20000000'),
-(81, 273, 31, '30000000'),
-(82, 273, 3, '20000'),
-(83, 273, 29, '29000000'),
-(84, 273, 30, '20000000'),
-(85, 273, 29, '29000000'),
-(86, 274, 1, '50000'),
-(87, 278, 1, '50000'),
-(88, 279, 1, '50000'),
-(89, 280, 1, '50000'),
-(90, 287, 1, '50000'),
-(91, 287, 3, '20000'),
-(92, 287, 29, '29000000'),
-(93, 287, 30, '20000000'),
-(94, 287, 31, '30000000'),
-(95, 287, 3, '20000'),
-(96, 287, 29, '29000000'),
-(97, 287, 3, '20000'),
-(98, 287, 30, '20000000'),
-(99, 287, 29, '29000000'),
-(100, 287, 31, '30000000'),
-(101, 287, 29, '29000000'),
-(102, 287, 3, '20000'),
-(103, 287, 29, '29000000'),
-(104, 288, 1, '50000'),
-(105, 288, 3, '20000'),
-(106, 288, 29, '29000000'),
-(107, 288, 30, '20000000'),
-(108, 288, 31, '30000000'),
-(109, 288, 3, '20000'),
-(110, 288, 29, '29000000'),
-(111, 288, 3, '20000'),
-(112, 288, 30, '20000000'),
-(113, 288, 29, '29000000'),
-(114, 288, 31, '30000000'),
-(115, 288, 29, '29000000'),
-(116, 288, 3, '20000'),
-(117, 288, 29, '29000000'),
-(118, 289, 3, '20000'),
-(119, 289, 30, '20000000'),
-(120, 289, 1, '50000'),
-(121, 290, 1, '50000'),
-(122, 291, 1, '50000'),
-(123, 292, 1, '50000'),
-(124, 293, 1, '50000'),
-(125, 294, 1, '50000'),
-(126, 295, 1, '50000'),
-(127, 296, 3, '20000'),
-(128, 297, 1, '50000'),
-(129, 298, 1, '50000'),
-(130, 298, 29, '29000000'),
-(131, 299, 3, '20000'),
-(132, 300, 3, '20000'),
-(133, 301, 1, '50000'),
-(134, 302, 1, '50000'),
-(135, 303, 3, '20000'),
-(136, 304, 1, '50000'),
-(137, 305, 3, '20000'),
-(138, 306, 3, '20000'),
-(139, 307, 3, '20000'),
-(140, 308, 29, '29000000'),
-(141, 309, 3, '20000'),
-(142, 310, 3, '20000'),
-(143, 311, 1, '50000'),
-(144, 312, 1, '50000'),
-(145, 313, 3, '20000'),
-(146, 314, 3, '20000'),
-(147, 315, 3, '20000'),
-(148, 316, 3, '20000'),
-(149, 317, 3, '20000'),
-(150, 317, 1, '50000'),
-(151, 318, 3, '20000'),
-(152, 319, 3, '20000'),
-(153, 320, 1, '50000'),
-(154, 321, 1, '50000'),
-(155, 322, 1, '50000'),
-(156, 323, 3, '20000'),
-(157, 324, 1, '50000'),
-(158, 325, 3, '20000'),
-(159, 326, 1, '50000'),
-(160, 327, 1, '50000'),
-(161, 328, 1, '50000'),
-(162, 329, 1, '50000'),
-(163, 330, 3, '20000'),
-(164, 331, 3, '20000'),
-(165, 332, 3, '20000'),
-(166, 333, 1, '50000'),
-(167, 334, 3, '20000'),
-(168, 335, 3, '20000'),
-(169, 336, 1, '50000'),
-(170, 337, 1, '50000'),
-(171, 338, 3, '20000'),
-(172, 339, 3, '20000'),
-(173, 340, 1, '50000'),
-(174, 341, 1, '50000'),
-(175, 342, 1, '50000'),
-(176, 343, 1, '50000'),
-(177, 344, 1, '50000'),
-(178, 345, 1, '50000'),
-(179, 346, 1, '50000'),
-(180, 347, 3, '20000'),
-(181, 348, 1, '50000'),
-(182, 349, 1, '50000'),
-(183, 350, 1, '50000'),
-(184, 351, 1, '50000'),
-(185, 352, 1, '50000'),
-(186, 353, 1, '50000'),
-(187, 354, 1, '50000'),
-(188, 355, 3, '20000'),
-(189, 356, 3, '20000'),
-(190, 357, 3, '20000'),
-(191, 358, 3, '20000'),
-(192, 359, 29, '29000000'),
-(193, 360, 1, '50000'),
-(194, 361, 1, '50000'),
-(195, 362, 29, '29000000'),
-(196, 363, 1, '50000'),
-(197, 364, 3, '20000'),
-(198, 365, 1, '50000'),
-(199, 366, 1, '50000'),
-(200, 366, 29, '29000000'),
-(201, 366, 30, '20000000'),
-(202, 366, 3, '20000'),
-(203, 366, 30, '20000000'),
-(204, 367, 1, '50000'),
-(205, 368, 1, '50000'),
-(206, 369, 3, '20000'),
-(207, 370, 29, '29000000'),
-(208, 371, 1, '50000'),
-(209, 372, 3, '20000'),
-(210, 373, 3, '20000'),
-(211, 374, 3, '20000'),
-(212, 375, 1, '50000'),
-(213, 376, 1, '50000'),
-(214, 377, 29, '29000000'),
-(215, 378, 29, '29000000'),
-(216, 379, 29, '29000000'),
-(217, 380, 1, '50000'),
-(218, 381, 29, '29000000'),
-(219, 382, 1, '50000'),
-(220, 383, 1, '50000'),
-(221, 384, 3, '20000'),
-(222, 385, 1, '50000'),
-(223, 386, 1, '50000'),
-(224, 387, 1, '50000'),
-(225, 388, 1, '50000'),
-(226, 389, 1, '50000'),
-(227, 390, 3, '20000'),
-(228, 391, 3, '20000'),
-(229, 391, 29, '29000000'),
-(230, 391, 29, '29000000'),
-(231, 391, 30, '20000000'),
-(232, 391, 1, '50000'),
-(233, 391, 31, '30000000'),
-(234, 391, 1, '50000'),
-(235, 391, 30, '20000000'),
-(236, 391, 31, '30000000'),
-(237, 391, 30, '20000000'),
-(238, 391, 1, '50000'),
-(239, 391, 30, '20000000'),
-(240, 391, 3, '20000'),
-(241, 391, 30, '20000000'),
-(242, 391, 29, '29000000'),
-(243, 391, 30, '20000000'),
-(244, 392, 3, '20000'),
-(245, 392, 1, '50000'),
-(246, 392, 30, '20000000'),
-(247, 393, 3, '20000'),
-(248, 394, 1, '50000'),
-(249, 395, 1, '50000'),
-(250, 396, 29, '29000000'),
-(251, 397, 3, '20000'),
-(252, 398, 3, '20000'),
-(253, 399, 1, '50000'),
-(254, 400, 3, '20000'),
-(255, 401, 1, '50000'),
-(256, 402, 29, '29000000'),
-(257, 403, 29, '29000000'),
-(258, 404, 1, '50000'),
-(259, 405, 29, '29000000'),
-(260, 406, 3, '20000'),
-(261, 407, 1, '50000'),
-(262, 408, 1, '50000'),
-(263, 409, 3, '20000'),
-(264, 410, 3, '20000'),
-(265, 411, 1, '50000'),
-(266, 412, 3, '20000'),
-(267, 413, 3, '20000'),
-(268, 414, 1, '50000'),
-(269, 415, 3, '20000'),
-(270, 416, 1, '50000'),
-(271, 417, 1, '50000'),
-(272, 418, 3, '20000'),
-(273, 419, 3, '20000'),
-(274, 420, 3, '20000'),
-(275, 421, 3, '20000'),
-(276, 422, 3, '20000'),
-(277, 423, 3, '20000'),
-(278, 424, 3, '20000'),
-(279, 425, 3, '20000'),
-(280, 426, 3, '20000'),
-(281, 427, 29, '29000000'),
-(282, 428, 1, '50000'),
-(283, 429, 3, '20000'),
-(284, 430, 1, '50000'),
-(285, 431, 29, '29000000'),
-(286, 432, 3, '20000'),
-(287, 433, 29, '29000000'),
-(288, 434, 1, '50000'),
-(289, 435, 1, '50000'),
-(290, 436, 1, '50000'),
-(291, 437, 1, '50000'),
-(292, 438, 3, '20000'),
-(293, 439, 1, '50000'),
-(294, 440, 3, '20000'),
-(295, 441, 3, '20000'),
-(296, 442, 3, '20000'),
-(297, 443, 29, '29000000'),
-(298, 444, 30, '20000000'),
-(299, 445, 1, '50000'),
-(300, 446, 1, '50000'),
-(301, 447, 29, '29000000'),
-(302, 448, 3, '20000'),
-(303, 449, 1, '50000'),
-(304, 450, 1, '50000'),
-(305, 451, 3, '20000'),
-(306, 452, 3, '20000'),
-(307, 453, 1, '50000'),
-(308, 454, 1, '50000'),
-(309, 455, 3, '20000'),
-(310, 456, 1, '50000'),
-(311, 457, 29, '29000000'),
-(312, 458, 1, '50000'),
-(313, 459, 30, '20000000'),
-(314, 459, 3, '20000'),
-(315, 460, 30, '20000000'),
-(316, 460, 3, '20000'),
-(317, 461, 30, '20000000'),
-(318, 462, 30, '20000000'),
-(319, 462, 29, '29000000'),
-(320, 462, 31, '30000000'),
-(321, 463, 3, '20000'),
-(322, 463, 29, '29000000'),
-(323, 464, 3, '20000'),
-(324, 465, 1, '50000'),
-(325, 465, 29, '29000000'),
-(326, 465, 1, '50000'),
-(327, 465, 29, '29000000'),
-(328, 466, 3, '20000'),
-(329, 467, 3, '20000'),
-(330, 468, 3, '20000'),
-(331, 469, 3, '20000'),
-(332, 469, 30, '20000000'),
-(333, 469, 31, '30000000'),
-(334, 470, 3, '20000');
+INSERT INTO `detalle_presupuesto_funes` (`id`, `id_presupuesto`, `codigo_producto`, `precio`) VALUES
+(29, 19, 126387625, '29000000'),
+(30, 19, 126387624, '20000000'),
+(31, 20, 126387625, '29000000');
 
 -- --------------------------------------------------------
 
@@ -422,7 +111,7 @@ CREATE TABLE `presupuestos_funes` (
   `id` int(11) NOT NULL,
   `cliente_id` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `nombre_creador` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `fecha_creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -430,268 +119,27 @@ CREATE TABLE `presupuestos_funes` (
 -- Volcado de datos para la tabla `presupuestos_funes`
 --
 
-INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `nombre_creador`, `fecha_creado`) VALUES
-(23, 1, 20040000, 'Luis Raga', '2017-08-11 15:48:14'),
-(24, 1, 50000, 'Luis Raga', '2017-08-14 23:42:38'),
-(25, 1, 50000, 'Luis Raga', '2017-08-14 23:42:45'),
-(26, 2, 40300000, 'Luis Raga', '2017-08-14 23:43:06'),
-(27, 1, 50000, 'Luis Raga', '2017-08-16 01:19:01'),
-(28, 1, 120570000, 'Luis Raga', '2017-08-16 01:19:41'),
-(29, 1, 20000, 'Luis Raga', '2017-08-21 15:23:20'),
-(30, 1, 120450000, 'Luis Raga', '2017-08-21 15:23:58'),
-(32, 1, 50000, 'Luis Raga', '2017-08-21 15:26:23'),
-(33, 1, 50000, 'Luis Raga', '2017-08-21 15:26:54'),
-(178, 1, 20100000, 'Luis Raga', '2017-08-21 20:03:29'),
-(179, 1, 20100000, 'Luis Raga', '2017-08-21 20:03:29'),
-(180, 1, 20100000, 'Luis Raga', '2017-08-21 20:09:08'),
-(181, 1, 20100000, 'Luis Raga', '2017-08-21 20:09:08'),
-(220, 2, 393260000, 'Luis Raga', '2017-08-21 21:32:04'),
-(221, 2, 393260000, 'Luis Raga', '2017-08-21 21:32:04'),
-(222, 1, 20000, 'Luis Raga', '2017-08-21 21:37:03'),
-(223, 1, 20000, 'Luis Raga', '2017-08-21 21:37:03'),
-(224, 1, 20000, 'Luis Raga', '2017-08-21 21:39:13'),
-(225, 1, 20000, 'Luis Raga', '2017-08-21 21:39:13'),
-(226, 1, 20000, 'Luis Raga', '2017-08-21 21:39:23'),
-(227, 1, 20000, 'Luis Raga', '2017-08-21 21:39:23'),
-(228, 1, 20000, 'Luis Raga', '2017-08-21 21:39:38'),
-(229, 1, 20000, 'Luis Raga', '2017-08-21 21:39:38'),
-(232, 1, 20000, 'Luis Raga', '2017-08-21 21:40:15'),
-(233, 1, 20000, 'Luis Raga', '2017-08-21 21:40:15'),
-(234, 1, 20000, 'Luis Raga', '2017-08-21 21:40:21'),
-(235, 1, 20000, 'Luis Raga', '2017-08-21 21:40:21'),
-(236, 1, 50000, 'Luis Raga', '2017-08-21 21:40:35'),
-(237, 1, 50000, 'Luis Raga', '2017-08-21 21:40:35'),
-(238, 1, 50000, 'Luis Raga', '2017-08-21 21:40:41'),
-(239, 1, 50000, 'Luis Raga', '2017-08-21 21:40:41'),
-(240, 1, 50000, 'Luis Raga', '2017-08-21 21:40:46'),
-(241, 1, 50000, 'Luis Raga', '2017-08-21 21:40:46'),
-(242, 1, 50000, 'Luis Raga', '2017-08-21 21:40:52'),
-(243, 1, 50000, 'Luis Raga', '2017-08-21 21:40:52'),
-(244, 1, 50000, 'Luis Raga', '2017-08-21 21:40:54'),
-(245, 1, 50000, 'Luis Raga', '2017-08-21 21:40:54'),
-(246, 1, 50000, 'Luis Raga', '2017-08-21 21:40:58'),
-(247, 1, 50000, 'Luis Raga', '2017-08-21 21:40:58'),
-(250, 2, 20000, 'Luis Raga', '2017-08-21 21:41:22'),
-(251, 2, 20000, 'Luis Raga', '2017-08-21 21:41:22'),
-(252, 2, 20000, 'Luis Raga', '2017-08-21 21:41:28'),
-(253, 2, 20000, 'Luis Raga', '2017-08-21 21:41:28'),
-(254, 2, 20000, 'Luis Raga', '2017-08-21 21:41:32'),
-(255, 2, 20000, 'Luis Raga', '2017-08-21 21:41:32'),
-(256, 2, 20000, 'Luis Raga', '2017-08-21 21:41:36'),
-(257, 2, 20000, 'Luis Raga', '2017-08-21 21:41:36'),
-(258, 2, 20000, 'Luis Raga', '2017-08-21 21:41:41'),
-(259, 2, 20000, 'Luis Raga', '2017-08-21 21:41:41'),
-(260, 2, 210000, 'Luis Raga', '2017-08-22 01:47:38'),
-(261, 2, 210000, 'Luis Raga', '2017-08-22 01:47:38'),
-(262, 1, 90390000, 'Luis Raga', '2017-08-24 00:31:54'),
-(263, 1, 90390000, 'Luis Raga', '2017-08-24 00:32:27'),
-(264, 1, 90390000, 'Luis Raga', '2017-08-24 00:33:09'),
-(265, 1, 1242200000, 'Luis Raga', '2017-08-24 00:40:06'),
-(266, 1, 50000, 'Luis Raga', '2017-08-24 01:36:04'),
-(267, 1, 194310000, 'Luis Raga', '2017-08-24 01:37:01'),
-(268, 1, 472290000, 'Luis Raga', '2017-08-24 02:02:42'),
-(269, 1, 451240000, 'Luis Raga', '2017-08-25 02:07:13'),
-(270, 2, 808790000, 'Luis Raga', '2017-08-26 12:39:01'),
-(271, 2, 2147483647, 'Luis Raga', '2017-08-26 12:40:11'),
-(272, 2, 2147483647, 'Luis Raga', '2017-08-26 12:40:28'),
-(273, 1, 306080000, 'Luis Raga', '2017-08-26 15:09:19'),
-(274, 1, 50000, 'Luis Raga', '2017-08-26 15:15:52'),
-(275, 1, 120000, 'Luis Raga', '2017-08-26 15:16:08'),
-(276, 1, 120000, 'Luis Raga', '2017-08-26 15:16:34'),
-(277, 1, 29250000, 'Luis Raga', '2017-08-26 15:17:33'),
-(278, 1, 50000, 'Luis Raga', '2017-08-26 15:21:30'),
-(279, 2, 50000, 'Luis Raga', '2017-08-26 15:21:50'),
-(280, 2, 50000, 'Luis Raga', '2017-08-26 15:22:58'),
-(281, 1, 50000, 'Luis Raga', '2017-08-26 15:26:48'),
-(282, 1, 50000, 'Luis Raga', '2017-08-26 15:28:50'),
-(283, 1, 50000, 'Luis Raga', '2017-08-26 15:29:14'),
-(284, 1, 50000, 'Luis Raga', '2017-08-26 15:29:23'),
-(285, 2, 50000, 'Luis Raga', '2017-08-26 15:31:52'),
-(286, 2, 50000, 'Luis Raga', '2017-08-27 12:05:56'),
-(287, 1, 1602320000, 'Luis Raga', '2017-08-27 12:06:46'),
-(288, 1, 1602320000, 'Luis Raga', '2017-08-27 12:08:04'),
-(289, 2, 40110000, 'Luis Raga', '2017-08-27 12:27:10'),
-(290, 2, 50000, 'Luis Raga', '2017-08-27 12:35:34'),
-(291, 2, 50000, 'Luis Raga', '2017-08-27 12:39:52'),
-(292, 2, 50000, 'Luis Raga', '2017-08-27 12:40:04'),
-(293, 1, 50000, 'Luis Raga', '2017-08-27 12:41:09'),
-(294, 1, 50000, 'Luis Raga', '2017-08-27 12:42:56'),
-(295, 1, 50000, 'Luis Raga', '2017-08-27 12:43:36'),
-(296, 1, 20000, 'Luis Raga', '2017-08-27 12:44:16'),
-(297, 1, 50000, 'Luis Raga', '2017-08-27 12:44:37'),
-(298, 1, 29100000, 'Luis Raga', '2017-08-27 12:45:04'),
-(299, 1, 20000, 'Luis Raga', '2017-08-27 12:45:59'),
-(300, 2, 20000, 'Luis Raga', '2017-08-27 12:47:26'),
-(301, 1, 50000, 'Luis Raga', '2017-08-27 12:52:12'),
-(302, 1, 50000, 'Luis Raga', '2017-08-27 12:53:07'),
-(303, 1, 20000, 'Luis Raga', '2017-08-27 12:53:30'),
-(304, 2, 50000, 'Luis Raga', '2017-08-27 12:54:24'),
-(305, 1, 20000, 'Luis Raga', '2017-08-27 12:55:23'),
-(306, 1, 20000, 'Luis Raga', '2017-08-27 12:57:03'),
-(307, 1, 20000, 'Luis Raga', '2017-08-27 12:57:58'),
-(308, 1, 29000000, 'Luis Raga', '2017-08-27 12:59:21'),
-(309, 1, 20000, 'Luis Raga', '2017-08-27 12:59:39'),
-(310, 1, 20000, 'Luis Raga', '2017-08-27 13:00:59'),
-(311, 1, 50000, 'Luis Raga', '2017-08-27 13:01:53'),
-(312, 1, 50000, 'Luis Raga', '2017-08-27 13:02:47'),
-(313, 1, 20000, 'Luis Raga', '2017-08-27 13:04:17'),
-(314, 2, 20000, 'Luis Raga', '2017-08-27 13:04:55'),
-(315, 2, 20000, 'Luis Raga', '2017-08-27 13:05:25'),
-(316, 1, 20000, 'Luis Raga', '2017-08-27 13:06:10'),
-(317, 1, 90000, 'Luis Raga', '2017-08-27 13:07:17'),
-(318, 2, 20000, 'Luis Raga', '2017-08-27 13:07:39'),
-(319, 1, 20000, 'Luis Raga', '2017-08-27 13:08:53'),
-(320, 1, 50000, 'Luis Raga', '2017-08-27 13:11:06'),
-(321, 1, 50000, 'Luis Raga', '2017-08-27 13:12:10'),
-(322, 1, 50000, 'Luis Raga', '2017-08-27 13:13:23'),
-(323, 1, 20000, 'Luis Raga', '2017-08-27 13:14:45'),
-(324, 1, 50000, 'Luis Raga', '2017-08-27 13:15:33'),
-(325, 1, 20000, 'Luis Raga', '2017-08-27 13:16:08'),
-(326, 1, 50000, 'Luis Raga', '2017-08-27 13:17:56'),
-(327, 1, 50000, 'Luis Raga', '2017-08-27 13:19:45'),
-(328, 1, 50000, 'Luis Raga', '2017-08-27 13:21:50'),
-(329, 1, 50000, 'Luis Raga', '2017-08-27 13:22:06'),
-(330, 1, 20000, 'Luis Raga', '2017-08-27 13:27:41'),
-(331, 1, 20000, 'Luis Raga', '2017-08-27 13:29:18'),
-(332, 2, 20000, 'Luis Raga', '2017-08-27 13:30:00'),
-(333, 2, 50000, 'Luis Raga', '2017-08-27 13:32:56'),
-(334, 1, 20000, 'Luis Raga', '2017-08-27 13:34:06'),
-(335, 1, 20000, 'Luis Raga', '2017-08-27 13:35:14'),
-(336, 1, 50000, 'Luis Raga', '2017-08-27 13:36:32'),
-(337, 1, 50000, 'Luis Raga', '2017-08-27 13:37:46'),
-(338, 1, 20000, 'Luis Raga', '2017-08-27 13:38:15'),
-(339, 1, 20000, 'Luis Raga', '2017-08-27 13:40:00'),
-(340, 2, 50000, 'Luis Raga', '2017-08-27 13:40:33'),
-(341, 1, 50000, 'Luis Raga', '2017-08-27 13:42:46'),
-(342, 1, 50000, 'Luis Raga', '2017-08-27 13:43:20'),
-(343, 1, 50000, 'Luis Raga', '2017-08-27 13:45:28'),
-(344, 1, 50000, 'Luis Raga', '2017-08-27 13:47:10'),
-(345, 1, 50000, 'Luis Raga', '2017-08-27 13:48:55'),
-(346, 2, 50000, 'Luis Raga', '2017-08-27 13:50:21'),
-(347, 1, 20000, 'Luis Raga', '2017-08-27 13:52:17'),
-(348, 1, 50000, 'Luis Raga', '2017-08-27 13:52:46'),
-(349, 1, 50000, 'Luis Raga', '2017-08-27 13:53:21'),
-(350, 1, 50000, 'Luis Raga', '2017-08-27 13:53:28'),
-(351, 1, 50000, 'Luis Raga', '2017-08-27 13:54:21'),
-(352, 1, 50000, 'Luis Raga', '2017-08-27 13:54:58'),
-(353, 1, 50000, 'Luis Raga', '2017-08-27 13:55:22'),
-(354, 1, 50000, 'Luis Raga', '2017-08-27 13:55:50'),
-(355, 1, 20000, 'Luis Raga', '2017-08-27 13:56:06'),
-(356, 1, 20000, 'Luis Raga', '2017-08-27 13:56:18'),
-(357, 1, 20000, 'Luis Raga', '2017-08-27 13:58:09'),
-(358, 1, 20000, 'Luis Raga', '2017-08-27 13:59:16'),
-(359, 1, 29000000, 'Luis Raga', '2017-08-27 13:59:35'),
-(360, 2, 50000, 'Luis Raga', '2017-08-27 14:03:05'),
-(361, 2, 50000, 'Luis Raga', '2017-08-27 14:05:44'),
-(362, 1, 29000000, 'Luis Raga', '2017-08-27 14:07:23'),
-(363, 2, 50000, 'Luis Raga', '2017-08-27 14:08:44'),
-(364, 2, 20000, 'Luis Raga', '2017-08-27 14:09:14'),
-(365, 1, 50000, 'Luis Raga', '2017-08-27 14:09:58'),
-(366, 1, 196290000, 'Luis Raga', '2017-08-27 23:36:36'),
-(367, 1, 50000, 'Luis Raga', '2017-08-27 23:41:01'),
-(368, 1, 50000, 'Luis Raga', '2017-08-27 23:42:05'),
-(369, 1, 20000, 'Luis Raga', '2017-08-27 23:46:06'),
-(370, 1, 29000000, 'Luis Raga', '2017-08-27 23:49:54'),
-(371, 1, 50000, 'Luis Raga', '2017-08-28 00:01:50'),
-(372, 1, 20000, 'Luis Raga', '2017-08-28 00:02:45'),
-(373, 2, 20000, 'Luis Raga', '2017-08-28 00:05:03'),
-(374, 2, 20000, 'Luis Raga', '2017-08-28 00:05:26'),
-(375, 2, 50000, 'Luis Raga', '2017-08-28 00:08:30'),
-(376, 2, 50000, 'Luis Raga', '2017-08-28 00:09:01'),
-(377, 2, 29000000, 'Luis Raga', '2017-08-28 00:13:21'),
-(378, 2, 29000000, 'Luis Raga', '2017-08-28 00:14:41'),
-(379, 1, 29000000, 'Luis Raga', '2017-08-28 00:15:23'),
-(380, 2, 50000, 'Luis Raga', '2017-08-28 00:15:46'),
-(381, 1, 29000000, 'Luis Raga', '2017-08-28 00:24:12'),
-(382, 1, 50000, 'Luis Raga', '2017-08-28 00:26:29'),
-(383, 1, 50000, 'Luis Raga', '2017-08-28 00:38:10'),
-(384, 1, 20000, 'Luis Raga', '2017-08-28 00:41:27'),
-(385, 1, 50000, 'Luis Raga', '2017-08-28 00:44:00'),
-(386, 1, 50000, 'Luis Raga', '2017-08-28 00:44:30'),
-(387, 2, 50000, 'Luis Raga', '2017-08-28 00:45:21'),
-(388, 2, 50000, 'Luis Raga', '2017-08-28 00:54:38'),
-(389, 2, 50000, 'Luis Raga', '2017-08-28 00:55:13'),
-(390, 1, 20000, 'Luis Raga', '2017-08-28 00:55:35'),
-(391, 1, 2147483647, 'Luis Raga', '2017-09-02 16:22:48'),
-(392, 3, 20160000, 'Luis Raga', '2017-09-03 01:16:07'),
-(393, 2, 20000, 'Luis Raga', '2017-09-03 01:16:49'),
-(394, 1, 50000, 'Luis Raga', '2017-09-03 01:17:26'),
-(395, 1, 50000, 'Luis Raga', '2017-09-03 01:19:44'),
-(396, 1, 29000000, 'Luis Raga', '2017-09-03 01:20:19'),
-(397, 4, 20000, 'Luis Raga', '2017-09-03 01:22:07'),
-(398, 1, 20000, 'Luis Raga', '2017-09-03 01:23:03'),
-(399, 1, 50000, 'Luis Raga', '2017-09-03 01:24:26'),
-(400, 1, 20000, 'Luis Raga', '2017-09-03 01:25:10'),
-(401, 1, 50000, 'Luis Raga', '2017-09-03 01:26:32'),
-(402, 1, 29000000, 'Luis Raga', '2017-09-03 01:26:47'),
-(403, 2, 29000000, 'Luis Raga', '2017-09-03 01:28:02'),
-(404, 1, 50000, 'Luis Raga', '2017-09-03 01:31:28'),
-(405, 2, 29000000, 'Luis Raga', '2017-09-03 01:32:02'),
-(406, 2, 20000, 'Luis Raga', '2017-09-03 01:32:39'),
-(407, 2, 50000, 'Luis Raga', '2017-09-03 01:33:23'),
-(408, 1, 50000, 'Luis Raga', '2017-09-03 01:34:29'),
-(409, 1, 20000, 'Luis Raga', '2017-09-03 01:34:57'),
-(410, 2, 20000, 'Luis Raga', '2017-09-03 01:35:07'),
-(411, 2, 50000, 'Luis Raga', '2017-09-03 16:35:35'),
-(412, 1, 20000, 'Luis Raga', '2017-09-03 17:07:07'),
-(413, 2, 20000, 'Luis Raga', '2017-09-03 17:07:34'),
-(414, 2, 50000, 'Luis Raga', '2017-09-03 17:08:36'),
-(415, 2, 20000, 'Luis Raga', '2017-09-03 17:09:31'),
-(416, 1, 50000, 'Luis Raga', '2017-09-03 17:10:10'),
-(417, 1, 50000, 'Luis Raga', '2017-09-03 17:10:41'),
-(418, 3, 20000, 'Luis Raga', '2017-09-03 17:11:07'),
-(419, 1, 20000, 'Luis Raga', '2017-09-03 17:14:36'),
-(420, 2, 20000, 'Luis Raga', '2017-09-03 17:15:40'),
-(421, 1, 20000, 'Luis Raga', '2017-09-03 17:17:45'),
-(422, 2, 20000, 'Luis Raga', '2017-09-03 17:18:52'),
-(423, 2, 20000, 'Luis Raga', '2017-09-03 17:19:43'),
-(424, 2, 20000, 'Luis Raga', '2017-09-03 17:20:50'),
-(425, 1, 20000, 'Luis Raga', '2017-09-03 17:21:42'),
-(426, 1, 20000, 'Luis Raga', '2017-09-03 17:22:08'),
-(427, 3, 29000000, 'Luis Raga', '2017-09-03 17:22:45'),
-(428, 1, 50000, 'Luis Raga', '2017-09-03 17:24:01'),
-(429, 1, 20000, 'Luis Raga', '2017-09-03 17:24:44'),
-(430, 1, 50000, 'Luis Raga', '2017-09-03 17:25:40'),
-(431, 2, 29000000, 'Luis Raga', '2017-09-03 17:27:02'),
-(432, 1, 20000, 'Luis Raga', '2017-09-03 17:27:34'),
-(433, 2, 29000000, 'Luis Raga', '2017-09-03 17:28:31'),
-(434, 1, 50000, 'Luis Raga', '2017-09-03 17:29:50'),
-(435, 1, 50000, 'Luis Raga', '2017-09-03 17:32:38'),
-(436, 1, 50000, 'Luis Raga', '2017-09-03 17:33:24'),
-(437, 1, 50000, 'Luis Raga', '2017-09-03 17:35:14'),
-(438, 1, 20000, 'Luis Raga', '2017-09-03 17:37:08'),
-(439, 2, 50000, 'Luis Raga', '2017-09-03 17:37:42'),
-(440, 1, 20000, 'Luis Raga', '2017-09-03 17:39:44'),
-(441, 1, 20000, 'Luis Raga', '2017-09-03 17:40:28'),
-(442, 1, 20000, 'Luis Raga', '2017-09-03 17:41:44'),
-(443, 1, 29000000, 'Luis Raga', '2017-09-03 17:43:04'),
-(444, 2, 20000000, 'Luis Raga', '2017-09-03 17:44:07'),
-(445, 2, 50000, 'Luis Raga', '2017-09-03 17:44:40'),
-(446, 2, 50000, 'Luis Raga', '2017-09-03 17:45:16'),
-(447, 2, 29000000, 'Luis Raga', '2017-09-03 17:46:24'),
-(448, 2, 20000, 'Luis Raga', '2017-09-03 17:46:38'),
-(449, 1, 50000, 'Luis Raga', '2017-09-03 17:47:08'),
-(450, 2, 50000, 'Luis Raga', '2017-09-03 17:48:12'),
-(451, 1, 20000, 'Luis Raga', '2017-09-03 17:49:46'),
-(452, 1, 20000, 'Luis Raga', '2017-09-03 17:52:01'),
-(453, 1, 50000, 'Luis Raga', '2017-09-03 18:03:17'),
-(454, 1, 50000, 'Luis Raga', '2017-09-03 18:03:29'),
-(455, 2, 20000, 'Luis Raga', '2017-09-03 18:58:28'),
-(456, 2, 50000, 'Luis Raga', '2017-09-04 22:43:33'),
-(457, 1, 29000000, 'Luis Raga', '2017-09-04 22:44:48'),
-(458, 1, 50000, 'Luis Raga', '2017-09-04 22:50:57'),
-(459, 1, 98170000, 'Luis Raga', '2017-09-04 22:52:18'),
-(460, 1, 98170000, 'Luis Raga', '2017-09-04 22:52:30'),
-(461, 1, 98170000, 'Luis Raga', '2017-09-04 22:52:35'),
-(462, 1, 226170000, 'Luis Raga', '2017-09-04 22:52:50'),
-(463, 1, 29040000, 'Luis Raga', '2017-09-04 22:53:59'),
-(464, 1, 20000, 'Luis Raga', '2017-09-04 22:56:47'),
-(465, 2, 116300000, 'Luis Raga', '2017-09-04 22:59:22'),
-(466, 2, 20000, 'Luis Raga', '2017-09-04 23:01:03'),
-(467, 1, 20000, 'Luis Raga', '2017-09-04 23:03:35'),
-(468, 2, 20000, 'Luis Raga', '2017-09-04 23:04:06'),
-(469, 2, 70060000, 'Luis Raga', '2017-09-04 23:17:25'),
-(470, 1, 20000, 'Luis Raga', '2017-09-09 22:29:17');
+INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `usuario_id`, `fecha_creado`) VALUES
+(1, 1, 20040000, 1, '2017-09-13 20:18:51'),
+(2, 2, 40050000, 1, '2017-09-13 20:19:31'),
+(3, 2, 80000000, 1, '2017-09-13 20:24:49'),
+(4, 2, 20000000, 1, '2017-09-13 20:26:41'),
+(5, 2, 30040000, 1, '2017-09-13 20:27:34'),
+(6, 1, 30040000, 1, '2017-09-13 20:29:18'),
+(7, 2, 20000, 1, '2017-09-13 20:29:50'),
+(8, 2, 29040000, 1, '2017-09-13 20:42:35'),
+(9, 1, 78000000, 1, '2017-09-13 20:43:23'),
+(10, 3, 78000000, 1, '2017-09-13 20:45:21'),
+(11, 2, 78000000, 1, '2017-09-13 20:46:32'),
+(12, 3, 117100000, 1, '2017-09-13 20:47:35'),
+(13, 3, 29000000, 1, '2017-09-13 20:50:07'),
+(14, 2, 20000, 1, '2017-09-13 20:50:40'),
+(15, 3, 20000, 1, '2017-09-13 20:51:14'),
+(16, 2, 50000, 1, '2017-09-13 20:55:05'),
+(17, 2, 88000000, 1, '2017-09-13 20:57:18'),
+(18, 3, 50000, 1, '2017-09-13 20:59:11'),
+(19, 1, 78000000, 1, '2017-09-13 21:34:14'),
+(20, 2, 29000000, 1, '2017-09-13 23:35:13');
 
 -- --------------------------------------------------------
 
@@ -701,21 +149,22 @@ INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `nombre_creador`,
 
 CREATE TABLE `productos_funes` (
   `id` int(11) NOT NULL,
-  `codigo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` int(11) NOT NULL,
-  `descripcion` varchar(300) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `codigo` int(11) NOT NULL,
+  `precio` double NOT NULL,
+  `descripcion` varchar(3000) COLLATE utf8_bin NOT NULL,
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `productos_funes`
 --
 
-INSERT INTO `productos_funes` (`id`, `codigo`, `precio`, `descripcion`) VALUES
-(1, '101224', 50000, 'Tractor de tuerca semicromadas y llantas duracell.\r\n				        \r\n				        \r\n				        \r\n				        \r\n				        '),
-(3, '10202234123', 20000, 'Mula de caballos, con puestos para dos.\r\n				        \r\n				        '),
-(29, '126387625', 29000000, 'Moto de agua con resorte acomodable.\r\n				        \r\n				        '),
-(30, '126387624', 20000000, 'Moto de agua con resorte acomodable.      \r\n				        '),
-(31, '1263907624', 30000000, 'Moto de agua con resorte acomodable.');
+INSERT INTO `productos_funes` (`id`, `codigo`, `precio`, `descripcion`, `usuario_id`) VALUES
+(1, 101224, 50000, 'Tractor de tuerca semicromadas y llantas duracell.', 1),
+(7, 126387624, 20000000, 'Moto de agua con resorte acomodable.', 1),
+(5, 126387625, 29000000, 'Moto de agua con resorte acomodable', 1),
+(9, 1263907624, 30000000, 'Moto de agua con resorte acomodable.', 1),
+(3, 2147483647, 20000, 'Mula de caballos, con puestos para dos.', 1);
 
 -- --------------------------------------------------------
 
@@ -733,6 +182,50 @@ CREATE TABLE `remitos_funes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sistema`
+--
+
+CREATE TABLE `sistema` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_bin NOT NULL,
+  `direccion` varchar(100) COLLATE utf8_bin NOT NULL,
+  `logo` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nota` varchar(200) COLLATE utf8_bin NOT NULL,
+  `representante_legal` varchar(40) COLLATE utf8_bin NOT NULL,
+  `cuit` varchar(20) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `sistema`
+--
+
+INSERT INTO `sistema` (`id`, `nombre`, `direccion`, `logo`, `nota`, `representante_legal`, `cuit`) VALUES
+(1, 'Funes', 'Bogota', 'funes.jpg', 'bien', '', ''),
+(2, 'Agrocentro', 'Argentona', 'agrocentro.jpg', 'bien', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_cliente`
+--
+
+CREATE TABLE `tipo_cliente` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(40) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `tipo_cliente`
+--
+
+INSERT INTO `tipo_cliente` (`id`, `nombre`) VALUES
+(1, 'Cliente'),
+(2, 'Proveedor'),
+(3, 'Cliente-Proveedor');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios_funes`
 --
 
@@ -741,8 +234,9 @@ CREATE TABLE `usuarios_funes` (
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `usuario` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `clave` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `biografia` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
-  `sistema` int(30) NOT NULL,
+  `sistema_id` int(11) NOT NULL,
   `cargo` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `img` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
@@ -753,9 +247,9 @@ CREATE TABLE `usuarios_funes` (
 -- Volcado de datos para la tabla `usuarios_funes`
 --
 
-INSERT INTO `usuarios_funes` (`id`, `nombre`, `apellidos`, `usuario`, `biografia`, `sistema`, `cargo`, `correo`, `img`, `codigo`) VALUES
-(1, 'Luis Fernando', 'Raga Renteria', 'Lraga', 'Apacionado por el desarrollo web moderno...			  			', 0, 'Desarrollador', 'lraga@grupofunes.com', 'Luis Fernando Raga_1.jpg', 1020),
-(2, 'Luis Fernando', 'e', '', 'sdasdfsd\n', 0, '', 'whary11@gmail.com', '', 1040);
+INSERT INTO `usuarios_funes` (`id`, `nombre`, `apellidos`, `usuario`, `clave`, `biografia`, `sistema_id`, `cargo`, `correo`, `img`, `codigo`) VALUES
+(1, 'Luis Fernando', 'Raga Renteria', 'Lraga', 'ragas', '			  				Apasionado Por el desarrollo web\n			  						  						  			', 1, 'Desarrollador', 'whary11@gmail.com', 'Luis Fernando Raga_1.jpg', 1040),
+(2, 'David', 'Raga Renteria', 'admin', 'admin', '  							  							  							  							  							  							  							  							  							  							  				sdasdfsdhggggg\n			  						  						  						  						  						  						  						  						  						  						  			', 2, 'empresario', 'da-vo1996@hotmail.com', 'David_2.jpg', 1041);
 
 --
 -- Índices para tablas volcadas
@@ -765,6 +259,16 @@ INSERT INTO `usuarios_funes` (`id`, `nombre`, `apellidos`, `usuario`, `biografia
 -- Indices de la tabla `clientes_funes`
 --
 ALTER TABLE `clientes_funes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cuit` (`cuit`),
+  ADD KEY `tipo_cliente_id` (`tipo_cliente_id`),
+  ADD KEY `condicion_iva_id` (`condicion_iva_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `condicion_iva`
+--
+ALTER TABLE `condicion_iva`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -773,20 +277,23 @@ ALTER TABLE `clientes_funes`
 ALTER TABLE `detalle_presupuesto_funes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_presupuesto` (`id_presupuesto`),
-  ADD KEY `id_producto` (`id_producto`);
+  ADD KEY `id_producto` (`codigo_producto`);
 
 --
 -- Indices de la tabla `presupuestos_funes`
 --
 ALTER TABLE `presupuestos_funes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cliente` (`cliente_id`);
+  ADD KEY `cliente` (`cliente_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `productos_funes`
 --
 ALTER TABLE `productos_funes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`codigo`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `remitos_funes`
@@ -795,10 +302,23 @@ ALTER TABLE `remitos_funes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `sistema`
+--
+ALTER TABLE `sistema`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_cliente`
+--
+ALTER TABLE `tipo_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios_funes`
 --
 ALTER TABLE `usuarios_funes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sistema_id` (`sistema_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -808,27 +328,42 @@ ALTER TABLE `usuarios_funes`
 -- AUTO_INCREMENT de la tabla `clientes_funes`
 --
 ALTER TABLE `clientes_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `condicion_iva`
+--
+ALTER TABLE `condicion_iva`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `detalle_presupuesto_funes`
 --
 ALTER TABLE `detalle_presupuesto_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `presupuestos_funes`
 --
 ALTER TABLE `presupuestos_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=471;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `productos_funes`
 --
 ALTER TABLE `productos_funes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `remitos_funes`
 --
 ALTER TABLE `remitos_funes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `sistema`
+--
+ALTER TABLE `sistema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tipo_cliente`
+--
+ALTER TABLE `tipo_cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_funes`
 --
@@ -839,17 +374,37 @@ ALTER TABLE `usuarios_funes`
 --
 
 --
+-- Filtros para la tabla `clientes_funes`
+--
+ALTER TABLE `clientes_funes`
+  ADD CONSTRAINT `clientes_funes_ibfk_1` FOREIGN KEY (`condicion_iva_id`) REFERENCES `condicion_iva` (`id`),
+  ADD CONSTRAINT `clientes_funes_ibfk_2` FOREIGN KEY (`tipo_cliente_id`) REFERENCES `tipo_cliente` (`id`),
+  ADD CONSTRAINT `clientes_funes_ibfk_3` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_funes` (`id`);
+
+--
 -- Filtros para la tabla `detalle_presupuesto_funes`
 --
 ALTER TABLE `detalle_presupuesto_funes`
-  ADD CONSTRAINT `detalle_presupuesto_funes_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos_funes` (`id`),
-  ADD CONSTRAINT `detalle_presupuesto_funes_ibfk_2` FOREIGN KEY (`id_presupuesto`) REFERENCES `presupuestos_funes` (`id`);
+  ADD CONSTRAINT `detalle_presupuesto_funes_ibfk_2` FOREIGN KEY (`id_presupuesto`) REFERENCES `presupuestos_funes` (`id`),
+  ADD CONSTRAINT `detalle_presupuesto_funes_ibfk_3` FOREIGN KEY (`codigo_producto`) REFERENCES `productos_funes` (`codigo`);
 
 --
 -- Filtros para la tabla `presupuestos_funes`
 --
 ALTER TABLE `presupuestos_funes`
-  ADD CONSTRAINT `presupuestos_funes_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes_funes` (`id`);
+  ADD CONSTRAINT `presupuestos_funes_ibfk_3` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_funes` (`id`);
+
+--
+-- Filtros para la tabla `productos_funes`
+--
+ALTER TABLE `productos_funes`
+  ADD CONSTRAINT `productos_funes_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_funes` (`id`);
+
+--
+-- Filtros para la tabla `usuarios_funes`
+--
+ALTER TABLE `usuarios_funes`
+  ADD CONSTRAINT `usuarios_funes_ibfk_1` FOREIGN KEY (`sistema_id`) REFERENCES `sistema` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

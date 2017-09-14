@@ -5,5 +5,6 @@
 
 		$eliminar = "DELETE FROM `productos_funes` WHERE id = '$_POST[id_producto]'";
 		$db->abc($eliminar);
+		print(1);
 	}
 ?>

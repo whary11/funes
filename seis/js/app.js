@@ -75,6 +75,7 @@ $(document).ready(function(){ });
 					$(".correo3").removeClass("has-error");
 				}else{
 					$(".telefono3").removeClass("has-error");
+
 					$.ajax({
 						url: 'modulos/cliente/insertar.php',
 						type: 'POST',
@@ -82,8 +83,10 @@ $(document).ready(function(){ });
 						data:$('#form_nuevocliente').serialize(),
 					})
 					.done(function(data) {
+						console.log(data)
 						alert('Datos insertados correctamente');
 						$(".limpiar").val("");
+
 					})
 					.fail(function() {
 						console.log("error");
@@ -185,7 +188,8 @@ function llenar_modal(id){
 }
 
 function eliminar_producto(id){
-	$('#elimi_producto').click(function(event) {
+	alert(id)
+	// $('#elimi_producto').click(function(event) {
 		event.preventDefault();
 		$.ajax({
 		url: 'modulos/producto/eliminar.php',
@@ -193,9 +197,12 @@ function eliminar_producto(id){
 		data:{id_producto:id},
 		})
 		.done(function(respuesta){
-			 setTimeout("document.location=document.location");
+			if (respuesta == true) {
+				 setTimeout("document.location=document.location");
+			}
+			
 		})
-	});	
+	// });	
 }
 function editar_producto(){
 	$("#formeditar").submit(function(event) {

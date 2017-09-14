@@ -1,5 +1,6 @@
 <?php 
 	require_once("../../controladores/conexion/conn.php");
+	session_start();
 	$db = new conexion();
 	// print("Hola Mundo, funciona el código");
 
@@ -8,7 +9,7 @@
 	$id_presupuesto = "";
 	$detalle_presupuesto = $_POST["presupuesto"];
 
-	$insertar = "INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `nombre_creador`, `fecha_creado`) VALUES (NULL, '$cliente_id', '$total', 'Luis Raga', CURRENT_TIMESTAMP);";
+	$insertar = "INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `usuario_id`, `fecha_creado`) VALUES (NULL, '$cliente_id', '$total', '$_SESSION[usuario]', CURRENT_TIMESTAMP);";
 	$db->abc($insertar);
 
 	$buscar="SELECT id FROM presupuestos_funes WHERE id = (SELECT MAX(id) FROM presupuestos_funes)";
@@ -19,13 +20,17 @@
 		}
 		
 		for ($i=0; $i<count($detalle_presupuesto[0]); $i++) { 
-					$id_produ = $detalle_presupuesto[0][$i];
+					$codigo_produ = $detalle_presupuesto[0][$i];
 					$precio = $detalle_presupuesto[1][$i];
-					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `id_producto`, `precio`) VALUES (NULL,'$id_presupuesto','$id_produ','$precio')";
-					$db->abc($query);	
-						
+					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio')";
+					$db->abc($query);
+				// print($id_presupuesto);	
+				// var_dump($id_produ);
+				// var_dump($precio);
+				// var_dump($db);			
 		}
-		var_dump($precio);
+		// print($id_presupuesto);
+		
 		///El cero significa que hubo un error
 	}else{
 		print(0);

@@ -1,3 +1,8 @@
+<?php 
+        if (!isset($_SESSION["usuario"])){
+        header("Location:../../index.php");
+    }
+ ?>
 <h3>Nuevo Cliente</h3>
 	<form role="form" class="row animated slideInUp" id="form_nuevocliente" method="POST">
 	    <div class="form-group col-md-6 razon">
@@ -9,17 +14,28 @@
 	        <input class="form-control limpiar" placeholder="Escribe aquí..." name="cuil" id="cuil">
 	    </div>
 	    <div class="form-group col-md-6 cliente">
-	        <label for="cliente">Tipo Cliente</label>
+	        <label for="cliente">Tipo de Cliente</label>
 	        <select class="form-control" name="cliente" id="cliente">
-	        	<option>Seleccione un tipo de cliente</option>
-	            <option>1</option>
-	            <option>2</option>
-	            <option>3</option>
+	        	<?php
+                    $q = "SELECT * FROM tipo_cliente";
+                    $data = $db->leeTabla($q);
+                    for($i=0;$i<count($data);$i++){              	
+                		 print('<option  value="'.$data[$i]->id.'">'.utf8_encode($data	[$i]->nombre).'</option>');                  
+                    }
+     			?>
 	        </select>
 	    </div>
-	    <div class="form-group col-md-6 condicioniva">
-	        <label for="condicioniva">Condición IVA</label>
-	        <input type="text" class="form-control limpiar" placeholder="Escribe aquí..." id="condicioniva" name="condicioniva">
+	    <div class="form-group col-md-6 cliente">
+	        <label for="cliente">Condicion Iva</label>
+	        <select class="form-control" name="condicioniva" id="condicioniva">
+	        	<?php
+                    $q = "SELECT * FROM condicion_iva";
+                    $data = $db->leeTabla($q);
+                    for($i=0;$i<count($data);$i++){              	
+                		 print('<option value="'.$data[$i]->id.'">'.utf8_encode($data	[$i]->nombre).'</option>');
+                    }
+     			?>
+	        </select>
 	    </div>
 	    <div class="form-group col-md-6 direccion">
 	        <label for="direccion">Dirección Comercial</label>
@@ -35,7 +51,7 @@
 	    </div>
 	    <div class="form-group col-md-6 contacto1">
 	        <label for="contacto1">Nombre Contacto Principal</label>
-	        <input type="text" class="form-control limpiar" placeholder="Escribe aquí..." class="contacto1" id="contacto1">
+	        <input type="text" class="form-control limpiar" placeholder="Escribe aquí..." name="contacto1"  id="contacto1">
 	    </div>
 		<div class="form-group col-md-6 whatsapp">
 	        <label for="whatsapp">Whatsapp</label>
@@ -62,12 +78,12 @@
 	        <input type="email" class="form-control limpiar" placeholder="Escribe aquí..." name="correo3" id="correo3">
 	    </div>
 
-	    <div class="form-group col-md-6 telefono3 limpiar">
+	    <div class="form-group col-md-6 telefono3 ">
 	        <label for="telefono3">Teléfono 3</label>
-	        <input type="number" class="form-control" placeholder="Escribe aquí..." name="telefono3" id="telefono3">
+	        <input type="number" class="form-control limpiar" placeholder="Escribe aquí..." name="telefono3" id="telefono3">
 	    </div>
 	    <div class="col-md-12">
-	    	<button type="submit" class="btn btn-primary">
+	    	<button type="submit" class="btn btn-primary" id="s">
 	    		<span class="glyphicon glyphicon-send"></span>
 	    		 Guardar
 	    	</button>

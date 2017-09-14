@@ -1,7 +1,11 @@
  <?php 
-    require_once("controladores/conexion/conn.php");
+        if (!isset($_SESSION["usuario"])){
+        header("Location:../../index.php");
+    }
+     require_once("controladores/conexion/conn.php");
 	$db = new conexion();
-	$q = "SELECT * FROM productos_funes";
+	$q = "SELECT productos_funes.id,productos_funes.codigo,productos_funes.precio,productos_funes.descripcion,usuarios_funes.nombre FROM productos_funes
+        INNER JOIN usuarios_funes ON usuarios_funes.id = productos_funes.usuario_id";
 	$data = $db->leeTabla($q);
  ?>
 
@@ -19,6 +23,7 @@
                     <th>Código</th>
                     <th>Precio</th>
                     <th>Descripción</th>
+                    <th>Nombre creador</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -32,6 +37,8 @@
                     <td><?php print($data[$i]->codigo); ?></td>
                     <td><?php print($data[$i]->precio); ?></td>
                     <td><?php print(utf8_encode($data[$i]->descripcion)); ?></td>
+                    <td><?php print(utf8_encode($data[$i]->nombre)); ?></td>
+
                     <td class="center">
                         <a style="color: green; text-decoration:none;" href="" data-toggle="modal" data-target="#modalproducto" onclick="llenar_modal('<?php print($data[$i]->id) ?>');">
                             <i style="font-size:20px;display:block;text-align:center;" class="fa fa-edit"></i>

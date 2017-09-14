@@ -1,3 +1,8 @@
+<?php 
+        if (!isset($_SESSION["usuario"])){
+        header("Location:../../index.php");
+    }
+ ?>
 <!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
 <h4 class="success">Nuevo Presupuesto</h4>
 <div  id="alertas">
@@ -35,7 +40,7 @@
                     $q = "SELECT * FROM productos_funes";
                     $data = $db->leeTabla($q);
                     for($i=0;$i<count($data);$i++){ 
-                        print('<option id="'.utf8_encode($data[$i]->descripcion).'" value="'.$data[$i]->codigo.'">'.utf8_encode($data[$i]->descripcion).'</option>');
+                        print('<option class="e" id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->codigo.'">'.utf8_encode($data[$i]->descripcion).'</option>');
                     }
                  ?>
             </select>

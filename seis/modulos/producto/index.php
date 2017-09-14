@@ -1,4 +1,8 @@
-
+<?php 
+        if (!isset($_SESSION["usuario"])){
+        header("Location:../../index.php");
+    }
+ ?>
 <h3>Nuevo Producto</h3>
 <br><br>
 <form role="form" class="row animated slideInUp limpiar" id="formProductos" method="POST">
