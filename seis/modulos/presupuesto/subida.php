@@ -19,7 +19,6 @@ if (isset($_FILES)) {
 			array_push($adjuntos, $adjunto);
 		}
 	}
-
 		for ($i=0; $i < count($adjuntos); $i++) { 
 				$mail->addAttachment($adjuntos[$i][1], $adjuntos[$i][0]);
 			}	
@@ -27,18 +26,18 @@ if (isset($_FILES)) {
 		
 		$html = '<p>'.$mensaje.'</p>';
 		// $mail->isSMTP();
-		$mail->Host = 'mail.agenciawebbogota.com';
+		$mail->Host = 'mail.nutriendofs.com';
 		$mail->SMTPAuth = true;
-		$mail->Username = 'lraga@agenciawebbogota.com';
+		$mail->Username = 'lraga@nutriendofs.com';
 		$mail->Password = '1077444356';  //Contraseña del correo alectrónico
 		$mail->SMTPSecure = 'ssl';     
 		$mail->Port = 465;
 		/////////////Remitente/////////////////////////
-		$mail->setFrom('lraga@agenciawebbogota.com', utf8_decode('Luis Fernando Raga')); ///Remitente
+		$mail->setFrom('lraga@nutriendofs.com', utf8_decode('Luis Fernando Raga')); ///Remitente
 		////////////////Destinatarios ///////////////
 		// $mail->addAddress('whary11@gmail.com', 'Raga-Desarrollador Web');     // El nombre es opcional
 		$mail->addAddress('whary11@gmail.com', 'EQ');     // El nombre es opcional
-		$mail->addReplyTo('lraga@agenciawebbogota.com', 'Respuestas Luis - Pruebas Sistema Funes');   ////Dirección de respuesta es opcional
+		$mail->addReplyTo('lraga@nutriendofs.com', 'Respuestas Luis - Pruebas Sistema Funes');   ////Dirección de respuesta es opcional
 		/////copias de correo electrónico/////
 		// $mail->addCC('cc@example.com');
 		// $mail->addBCC('ejemplo@gmail.com', 'Raga-Desarrollador Web');	 ///Copia oculta
