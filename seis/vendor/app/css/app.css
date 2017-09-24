@@ -1,20 +1,14 @@
 .muestraresult{
 	position:absolute;
 	z-index:1;
-	margin-top: 38px;
-	margin-left:-202px;
-	display:none;
-	width:200px;
-	margin-bottom:-20px;
-	background-color:#d9edf7;
-	border-radius:5px;
-	text-align: center;
-	font-size: 10px;
-	padding-top:10px;
+	max-width:200px;
+	width: 10px;
 }
 
 .resultadoBus p{
 	font-size: 15px;
 }
-
-/*//////Nav*/
+.controlbuscador{
+	margin-bottom: -19.6px;
+	margin-left: -155px;
+}

@@ -35,8 +35,15 @@ function enviodatos(event){
 		.done(function(resp) {
 			console.log(resp);
 			if (resp == true) {
-				alert("Ya puesdes acceder al sistema Funes.")
-				window.location.replace("index2.php");
+				alertify.notify('Te estamos redireccionando',
+			      'custom', 5, function(){
+			      // console.log('dismissed');
+					window.location.replace("index2.php");
+			    });
+
+
+				
+				// alert("Ya puesdes acceder al sistema Funes.")
 			}else if (resp == false){
 				alert("No puesdes acceder al sistema.")
 			}

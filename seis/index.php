@@ -8,6 +8,9 @@
 <html lang="en">
 
 <head>
+    <style type="text/css">
+        .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
+    </style>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +21,7 @@
     <title>Inicio de sesión - Funes</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/alertify.css">
 </head>
 
 <body>
@@ -50,6 +54,7 @@
 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/app/js/alertify.min.js"></script> 
     <script type="text/javascript" src="js/accion_inicio.js"></script>
 
 </body>
