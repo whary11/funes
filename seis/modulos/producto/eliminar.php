@@ -3,8 +3,12 @@
 		require_once("../../controladores/conexion/conn.php");
 		$db = new conexion();
 
-		$eliminar = "DELETE FROM `productos_funes` WHERE id = '$_POST[id_producto]'";
+		$id = $_POST['id_producto'];
+
+		$eliminar = "DELETE FROM `productos_funes` WHERE id = $id";
 		$db->abc($eliminar);
 		print(1);
+	}else{
+		print(0);
 	}
 ?>

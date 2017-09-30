@@ -81,6 +81,6 @@
       </div>
     </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/accion_productos.js"></script>
 <!-- <script src="js/dropzone.js"></script> -->
 

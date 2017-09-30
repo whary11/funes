@@ -24,11 +24,7 @@
 					$cantidad = $detalle_presupuesto[1][$i];
 					$precio = $detalle_presupuesto[2][$i];
 					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`,`cantidad`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio','$cantidad')";
-					$db->abc($query);
-				// print($id_presupuesto);	
-				// var_dump($id_produ);
-				// var_dump($precio);
-				// var_dump($db);			
+					$db->abc($query);			
 		}
 	 print(1);
 		

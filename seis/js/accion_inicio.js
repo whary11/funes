@@ -14,7 +14,6 @@ function enviodatos(event){
 	var datos ={
 		'usuario':usuario,
 		'clave':clave,
-		// 'bandera':'Acceder'
 	}
 
 	if(usuario==""){
@@ -36,9 +35,9 @@ function enviodatos(event){
 			console.log(resp);
 			if (resp == true) {
 				alertify.notify('Te estamos redireccionando',
-			      'custom', 5, function(){
+			      'custom', 3, function(){
 			      // console.log('dismissed');
-					window.location.replace("index2.php");
+					window.location.replace("index2.php?modulo=perfil&elemento=index.php");
 			    });
 
 

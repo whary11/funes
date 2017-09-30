@@ -92,6 +92,7 @@ var precio="";
   function generar_presupuesto(){
     // $('#generar').click(function(){
     clientefin = parseInt($('#clientes').val());
+    // console.log(presupuesto)
     var dataInfo = {
       cliente:clientefin,
       presupuesto:presupuesto,
@@ -105,8 +106,8 @@ var precio="";
     })
     .done(function(data) {
     // console.log(id_produ)
-    // console.log(data);
-    if(data==true){
+    console.log(data);
+    if(parseInt(data)==1){
       // Se notifica al usuario que el presupuesto está listo para ser enviado
       alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
       alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
