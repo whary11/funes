@@ -13,6 +13,9 @@
 	$db->abc($insertar);
 
 	$buscar="SELECT id FROM presupuestos_funes WHERE id = (SELECT MAX(id) FROM presupuestos_funes)";
+
+
+	
 	if($data = $db->leeTabla($buscar)){
 
 		for ($i=0; $i <count($data); $i++) {
@@ -26,8 +29,7 @@
 					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`,`cantidad`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio','$cantidad')";
 					$db->abc($query);			
 		}
-	 print(1);
-		
+	 	print(1);	
 		///El cero significa que hubo un error
 	}else{
 		print(0);
