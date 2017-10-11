@@ -270,18 +270,23 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
+<!-- //Buscardor -->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input id="buscador" type="text" class="form-control" placeholder="Existe este cliente....?">
+                                <input id="buscador" type="text" class="form-control" placeholder="Busca un cliente..">
                                 <span class="input-group-btn">
-                            </span>
+                                </span>
+                            </div>
                             <!-- Terminar buscador -->
                             <div class="row muestraresult">
-
+                                <div class="card controlbuscador">
+                                  <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">'.$data[$i]->razon_social.'</li>
+                                  </ul>
+                                </div>
 
                                 
                             </div>
