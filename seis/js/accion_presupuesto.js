@@ -7,6 +7,7 @@ var sub = [];
 var total =0;
 var clientefin = 0;
 
+
 var precio="";
 // $(document).ready(function() {
     // $('#resultado').load("nuevoPresupuesto.php", function(){
@@ -82,11 +83,11 @@ var precio="";
         total += parseInt(sub[i]);
       }
     }
-  });
-///LLenamos el arreglo a enviar a la base de datos
+  ///LLenamos el arreglo a enviar a la base de datos
   presupuesto.push(id_produ);
   presupuesto.push(cant);
   presupuesto.push(pre);
+  });
 
 //////función donde se genera el presupuesto
   function generar_presupuesto(){
@@ -94,27 +95,27 @@ var precio="";
     clientefin = parseInt($('#clientes').val());
     // console.log(presupuesto)
     var dataInfo = {
-      cliente:clientefin,
       presupuesto:presupuesto,
+      cliente:clientefin,
       total:total
     }
+    // console.log(dataInfo);
     $.ajax({
       url: 'modulos/presupuesto/inserta_presupuesto.php',
       type: 'POST',
-      dataType: 'html',
+      dataType: 'json',
       data: dataInfo,
     })
     .done(function(data) {
     // console.log(id_produ)
-    console.log(data);
-    if(parseInt(data)==1){
+    // console.log(data);
+    if(data.resp){
       // Se notifica al usuario que el presupuesto está listo para ser enviado
       alertify.notify('Se ha generado el presupuesto correctamente !!', 'success', 5, function(){
       alertify.success('Ahora sólo adjunta tus archivos y envía el presupuesto'); 
     });
     }else{
       // Se notifica al usuario en caso de que se presente un problema en la ejecución
-      // alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!');
       alertify.notify('Estamos presentando dificultades, no pudimos generar el presupuesto!!',
       'custom', 5, function(){
       // console.log('dismissed');

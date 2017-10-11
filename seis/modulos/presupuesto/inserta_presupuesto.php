@@ -9,11 +9,12 @@
 	$id_presupuesto = "";
 	$detalle_presupuesto = $_POST["presupuesto"];
 
+	// var_dump($_POST["presu"]);
+
 	$insertar = "INSERT INTO `presupuestos_funes` (`id`, `cliente_id`, `total`, `usuario_id`, `fecha_creado`) VALUES (NULL, '$cliente_id', '$total', '$_SESSION[usuario]', CURRENT_TIMESTAMP);";
 	$db->abc($insertar);
 
 	$buscar="SELECT id FROM presupuestos_funes WHERE id = (SELECT MAX(id) FROM presupuestos_funes)";
-
 
 	
 	if($data = $db->leeTabla($buscar)){
@@ -29,10 +30,10 @@
 					$query="INSERT INTO `detalle_presupuesto_funes`(`id`, `id_presupuesto`, `codigo_producto`, `precio`,`cantidad`) VALUES (NULL,'$id_presupuesto','$codigo_produ','$precio','$cantidad')";
 					$db->abc($query);			
 		}
-	 	print(1);	
+	 	print(json_encode(array('resp' => true)));	
 		///El cero significa que hubo un error
 	}else{
-		print(0);
+		print(json_encode(array('resp' => false)));
 	}
 
 	
