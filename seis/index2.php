@@ -9,6 +9,7 @@
     $q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
     $data = $db->leeTabla($q);
  ?>
+ 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,7 +27,7 @@
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-    <link href="vendor/app/css/app.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
     <link href="vendor/app/css/animate.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -282,12 +283,9 @@
                             </div>
                             <!-- Terminar buscador -->
                             <div class="row muestraresult">
-                                <div class="card controlbuscador">
-                                  <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">'.$data[$i]->razon_social.'</li>
-                                  </ul>
-                                </div>
+                                
 
+                                
                                 
                             </div>
                             <!-- /input-group -->

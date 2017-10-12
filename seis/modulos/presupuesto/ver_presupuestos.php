@@ -46,7 +46,7 @@
                     <td><?php print($data[$i]->fecha_creado); ?></td>
                     <td class="center">
                         <a style="color:green;text-decoration: none;" href="" id="pdf_presupuesto" onclick="pdf('<?php print($data[$i]->id) ?>');">
-                            <i style="font-size:20px;display:block;text-align:center;" class="glyphicon glyphicon-file"></i>
+                            <i style="color:#F44336;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
@@ -55,28 +55,7 @@
                   ?>
             </tbody>
         </table>
-        <input type="hidden" name="">
-        <!-- /.table-responsive -->
     </div>
-    <!-- /.panel-body -->
 </div>
-                    <!-- /.panel -->
-<!-- Modal -->
- <div class="modal fade" id="modalproducto" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar producto</h2>
-           <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            </button> -->
-         
-          <div class="modal-body" id="body_producto">
-            
-
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-    </div>
-   <script src="js/accion_presupuesto.js"></script>
+<!-- <script src="js/accion_presupuesto.js"></script> -->
 
