@@ -1,15 +1,19 @@
 <?php 
+session_start();
   
   $html = "";
 	require_once '../../controladores/pdf/mpdf60/mpdf.php';
   require_once("../../controladores/conexion/conn.php");
   $db = new conexion();
+  $db1 = new conexion();
   $q = "SELECT presupuestos_funes.id,clientes_funes.razon_social,clientes_funes.cuit,clientes_funes.domicilio_comercial,clientes_funes.contacto1,clientes_funes.telefono1,clientes_funes.correo1, presupuestos_funes.total,usuarios_funes.nombre as usuario,presupuestos_funes.fecha_creado,condicion_iva.nombre as iva FROM presupuestos_funes
         INNER JOIN usuarios_funes ON usuarios_funes.id = presupuestos_funes.usuario_id
         INNER JOIN clientes_funes ON clientes_funes.id = presupuestos_funes.cliente_id
         INNER JOIN condicion_iva ON condicion_iva.id = clientes_funes.condicion_iva_id
         WHERE presupuestos_funes.id = '$_GET[presupuesto_id]'";
   $data = $db->leeTabla($q);
+  $query = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
+    $datos = $db1->leeTabla($query);
 
 	$html .= '<style>
     /*Clases para modificar el formato del pdf*/
@@ -57,7 +61,7 @@ $html.='
   <table>
   <thead>
     <tr>
-        <th rowspan="3" colspan="3"><img src="../../img/logo-funes.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
+        <th rowspan="3" colspan="3"><img src="../../img/sistemas/'.$datos[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
         <th colspan="7" >AGRO MAQUINARIA</th>
         <th colspan="2" class="fondo-celda borde-celda">FECHA</th>
         <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->fecha_creado.'</th>
@@ -146,9 +150,6 @@ $html.='
           	<td class="borde-celda fondo-celda formato" headers="subtotal">$'.$subtotal.'</td>
           </tr>';
           }
-
-
-
           $html.='
         </tbody>
           <!-- footer -->
@@ -176,11 +177,13 @@ $html.='
             </tr>
           </tfoot>
       </table>';
-	$mpdf = new mPDF("c","A4");
+	$mpdf = new mPDF();
+  // $mpdf->debug=false;
+  // $mpdf->SetTitle($data[0]->razon_social);
 	// $css = file_get_contents('css/index.css');
 	// $mpdf->writeHTML($css, 1);
 	$mpdf->writeHTML($html);
 
-	$mpdf->Output("Ya.pdf","I");
+	$mpdf->Output("ya.pdf","I");
 
  ?>

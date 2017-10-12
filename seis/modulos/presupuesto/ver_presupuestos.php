@@ -45,7 +45,7 @@
                     <td><?php print($data[$i]->nombre); ?></td>
                     <td><?php print($data[$i]->fecha_creado); ?></td>
                     <td class="center">
-                        <a style="color:green;text-decoration: none;" href="" id="pdf_presupuesto" onclick="pdf('<?php print($data[$i]->id) ?>');">
+                        <a style="text-decoration: none;" href='modulos/presupuesto/verPDF.php?presupuesto_id=<?php print($data[0]->id); ?>' id="pdf_presupuesto" target="_blanck">
                             <i style="color:#F44336;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
                         </a>
                     </td>
@@ -57,5 +57,5 @@
         </table>
     </div>
 </div>
-<!-- <script src="js/accion_presupuesto.js"></script> -->
+<script src="js/accion_presupuesto.js"></script>
 
