@@ -11,7 +11,7 @@
 	    </div>
 	    <div class="form-group col-md-6 cuil">
 	        <label for="cuil">CUIL o CUIT</label>
-	        <input class="form-control limpiar" placeholder="Escribe aquí..." name="cuil" id="cuil">
+	        <input class="form-control limpiar" placeholder="Escribe aquí..." name="cuil" id="cuil" onkeypress="return soloNumeros(event)">
 	    </div>
 	    <div class="form-group col-md-6 cliente">
 	        <label for="cliente">Tipo de Cliente</label>

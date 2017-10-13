@@ -32,28 +32,26 @@ function enviodatos(event){
 			data: datos,
 		})
 		.done(function(resp) {
-			console.log(resp);
+			// console.log(resp);
 			if (resp == true) {
-				alertify.notify('Te estamos redireccionando',
-			      'custom', 3, function(){
-			      // console.log('dismissed');
-					window.location.replace("index2.php?modulo=perfil&elemento=index.php");
-			    });
-
-
-				
+				swal({
+				  icon: "success",
+				  text:"Redireccionando",
+				  button: false,
+				});
+			 setInterval(function(){
+			 	window.location.replace("index2.php?modulo=perfil&elemento=index.php")
+			 },800)
 				// alert("Ya puesdes acceder al sistema Funes.")
 			}else if (resp == false){
-				alert("No puesdes acceder al sistema.")
+				// alert("No puesdes acceder al sistema.")
+				swal({
+				  icon: "error",
+				  text:"No puesdes acceder al sistema, intentalo nuevamente.",
+				  button: true,
+				});
 			}
-		})
-		.fail(function(error) {
-			console.log(error);
-		})
-		.always(function() {
-			// console.log("complete");
-		});
-		
+		})		
 	}
 
 

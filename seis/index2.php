@@ -10,6 +10,7 @@
     $data = $db->leeTabla($q);
  ?>
  
+ 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -405,7 +406,8 @@
     <script src="js/app.js"></script>
     <!-- <script src="js/accion_presupuesto.js"></script> -->
     <script src="vendor/app/js/toastr.min.js"></script>  
-    <script src="vendor/app/js/alertify.min.js"></script> 
+    <script src="vendor/app/js/alertify.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
     <script type="text/javascript">
         $('#cliente-table').DataTable({
             responsive: true,

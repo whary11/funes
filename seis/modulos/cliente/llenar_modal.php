@@ -22,14 +22,14 @@ if (isset($_POST['id_cliente'])) {
 	    <div class="form-group col-md-6 cliente">
 	        <label for="cliente">Tipo Cliente</label>
 	        <select class="form-control" name="cliente" id="cliente">';
-	        	$q = "SELECT * FROM tipo_cliente";
-                $data = $db->leeTabla($q);
-                for($i=0;$i<count($data);$i++){ 
-                	if ($tipo_cliente_id == $data[$i]->id) {
-                	$modal.= '<option selected="selected"  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>';
-                	}else{
-                		$modal.='<option  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>';
-                	}
+        	$q = "SELECT * FROM tipo_cliente";
+            $data = $db->leeTabla($q);
+            for($i=0;$i<count($data);$i++){ 
+            	if ($tipo_cliente_id == $data[$i]->id) {
+            	$modal.= '<option selected="selected"  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>';
+            	}else{
+            		$modal.='<option  id="'.utf8_encode($data[$i]->id).'" value="'.$data[$i]->id.'">'.utf8_encode($data[$i]->nombre).'</option>';
+            	}
                     
             }
 	 $modal.='</select>

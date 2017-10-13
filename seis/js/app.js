@@ -79,21 +79,22 @@ $(document).ready(function(){ });
 					$.ajax({
 						url: 'modulos/cliente/insertar.php',
 						type: 'POST',
-						// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+						dataType: 'json',
 						data:$('#form_nuevocliente').serialize(),
 					})
 					.done(function(data) {
-						console.log(data)
-						alert('Datos insertados correctamente');
-						$(".limpiar").val("");
+						// console.log(data)
+						if (data.resp) {
+							// alert('Datos insertados correctamente');
+							swal({
+							  icon: "success",
+							  text:"Datos insertados correctamente",
+							  button: true,
+							});
+							$(".limpiar").val("");
+						}
 
 					})
-					.fail(function() {
-						console.log("error");
-					})
-					.always(function() {
-						console.log("complete");
-					});
 				}
 				
 			});
@@ -135,47 +136,16 @@ $(document).ready(function(){ });
 		data: $('#editar_cliente').serialize(),
 		})
 		.done(function(respuesta){
-			alert('Datos actualizados correctamente');
-			setTimeout("document.location=document.location");
+			swal({
+			  icon: "success",
+			  text:"Datos actualizados correctamente",
+			  button: true,
+			});
+			setTimeout("document.location=document.location",800);
 	
 		})
 	});
 }
-
-	/////////////Productos////////////
-	
-			// $("#formProductos").submit(function(event) {
-			// 	//has-error
-			// 	event.preventDefault();
-			// 	var codigo = $("#codigo").val();
-			// 	var precio = $("#precio").val();
-			// 	var descripcion = $("#descripcion").val();
-			// 	if (codigo==""){
-			// 		$(".codigo").addClass('has-error');
-			// 	}else if(precio==""){
-			// 		$(".precio").addClass('has-error');
-			// 		$(".codigo").removeClass('has-error');
-			// 	}else if(descripcion==""){
-			// 		$(".descripcion").addClass('has-error');
-			// 		$(".precio").removeClass('has-error');
-			// 	}else{
-			// 		$(".descripcion").removeClass('has-error');
-			// 		$.ajax({
-			// 			url: 'modulos/producto/insertar.php',
-			// 			type: 'POST',
-			// 			data: $('#formProductos').serialize(),
-			// 		})
-			// 		.done(function(data) {
-			// 			alert('Datos insertados correctamente');
-			// 			$(".limpiar").val("");
-
-			// 		})
-			// 		.fail(function() {
-			// 			console.log("error");
-			// 		})
-			// 	}
-			// });
-	
 	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
@@ -248,5 +218,10 @@ $(document).ready(function(){ });
             return resultado;
         }
     }
+
+    function soloNumeros(e){
+		var key = window.Event ? e.which: e.keyCode
+		return (key >= 48 && key <= 57)
+	}
 
 

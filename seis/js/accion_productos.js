@@ -24,9 +24,13 @@
 						data: $('#formProductos').serialize(),
 					})
 					.done(function(data) {
-						alert('Datos insertados correctamente');
+						// alert('Datos insertados correctamente');
+						swal({
+						  icon: "success",
+						  text:"Datos insertados correctamente",
+						  button: true,
+						});
 						$(".limpiar").val("");
-
 					})
 					.fail(function() {
 						console.log("error");

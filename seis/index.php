@@ -54,7 +54,7 @@
 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/app/js/alertify.min.js"></script> 
+    <script src="js/sweetalert.min.js"></script>
     <script type="text/javascript" src="js/accion_inicio.js"></script>
 
 </body>

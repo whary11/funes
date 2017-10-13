@@ -8,8 +8,7 @@
 	$insertar = "INSERT INTO `clientes_funes`(`id`, `razon_social`, `cuit`, `tipo_cliente_id`, `condicion_iva_id`, `domicilio_comercial`, `correo1`, `telefono1`, `contacto1`, `whatsapp`, `contacto2`, `correo2`, `telefono2`, `contacto3`, `correo3`, `telefono3`, `usuario_id`, `comentarios`, `fecha_cargue`, `fecha_modificacion`) 
 		VALUES (NULL,'$_POST[razon]','$_POST[cuil]','$_POST[cliente]','$_POST[condicioniva]','$_POST[direccion]','$_POST[correo1]','$_POST[telefono1]','$_POST[contacto1]','$_POST[whatsapp]','$_POST[contacto2]','$_POST[correo2]','$_POST[telefono2]','$_POST[contacto3]','$_POST[correo3]','$_POST[telefono3]','$_SESSION[usuario]','Test de prueba','$hoy','0000-00-00')";
 	$db->abc($insertar);
-	var_dump($db);
-	// if (mysqli_error($conn)) {
-	// 	print(0);
-	// } 
+	print(
+		json_encode(array('resp'=>true))
+	);
 ?>

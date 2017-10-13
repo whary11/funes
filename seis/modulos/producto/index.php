@@ -13,7 +13,7 @@
     </div>
     <div class="form-group col-md-10 precio">
         <label for="precio">Precio</label>
-        <input type="text" class="form-control limpiar" placeholder="Escribe aquí..." name="precio" id="precio">
+        <input type="text" class="form-control limpiar" placeholder="Escribe aquí..." name="precio" id="precio" onkeypress="return soloNumeros(event)">
     </div>
     <div class="form-group col-md-10 descripcion">
         <label for="descripcion">Descripción</label>
