@@ -7,15 +7,12 @@ function arranque(){
 function enviodatos(event){
 	event.preventDefault();
 	//////Recoger los datos para validar
-
 	var usuario = $('#usuario').val();
 	var clave = $('#clave').val();
-
 	var datos ={
 		'usuario':usuario,
 		'clave':clave,
 	}
-
 	if(usuario==""){
 		$('#controlusuario').addClass('has-error')
 	}else if(clave==""){

@@ -1,6 +1,8 @@
 <?php 
 session_start();
-  
+ if (isset($_SESSION['usuario']) AND isset($_GET['presupuesto_id'])) {
+    # code...
+   
   $html = "";
 	require_once '../../controladores/pdf/mpdf60/mpdf.php';
   require_once("../../controladores/conexion/conn.php");
@@ -27,7 +29,6 @@ table{
 .fondo-celda{
   background-color:#efefef;
 }
-
 .border-izquierdo{
   border-left: 1px solid #000; 
 }
@@ -47,12 +48,12 @@ table{
 .formato{
   text-align: center;
   padding:5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .descripcion{
   text-align:justify;
   padding:5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
   </style>';
@@ -145,9 +146,9 @@ $html.='
           	<td class="borde-celda formato" headers="codigo">'.$data[$i]->codigo.'</td>
           	<td colspan="9" class="borde-celda descripcion">'.$data[$i]->descripcion.'</td>
           	<td class="borde-celda fondo-celda formato" >'.$data[$i]->cantidad.'</td>
-          	<td class="borde-celda fondo-celda formato">$'.$data[$i]->precio.'</td>
+          	<td class="borde-celda fondo-celda formato">$'.number_format($data[$i]->precio).'</td>
           	<td class="borde-celda fondo-celda formato">10.50</td>
-          	<td class="borde-celda fondo-celda formato" headers="subtotal">$'.$subtotal.'</td>
+          	<td class="borde-celda fondo-celda formato" headers="subtotal">$'.number_format($subtotal).'</td>
           </tr>';
           }
           $html.='
@@ -185,5 +186,8 @@ $html.='
 	$mpdf->writeHTML($html);
 
 	$mpdf->Output("ya.pdf","I");
+}else{
+  header("location: ver_presupuestos.php");
+}
 
  ?>

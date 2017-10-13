@@ -2,15 +2,13 @@
     ob_start();//para solucionar el problema con el redireccionamieto
     session_start();
         if (!isset($_SESSION["usuario"])){
-        header("Location:index.php");
-    }
+            header("Location:index.php");
+        }
     require_once("controladores/conexion/conn.php");
     $db = new conexion();
     $q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
     $data = $db->leeTabla($q);
  ?>
- 
- 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -408,6 +406,8 @@
     <script src="vendor/app/js/toastr.min.js"></script>  
     <script src="vendor/app/js/alertify.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
     <script type="text/javascript">
         $('#cliente-table').DataTable({
             responsive: true,
@@ -417,9 +417,7 @@
         }); 
          $('#presupuestos-table').DataTable({
             responsive: true,
-        }); 
-     
-   
+        });    
     </script> 
 </body>
 

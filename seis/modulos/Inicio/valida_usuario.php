@@ -1,4 +1,4 @@
-<?php
+<!-- 
 // if(isset($_POST['bandera']) AND $_POST['bandera']=='Acceder' ){
 // 	$usuario = $_POST["usuario"];
 // 	$clave = $_POST['clave'];
@@ -13,10 +13,15 @@
 // 	'respliteral'=>'sin acceso'
 // 	];
 // 	print(json_encode($resp));
-// }
- ?>
+// } -->
+
+
 
  <?php 
+ session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 if (isset($_POST["usuario"])) {
 	require_once("../../controladores/conexion/conn.php");
 	$db = new conexion();

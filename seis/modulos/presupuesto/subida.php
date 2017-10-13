@@ -1,11 +1,11 @@
 <?php
-
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 if (isset($_FILES)) {
 	require_once '../../controladores/PHPMailer-master/PHPMailerAutoload.php';
-
 	$mail = new PHPMailer;
-
-
 	//Tell PHPMailer to use SMTP
 	$mail->isSMTP();
 	$dir_subida = 'carga/';

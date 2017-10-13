@@ -1,9 +1,5 @@
  
 <?php 
-        if (!isset($_SESSION["usuario"])){
-        header("Location:../../index.php");
-    }
-
     require_once("controladores/conexion/conn.php");
 	$db = new conexion();
 	$q = "SELECT presupuestos_funes.id, clientes_funes.razon_social,presupuestos_funes.total,usuarios_funes.nombre,presupuestos_funes.fecha_creado FROM presupuestos_funes
@@ -41,11 +37,11 @@
                 <tr class="gradeU">
                     <td><?php print($data[$i]->id); ?></td>
                     <td><?php print($data[$i]->razon_social); ?></td>
-                    <td>$ <?php print($data[$i]->total); ?></td>
+                    <td>$ <?php print(number_format($data[$i]->total)); ?></td>
                     <td><?php print($data[$i]->nombre); ?></td>
                     <td><?php print($data[$i]->fecha_creado); ?></td>
                     <td class="center">
-                        <a style="text-decoration: none;" href='modulos/presupuesto/verPDF.php?presupuesto_id=<?php print($data[0]->id); ?>' id="pdf_presupuesto" target="_blanck">
+                        <a style="text-decoration:none;" target="_blanck" href='modulos/presupuesto/verPDF.php?presupuesto_id=<?php print($data[$i]->id); ?>' id="pdf_presupuesto" target="_blanck">
                             <i style="color:#F44336;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
                         </a>
                     </td>
@@ -58,4 +54,3 @@
     </div>
 </div>
 <script src="js/accion_presupuesto.js"></script>
-

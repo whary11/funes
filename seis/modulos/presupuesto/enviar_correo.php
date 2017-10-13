@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 
 $uploaddir = "carga/";
 $uploadfile = '../'.basename($_FILES['file']['name']);

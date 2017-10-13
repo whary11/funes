@@ -1,4 +1,8 @@
-<?php 
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 if (isset($_POST['id_producto'])) {
 	$id_producto = $_POST['id_producto'];
 	$cod = "";

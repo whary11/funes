@@ -1,7 +1,4 @@
 <?php 
-        if (!isset($_SESSION["usuario"])){
-        header("Location:../../index.php");
-    }
  ?>
 <!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
 <h4 class="success">Nuevo Presupuesto</h4>
@@ -51,7 +48,7 @@
         </div>
         <div class="form-group col-md-3 ">
             <label for="cantidad">Cantidad</label>
-            <input type="text" class="form-control cantidad limpiar"  name="cantidad" id="cantidad">
+            <input type="text" class="form-control cantidad limpiar"  name="cantidad" id="cantidad" onkeypress="return soloNumeros(event)">
         </div>
         <div class="form-group col-md-3" id="agregar"> 
             <button id="nuevo" class="btn btn-primary" >

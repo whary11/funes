@@ -1,6 +1,9 @@
-<?php 
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 	require_once("../../controladores/conexion/conn.php");
-	session_start();
 	$db = new conexion();
 	// print("Hola Mundo, funciona el código");
 

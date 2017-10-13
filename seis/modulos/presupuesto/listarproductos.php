@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 	 require_once("../../controladores/conexion/conn.php");
 	$db = new conexion();
 	// $array = [];

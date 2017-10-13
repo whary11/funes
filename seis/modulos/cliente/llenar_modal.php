@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if (!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+}
 if (isset($_POST['id_cliente'])) {
 	$id_cliente = $_POST['id_cliente'];
 	$modal="";

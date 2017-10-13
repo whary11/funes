@@ -67,7 +67,7 @@ var precio="";
       pre.push(parseInt(precio));
       var td = '<tr idmayor='+contador+' class="odd gradeX"><td>'+producto+'</td>'
         td+= '<td>'+descripcion+'</td>'
-        td+= '<td>$ '+precio+'</td>'
+        td+= '<td>$'+precio+'</td>'
         td+= '<td>'+cantidad+'</td>'
         td+= '<td>$ '+subtotal+'</td>'
         td+='<td><button id="'+contador+'" type="button"'
@@ -192,8 +192,8 @@ function reordenar(){
   })
 }
 
-function pdf(id){
-  window.open("modulos/presupuesto/verPDF.php?presupuesto_id="+id);
-}
+// function pdf(id){
+//   window.open("modulos/presupuesto/verPDF.php?presupuesto_id="+id);
+// }
 
 
