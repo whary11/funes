@@ -139,6 +139,7 @@ $html.='
         INNER JOIN productos_funes ON productos_funes.codigo = detalle_presupuesto_funes.codigo_producto
         WHERE detalle_presupuesto_funes.id_presupuesto = '$_GET[presupuesto_id]'";
         $data = $db->leeTabla($q);
+        $total = 0;
         for ($i=0; $i <count($data); $i++) { 
           $subtotal = $data[$i]->cantidad * $data[$i]->precio;
           $html .='
@@ -150,6 +151,7 @@ $html.='
           	<td class="borde-celda fondo-celda formato">10.50</td>
           	<td class="borde-celda fondo-celda formato" headers="subtotal">$'.number_format($subtotal).'</td>
           </tr>';
+          $total+=$subtotal;
           }
           $html.='
         </tbody>
@@ -174,7 +176,7 @@ $html.='
             </tr>
             <tr>
               <td colspan="2" class="borde-celda" style="background-color: black;color: white;">TOTAL</td>
-              <td colspan="2" class="borde-celda"> $69.819,99 </td>
+              <td colspan="2" class="borde-celda"> '.number_format($total).' </td>
             </tr>
           </tfoot>
       </table>';

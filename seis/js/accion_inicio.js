@@ -1,10 +1,4 @@
-$(document).ready(arranque);
-function arranque(){
-	var form = $('#inicio');
-	form.submit(enviodatos);
-}
-
-function enviodatos(event){
+$('#inicio').submit(function(event){
 	event.preventDefault();
 	//////Recoger los datos para validar
 	var usuario = $('#usuario').val();
@@ -25,12 +19,11 @@ function enviodatos(event){
 		$.ajax({
 			url: 'modulos/inicio/valida_usuario.php',
 			type: 'POST',
-			// dataType: 'JSON',
+			dataType: 'JSON',
 			data: datos,
 		})
 		.done(function(resp) {
-			// console.log(resp);
-			if (resp == true) {
+			if (resp.resp) {
 				swal({
 				  icon: "success",
 				  text:"Redireccionando",
@@ -39,8 +32,7 @@ function enviodatos(event){
 			 setInterval(function(){
 			 	window.location.replace("index2.php?modulo=perfil&elemento=index.php")
 			 },800)
-				// alert("Ya puesdes acceder al sistema Funes.")
-			}else if (resp == false){
+			}else{
 				// alert("No puesdes acceder al sistema.")
 				swal({
 				  icon: "error",
@@ -50,9 +42,4 @@ function enviodatos(event){
 			}
 		})		
 	}
-
-
-
-
-
-};
+});
