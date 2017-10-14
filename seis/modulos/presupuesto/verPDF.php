@@ -55,15 +55,18 @@ table{
   padding:5px;
   font-size: 12px;
 }
+.font th{
+  font-weight:normal;
+}
 
   </style>';
 
 $html.='
   <table>
   <thead>
-    <tr>
-        <th rowspan="3" colspan="3"><img src="../../img/sistemas/'.$datos[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
-        <th colspan="7" >AGRO MAQUINARIA</th>
+    <tr class="font">
+        <th rowspan="3" colspan="3" ><img src="../../img/sistemas/'.$datos[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
+        <th colspan="7">AGRO MAQUINARIA</th>
         <th colspan="2" class="fondo-celda borde-celda">FECHA</th>
         <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->fecha_creado.'</th>
     <tr>
@@ -180,14 +183,16 @@ $html.='
             </tr>
           </tfoot>
       </table>';
+
 	$mpdf = new mPDF();
-  // $mpdf->debug=false;
+  $mpdf->debug=false;
   // $mpdf->SetTitle($data[0]->razon_social);
+
 	// $css = file_get_contents('css/index.css');
 	// $mpdf->writeHTML($css, 1);
 	$mpdf->writeHTML($html);
 
-	$mpdf->Output("ya.pdf","I");
+	$mpdf->Output('hola_mundo'.".pdf","I");
 }else{
   header("location: ver_presupuestos.php");
 }

@@ -9,7 +9,12 @@
 
 <head>
     <style type="text/css">
-        .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
+        .ajs-message.ajs-custom { 
+            color: #31708f;  
+            background-color: #d9edf7;  
+            border-color: #31708f;
+            
+        }
     </style>
 
     <meta charset="utf-8">
