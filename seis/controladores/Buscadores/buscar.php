@@ -12,7 +12,7 @@
 				$html .='
                 <div class="card controlbuscador">
 				  <ul class="list-group list-group-flush">
-				    <li class="list-group-item">No hay clinetes resgistrodos.</li>
+				    <li class="list-group-item">No hay clinetes resgistrados.</li>
 				  </ul>
 				</div>';
 			}else{
