@@ -179,7 +179,7 @@ $html.='
             </tr>
             <tr>
               <td colspan="2" class="borde-celda" style="background-color: black;color: white;">TOTAL</td>
-              <td colspan="2" class="borde-celda"> '.number_format($total).' </td>
+              <td colspan="2" class="borde-celda"> $'.number_format($total).' </td>
             </tr>
           </tfoot>
       </table>';
