@@ -149,26 +149,31 @@ $(document).ready(function(){ });
 	
 	// Buscador de clientes existentes en tiempo real
 	var buscador = $("#buscador");
-	buscador.keyup(function(){
+	var resultado = $(".muestraresult");
+	buscador.keyup(function(key){
 		var valorBus = buscador.val();
-			if(valorBus==""){
+			if (key.keyCode===27){
+				resultado.css({
+					"display":"none"
+				});
+			}else if(valorBus==""){
 				$(".muestraresult").css({
 					"display":"none"
 				});
 			}else{	
 				$.ajax({
-						url: 'controladores/buscadores/buscar.php',
-						type: 'POST',
-						dataType:'html',
-						data: {valorBus: valorBus},
-						beforeSend:function(){
+					url: 'controladores/buscadores/buscar.php',
+					type: 'POST',
+					dataType:'html',
+					data: {valorBus: valorBus},
+					beforeSend:function(){
 
-						}
+					}
 				})
 				.done(function(data) {
 				// Mostrar resultados en tiempo real
 				// Terminar buscador
-					var resultado = $(".muestraresult");
+					
 					resultado.css({
 						"display":"block"
 					});
@@ -178,7 +183,15 @@ $(document).ready(function(){ });
 					// console.log(data);
 				})
 			}
+
+			
 		});
+	buscador.blur(function(event) {
+		resultado.css({
+			"display":"none"
+		});
+	});
+
 
 
 ///Función para formatear números 
