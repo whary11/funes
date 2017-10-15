@@ -72,7 +72,7 @@ $html.='
     <tr>
       <th colspan="7">VIAL MAQUINARIA</th>
       <th colspan="2" class="fondo-celda borde-celda">PRESUPUESTO No</th>
-      <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->id.'</th>
+      <th colspan="2" class="fondo-celda borde-celda">1014 - '.$data[0]->id.'</th>
     </tr>
       <tr>
         <th colspan="7">REPUESTO Y ACCESORIOS</th>
