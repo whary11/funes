@@ -6,7 +6,6 @@
 	$db = new conexion();
 	$q = "SELECT * FROM clientes_funes";
 	$data = $db->leeTabla($q);
-	// print("Conexión funcionado, tenemos <b>".count($data). "</b> clientes registrados");
  ?>
 
 <div class="panel panel-default animated slideInUp">
@@ -53,29 +52,32 @@
                   ?>
             </tbody>
         </table>
-        <!-- <input type="hidden" name=""> -->
-        <!-- /.table-responsive -->
+
+        <input type="hidden" name="">
     </div>
-    <!-- /.panel-body -->
 </div>
 
 <!-- Modal -->
- <div class="modal fade" id="modalcliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar Cliente</h2>
-           <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            </button> -->
-         
-          <div class="modal-body" id="body_cliente">
-            
+<div class="modal fade" id="modalcliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar Cliente</h2>        
+      <div class="modal-body" id="body_cliente">
 
-          </div>
-          <div class="modal-footer">
-          
-          </div>
-        </div>
+
+      </div>
+      <div class="modal-footer">
+
       </div>
     </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 <script src="js/jquery.min.js"></script>
 <script src="js/app.js"></script>

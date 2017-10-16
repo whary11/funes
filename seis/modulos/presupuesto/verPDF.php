@@ -65,7 +65,7 @@ $html.='
   <table>
   <thead>
     <tr class="font">
-        <th rowspan="3" colspan="3" ><img src="../../img/sistemas/'.$datos[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
+        <th rowspan="3" colspan="3" ><img src="../../img/sistemas/'.$data[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
         <th colspan="7">AGRO MAQUINARIA</th>
         <th colspan="2" class="fondo-celda borde-celda">FECHA</th>
         <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->fecha_creado.'</th>
