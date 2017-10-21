@@ -55,14 +55,11 @@
                   ?>
             </tbody>
         </table>
-        <input type="hidden" name="">
-        <!-- /.table-responsive -->
     </div>
-    <!-- /.panel-body -->
 </div>
                     <!-- /.panel -->
 <!-- Modal -->
- <div class="modal fade" id="modalproducto" tabindex="-1" role="dialog" aria-labelledby="         exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modalproducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <h2 class="modal-title text-center text-primary" id="exampleModalLabel">Editar producto</h2>

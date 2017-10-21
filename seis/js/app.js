@@ -102,12 +102,12 @@ $(document).ready(function(){ });
 	// 	FrondEnd()
 	// });
 
-function FrondEnd(){
-	var nav = $('#nav');
-	var scrolltop= $(document).scrollTop();
-	if (scrolltop >= 10) {
-		nav.addClass('fixed')
-	}else{
-		nav.removeClass('fixed')
-	}
-}
+// function FrondEnd(){
+// 	var nav = $('#nav');
+// 	var scrolltop= $(document).scrollTop();
+// 	if (scrolltop >= 10) {
+// 		nav.addClass('fixed')
+// 	}else{
+// 		nav.removeClass('fixed')
+// 	}
+// }
