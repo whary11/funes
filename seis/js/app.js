@@ -1,8 +1,8 @@
-var presupuesto = [];
-var id_produ = [];
-var pre = [];
-var total =0;
-var clientefin = 0;
+// var presupuesto = [];
+// var id_produ = [];
+// var pre = [];
+// var total =0;
+// var clientefin = 0;
 $(document).ready(function(){ });
 	
 	// Buscador de clientes existentes en tiempo real
@@ -94,5 +94,20 @@ $(document).ready(function(){ });
 		var key = window.Event ? e.which: e.keyCode
 		return (key >= 48 && key <= 57)
 	}
+///Activa la ejecución del fronend
+	// $(window).scroll(function(event){
+	// 	FrondEnd()
+	// });
+	// $(document).ready(function() {
+	// 	FrondEnd()
+	// });
 
-
+function FrondEnd(){
+	var nav = $('#nav');
+	var scrolltop= $(document).scrollTop();
+	if (scrolltop >= 10) {
+		nav.addClass('fixed')
+	}else{
+		nav.removeClass('fixed')
+	}
+}
