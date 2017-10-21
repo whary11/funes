@@ -32,11 +32,9 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- DataTables CSS -->
     <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
     <!-- DataTables Responsive CSS -->
     <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <!-- <link href="../vendor/app/css/alertify.rtl.css" rel="stylesheet"> -->
-
     <link rel="stylesheet" href="vendor/app/css/toastr.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/dropzone.css"> -->
     <link rel="stylesheet" type="text/css" href="css/alertify.css">
@@ -381,32 +379,27 @@
     <!-- jQuery -->
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    
-
+    <script src="js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
-
+    <script src="js/metisMenu.min.js"></script>
     <!-- Morris Charts JavaScript -->
-    <script src="vendor/raphael/raphael.min.js"></script>
+    <script src="js/raphael.min.js"></script>
     <!-- <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script> -->
     <!-- Data tables -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
-
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/dataTables.responsive.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
     <!-- App -->
     <script src="js/app.js"></script>
     <!-- <script src="js/accion_presupuesto.js"></script> -->
-    <script src="vendor/app/js/toastr.min.js"></script>  
-    <script src="vendor/app/js/alertify.min.js"></script>
+    <script src="js/toastr.min.js"></script>  
+    <script src="js/alertify.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="js/moment.js"></script>
-    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script><!-- 
+    <script type="text/javascript" src="js/moment-with-locales.js"></script> -->
     <script type="text/javascript">
         $('#cliente-table').DataTable({
             responsive: true,
