@@ -8,10 +8,11 @@ session_start();
   require_once("../../controladores/conexion/conn.php");
   $db = new conexion();
   $db1 = new conexion();
-  $q = "SELECT presupuestos_funes.id,clientes_funes.razon_social,clientes_funes.cuit,clientes_funes.domicilio_comercial,clientes_funes.contacto1,clientes_funes.telefono1,clientes_funes.correo1, presupuestos_funes.total,usuarios_funes.nombre as usuario,presupuestos_funes.fecha_creado,condicion_iva.nombre as iva FROM presupuestos_funes
+  $q = "SELECT presupuestos_funes.id,clientes_funes.razon_social,clientes_funes.cuit,clientes_funes.domicilio_comercial,clientes_funes.contacto1,clientes_funes.telefono1,clientes_funes.correo1, presupuestos_funes.total,usuarios_funes.nombre as usuario,presupuestos_funes.fecha_creado,condicion_iva.nombre as iva,sistema.logo FROM presupuestos_funes
         INNER JOIN usuarios_funes ON usuarios_funes.id = presupuestos_funes.usuario_id
         INNER JOIN clientes_funes ON clientes_funes.id = presupuestos_funes.cliente_id
         INNER JOIN condicion_iva ON condicion_iva.id = clientes_funes.condicion_iva_id
+        INNER JOIN sistema ON sistema.id = usuarios_funes.sistema_id
         WHERE presupuestos_funes.id = '$_GET[presupuesto_id]'";
   $data = $db->leeTabla($q);
   $query = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
@@ -65,7 +66,7 @@ $html.='
   <table>
   <thead>
     <tr class="font">
-        <th rowspan="3" colspan="3" ><img src="../../img/sistemas/'.$data[0]->id.'.png" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
+        <th rowspan="3" colspan="3" ><img src="../../img/sistemas/'.$data[0]->logo.'" alt="Logo Funes" style="border-right: 0,5px solid black;"><br></th>
         <th colspan="7">AGRO MAQUINARIA</th>
         <th colspan="2" class="fondo-celda borde-celda">FECHA</th>
         <th colspan="2" class="fondo-celda borde-celda">'.$data[0]->fecha_creado.'</th>
@@ -167,15 +168,15 @@ $html.='
               <td rowspan="4" colspan="10" class="borde-celda espacio-celdas">Observaciones</td>
               <td  rowspan="4"></td>
               <td colspan="2" class="borde-celda">NETO </td>
-              <td colspan="2" class="borde-celda"> $62.375,07 </td>
+              <td colspan="2" class="borde-celda"> ¿¿ </td>
             </tr>
             <tr>
               <td colspan="2" class="borde-celda">IVA 10.5%</td>
-              <td colspan="2" class="borde-celda"> $5.653,85  </td>
+              <td colspan="2" class="borde-celda"> ¿¿  </td>
             </tr>
             <tr>
               <td colspan="2" class="borde-celda">IVA 21%</td>
-              <td colspan="2" class="borde-celda"> $1.791,07  </td>
+              <td colspan="2" class="borde-celda"> ¿¿  </td>
             </tr>
             <tr>
               <td colspan="2" class="borde-celda" style="background-color: black;color: white;">TOTAL</td>
