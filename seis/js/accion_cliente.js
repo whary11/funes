@@ -94,9 +94,15 @@ function eliminar_cliente(id){
 		$.ajax({
 		url: 'modulos/cliente/eliminar.php',
 		type: 'POST',
+		dataType: 'json',
 		data:{id_cliente:id},
 		})
 		.done(function(respuesta){
+			if (respuesta.resp) {
+				alert("Se eliminó el cliente")
+			}else{
+				alert("No se eliminó el cliente")
+			}
 			// console.log(respuesta)
 			 // setTimeout("document.location=document.location");
 		})

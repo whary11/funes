@@ -71,7 +71,7 @@ var precio="";
         td+= '<td>'+cantidad+'</td>'
         td+= '<td>$ '+subtotal+'</td>'
         td+='<td><button id="'+contador+'" type="button"'
-        td+= ' onclick="borrar(this.id)" class="btn btn-danger btn-circle"'
+        td+= ' onclick="borrar(this.id)" class="btn btn-success"'
         td+= ' ><i class="fa fa-times"></i></button></td>'
       $('#tbody').append(td);
       reordenar();

@@ -100,7 +100,6 @@
             <!-- Enviar correo en modal -->
                 <form id="correo" enctype="multipart/form-data">
                     <div class="">
-                        <!-- <label for="adjunto">Carrgar archivos</label> -->
                         <input type="file" id="adjunto" name="adjunto[]" multiple>
                         <p class="help-block">Carga tus archivos.</p>
                     </div
