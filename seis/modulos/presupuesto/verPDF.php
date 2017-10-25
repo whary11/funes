@@ -187,10 +187,6 @@ $html.='
 
 	$mpdf = new mPDF();
   $mpdf->debug=false;
-  // $mpdf->SetTitle($data[0]->razon_social);
-
-	// $css = file_get_contents('css/index.css');
-	// $mpdf->writeHTML($css, 1);
 	$mpdf->writeHTML($html);
 
 	$mpdf->Output('hola_mundo'.".pdf","I");
