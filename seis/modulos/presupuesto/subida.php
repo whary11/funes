@@ -20,8 +20,8 @@ if (isset($_FILES)) {
 		}
 	}
 		for ($i=0; $i < count($adjuntos); $i++) { 
-				$mail->addAttachment($adjuntos[$i][1], $adjuntos[$i][0]);
-			}	
+			$mail->addAttachment($adjuntos[$i][1], $adjuntos[$i][0]);
+		}	
 		$mensaje = $_POST["mensaje"];
 		
 		$html = '<p>'.$mensaje.'</p>';
@@ -29,7 +29,7 @@ if (isset($_FILES)) {
 		$mail->Host = 'mail.nutriendofs.com';
 		$mail->SMTPAuth = true;
 		$mail->Username = 'lraga@nutriendofs.com';
-		$mail->Password = '1077444356';  //Contraseña del correo alectrónico
+		$mail->Password = '1Ei^*0wrt+[F';  //Contraseña del correo alectrónico
 		$mail->SMTPSecure = 'ssl';     
 		$mail->Port = 465;
 		/////////////Remitente/////////////////////////

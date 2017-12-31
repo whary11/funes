@@ -1,5 +1,6 @@
 <?php
-	if (isset($_POST["valorBus"])) {
+	session_start();
+	if (isset($_POST["valorBus"]) AND isset($_SESSION)) {
 		require_once("../conexion/conn.php");
 		$valor = $_POST["valorBus"];
 		$db = new conexion();
@@ -27,6 +28,6 @@
 			}
 		print($html);
 	}else{
-		header("Location:../../pages");
+		header("Location:../");
 	}
  ?>

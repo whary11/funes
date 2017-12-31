@@ -191,7 +191,7 @@ $html.='
 
 	$mpdf->Output('hola_mundo'.".pdf","I");
 }else{
-  header("location: ver_presupuestos.php");
+  header("location: ../../");
 }
 
  ?>

@@ -125,7 +125,7 @@ var precio="";
   }
 /*Enviar correo electrónico*/
   $('#correo').submit(function(event){
-    alert("Hola mundo.")
+    // alert("Hola mundo.")
     event.preventDefault();
     var mensaje = $("#mensaje");
     if (mensaje.val()==""){
@@ -143,6 +143,7 @@ var precio="";
           contentType: false,
           processData: false
         })
+        
         .done(function(resp){
           if (resp==1){
             alertify.notify('Se ha enviado tu correo correctamente !!', 'success', 5, function(){

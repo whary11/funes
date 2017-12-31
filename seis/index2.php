@@ -3,7 +3,9 @@
     session_start();
         if (!isset($_SESSION["usuario"])){
             header("Location:index.php");
-        }
+        }else{
+
+
     require_once("controladores/conexion/conn.php");
     $db = new conexion();
     $q = "SELECT * FROM `usuarios_funes` WHERE id='$_SESSION[usuario]' ";
@@ -415,6 +417,7 @@
 </body>
 
 </html>
-<?php 
+<?php
+    }
     ob_end_flush();//para solucionar el problema con el redireccionamieto
  ?>
